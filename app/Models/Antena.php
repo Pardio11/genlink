@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Antena extends Model
 {
@@ -11,9 +13,17 @@ class Antena extends Model
 
     protected $fillable = ['ip', 'mac', 'user', 'password', 'dispositivo_id'];
 
-    public function dispositivo()
+    public function dispositivo(): HasOne
     {
-        return $this->belongsTo(Dispositivo::class);
+        return $this->hasOne(Dispositivo::class);
+    }
+    public function cliente(): HasOne
+    {
+        return $this->hasOne(Cliente::class);
+    }
+    public function zona(): BelongsTo
+    {
+        return $this->belongsTo(Zona::class);
     }
 
 }
