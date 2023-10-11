@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('routers', function (Blueprint $table) {
+        Schema::create('servicios', function (Blueprint $table) {
             $table->id();
-            $table->string('users');
-            $table->string('password');
-            $table->string('ip');
-            $table->string('mac');
-            $table->foreignId('dispositivo_id')->constrained('dispositivos');
+            $table->foreignId('t_servicio_id')->constrained('t_servicios');
+            $table->string('F_Pago');
+            // Agrega otros campos según tus requerimientos
             $table->timestamps();
-            
         });
     }
 
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('routers');
+        Schema::dropIfExists('servicios');
     }
 };

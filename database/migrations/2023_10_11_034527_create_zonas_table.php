@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('routers', function (Blueprint $table) {
+        Schema::create('zonas', function (Blueprint $table) {
             $table->id();
-            $table->string('users');
-            $table->string('password');
-            $table->string('ip');
-            $table->string('mac');
-            $table->foreignId('dispositivo_id')->constrained('dispositivos');
+            $table->foreignId('router_id')->constrained('routers');
+            $table->string('nombre');
+            $table->string('direccion');
+            $table->integer('alcance');
+            $table->foreignId('antena_id')->constrained('antena');
             $table->timestamps();
-            
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('routers');
+        Schema::dropIfExists('zonas');
     }
 };

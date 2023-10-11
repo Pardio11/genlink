@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('servicio', function (Blueprint $table) {
+        Schema::create('descuentos', function (Blueprint $table) {
             $table->id();
-            $table->foreign('T_Servicioal_id')->__callconstrained('marcas');
-            $table->string('F_Pago');
+            $table->date('F_inicio');
+            $table->date('Vigencia');
+            // Llave foránea a la tabla "T_descuento"
+            $table->foreignId('t_descuento_id')->constrained('t_descuentos');
+
             // Agrega otros campos según tus requerimientos
+
             $table->timestamps();
         });
     }
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('servicio');
+        Schema::dropIfExists('descuentos');
     }
 };
