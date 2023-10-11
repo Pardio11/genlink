@@ -20,8 +20,8 @@ return new class extends Migration
             $table->timestamps();
 
             // Definir las relaciones de llave foránea con opciones para valores nulos
-            $table->foreignId('descuento_id')->constraint('descuentos')->nullable();
-            $table->foreignId('recargo_id')->references('recargos')->nullable();
+            $table->foreignId('descuento_id')->constrained('descuentos')->nullable();
+            $table->foreignId('recargo_id')->constrained('recargos')->nullable();
         });
     }
 
