@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('antenas', function (Blueprint $table) {
+        Schema::create('descuentos', function (Blueprint $table) {
             $table->id();
-            $table->string('ip');
-            $table->string('mac');
-            $table->string('user');
-            $table->string('password');
-            $table->foreignId('dispositivo_id')->constrained('dispositivos');
+            $table->date('F_inicio');
+            $table->date('Vigencia');
+            // Llave foránea a la tabla "T_descuento"
+            $table->foreignId('t_descuento_id')->constrained('t_descuentos');
+
+            // Agrega otros campos según tus requerimientos
+
             $table->timestamps();
-            
         });
     }
 
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('antenas');
+        Schema::dropIfExists('descuentos');
     }
 };
