@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('servicio', function (Blueprint $table) {
+        Schema::create('servicios', function (Blueprint $table) {
             $table->id();
-            $table->foreign('T_Servicioal_id')->__callconstrained('marcas');
+            $table->foreignId('t_servicio_id')->constrained('t_servicios');
             $table->string('F_Pago');
             // Agrega otros campos según tus requerimientos
             $table->timestamps();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('servicio');
+        Schema::dropIfExists('servicios');
     }
 };

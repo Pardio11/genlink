@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('routers', function (Blueprint $table) {
+        Schema::create('antenas', function (Blueprint $table) {
             $table->id();
-            $table->string('users');
-            $table->string('password');
             $table->string('ip');
             $table->string('mac');
-            $table->foreignId('dispositivo_id')->constrained('dispositivos');
+            $table->string('user');
+            $table->string('password');
+            $table->foreign('dispositivo_id')->references('dispositivos');
             $table->timestamps();
             
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('routers');
+        Schema::dropIfExists('antenas');
     }
 };
