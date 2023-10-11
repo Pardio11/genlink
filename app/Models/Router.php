@@ -4,8 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Router extends Model
 {
     use HasFactory;
+    protected $fillable = ['users', 'password', 'ip', 'mac', 'dispositivo_id'];
+
+    public function dispositivo(): HasOne
+    {
+        return $this->hasOne(Dispositivo::class);
+    }
+    public function cliente(): HasOne
+    {
+        return $this->hasOne(Cliente::class);
+    }
+    public function zona(): BelongsTo
+    {
+        return $this->belongsTo(Zona::class);
+    }
 }
