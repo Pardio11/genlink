@@ -13,6 +13,7 @@ class ZonasTableSeeder extends Seeder
      */
     public function run(): void
     {
+        
         Zona::factory(10)->create();
     }
 }

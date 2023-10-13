@@ -1,5 +1,5 @@
 <?php
-
+namespace Database\Factories;
 use App\Models\Antena;
 use App\Models\Zona;
 use App\Models\Router;

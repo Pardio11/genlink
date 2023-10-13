@@ -14,15 +14,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
         $this->call([
             DispositivosTableSeeder::class,
             AntenasTableSeeder::class,
             RoutersTableSeeder::class,
             ReportesTableSeeder::class,
             InstalacionesTableSeeder::class,
-            TipoDescuento::class,
-            TipoServicio::class,
-            Descuento::class,
+            TipoDescuentosTableSeeder::class,
+            TipoServiciosTableSeeder::class,
+            DescuentosTableSeeder::class,
             RecargosTableSeeder::class,
             ContratosTableSeeder::class,
             PagosTableSeeder::class,

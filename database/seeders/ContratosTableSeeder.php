@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Contrato;
+use App\Models\Contrato;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

@@ -3,6 +3,7 @@ namespace App\Models;
 
 use App\Models\Instalacion;
 use App\Models\Reporte;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -10,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Cliente extends Model
 {
+    use HasFactory;
     protected $table = 'clientes';
 
     protected $fillable = [

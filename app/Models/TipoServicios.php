@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class TipoServicio extends Model
 {
     use HasFactory;
+
+
     protected $fillable = [
         'nombre',
         'costo',

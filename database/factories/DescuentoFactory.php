@@ -15,7 +15,7 @@ class DescuentoFactory extends Factory
         return [
             'fecha_inicio' => $this->faker->dateTimeThisDecade,
             'vigencia' => $this->faker->dateTimeInInterval('now', '+1 year'),
-            't_descuento_id' => TipoDescuento::factory(),
+            'tipo_descuento_id' => TipoDescuento::factory(),
         ];
     }
 }

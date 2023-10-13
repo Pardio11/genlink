@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Pago;
 use App\Models\Recargo;
 use App\Models\Contrato;
+use App\Models\TipoServicio;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PagoFactory extends Factory
@@ -17,6 +18,7 @@ class PagoFactory extends Factory
             'fecha_pagado' => $this->faker->date, // Generar una fecha aleatoria
             'contrato_id' => Contrato::factory(), // Relacionar con un contrato usando su factory
             'recargo_id' => Recargo::factory(), // Relacionar con un recargo usando su factory
+            'tipo_servicio_id' => TipoServicio::factory(),
         ];
     }
 }
