@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('pagos', function (Blueprint $table) {
             $table->id();
+            $table->date('fecha_pagado')->nullable();
             $table->foreignId('contrato_id')->constrained('contratos')->nullable();
             $table->foreignId('servicio_id')->constrained('servicios')->nullable();
+            $table->foreignId('recargo_id')->constrained('recargos')->nullable();
             $table->timestamps();
+            
         });
     }
 
