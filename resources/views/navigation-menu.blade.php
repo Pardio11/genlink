@@ -36,13 +36,15 @@
 
                 <!-- Settings Dropdown -->
                 <div class="ml-10 relative ">
-                    <x-dropdown align="right" width="50">
-                        <x-slot name="trigger">
-                            @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                    <div class="flex items-center space-x-2">
+                        <img class="h-9 w-9 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                        <x-dropdown align="right" width="50">
+                            <x-slot name="trigger">
+                                @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                 <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                                     <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                                 </button>
-                            @else
+                                @else
                                 <span class="inline-flex rounded-md">
                                     <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-blue-400  hover:text-blue-900 focus:outline-none ">
                                         {{ Auth::user()->name }}
@@ -52,13 +54,14 @@
                                         </svg>
                                     </button>
                                 </span>
-                            @endif
-                        </x-slot>
-
+                                @endif
+                            </x-slot>
+                        </div>
+                            
                         <x-slot name="content" >
                             <!-- Account Management -->
-                            <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
+                            <div class="block px-4 py-2 text-xs text-gray-500">
+                                {{ __('Número de cliente #84957') }}
                             </div>
 
                             <x-dropdown-link href="{{ route('profile.show') }}">
@@ -114,12 +117,13 @@
 
                 <div>
                     <div class="font-medium text-base text-gray-100">{{ Auth::user()->name }}</div>
+                    <div class="text-gray-300"> #737595</div>
                     <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
                     @for ($i = 0; $i < 6; $i++)
-    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-        {{ __('Dashboard') }} 
-    </x-nav-link>
-@endfor
+                        <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                            {{ __('Dashboard') }} 
+                        </x-nav-link>
+                    @endfor
 
                 </div>
             </div>
