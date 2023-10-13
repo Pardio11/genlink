@@ -13,9 +13,9 @@ class Servicio extends Model
     protected $table = 'servicios';
 
     protected $fillable = [
-        't_servicio_id',
-        'F_Pago',
+        't_servicio_id','fecha_pago'
     ];
+    protected $dates = ['fecha_pago'];
 
     public function tServicio() : HasOne
     {

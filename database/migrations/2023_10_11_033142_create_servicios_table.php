@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('servicios', function (Blueprint $table) {
             $table->id();
             $table->foreignId('t_servicio_id')->constrained('t_servicios');
-            $table->string('F_Pago');
+            $table->date('fecha_pago');
             // Agrega otros campos según tus requerimientos
             $table->timestamps();
         });
