@@ -15,22 +15,29 @@ class Pago extends Model
     protected $table = 'pagos';
 
     protected $fillable = [
+        'fecha_pagado',
         'contrato_id',
         'servicio_id',
+        'recargo_id'
     ];
+    protected $dates = ['fecha_pagado'];
 
     public function contrato():HasOne
     {
-        return $this->hasOne(Contrato::class, 'contrato_id');
+        return $this->hasOne(Contrato::class);
     }
 
     public function servicio():HasOne
     {
-        return $this->hasOne(Servicio::class, 'servicio_id');
+        return $this->hasOne(Servicio::class);
     }
 
     public function clientes():BelongsToMany
     {
-        return $this->BelongsToMany(Cliente::class, 'cliente_id');
+        return $this->BelongsToMany(Cliente::class);
+    }
+    public function recargo(): HasOne
+    {
+        return $this->hasOne(Recargo::class);
     }
 }

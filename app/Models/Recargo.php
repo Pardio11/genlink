@@ -12,8 +12,8 @@ class Recargo extends Model
 
     protected $fillable = ['monto', 'descripcion'];
 
-    public function recargo(): HasOne
+    public function pago(): HasOne
     {
-        return $this->hasOne(Recargo::class);
+        return $this->hasOne(Pago::class);
     }
 }
