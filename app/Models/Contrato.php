@@ -9,22 +9,20 @@ class Contrato extends Model
     protected $table = 'contratos';
 
     protected $fillable = [
-        'f_instalacion',
+        'fecha_instalacion',
         'dia_corte',
         'velocidad',
         'precio',
         'descuento_id',
-        'recargo_id',
+        'instalacion_id'
     ];
 
+    protected $dates = ['fecha_instalacion'];
     public function descuentos(): HasMany
     {
         return $this->hasMany(Descuento::class);
     }
-    public function recargo(): HasOne
-    {
-        return $this->hasOne(Recargo::class);
-    }
+    
     public function pago(): HasOne
     {
         return $this->hasOne(Pago::class);
@@ -32,5 +30,9 @@ class Contrato extends Model
     public function clientes(): HasMany
     {
         return $this->hasMany(Cliente::class);
+    }
+    public function instalaciones(): HasOne
+    {
+        return $this->hasOne(Instalacion::class);
     }
 }
