@@ -3,9 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\Pago;
-use App\Models\Contrato;
-use App\Models\Servicio;
 use App\Models\Recargo;
+use App\Models\Servicio;
+use App\Models\Contrato;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PagoFactory extends Factory
@@ -15,10 +15,10 @@ class PagoFactory extends Factory
     public function definition()
     {
         return [
-            'fecha_pagado' => $this->faker->dateTimeThisDecade,
-            'contrato_id' => \Contrato::inRandomOrder()->first(),
-            'servicio_id' => Servicio::inRandomOrder()->first(),
-            'recargo_id' => Recargo::inRandomOrder()->first(),
+            'fecha_pagado' => $this->faker->date, // Generar una fecha aleatoria
+            'contrato_id' => Contrato::factory(), // Relacionar con un contrato usando su factory
+            'servicio_id' => Servicio::factory(), // Relacionar con un servicio usando su factory
+            'recargo_id' => Recargo::factory(), // Relacionar con un recargo usando su factory
         ];
     }
 }
