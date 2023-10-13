@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Servicio extends Model
 {
@@ -16,8 +17,8 @@ class Servicio extends Model
         'F_Pago',
     ];
 
-    public function tServicio()
+    public function tServicio() : HasOne
     {
-        return $this->belongsTo(TServicio::class, 't_servicio_id');
+        return $this->hasOne(TServicio::class);
     }
 }
