@@ -14,7 +14,7 @@ class ServicioFactory extends Factory
     {
         return [
             't_servicio_id' => TipoServicio::factory(),
-            'fecha_Pago' => $this->faker->date,
+            'fecha_pago' => $this->faker->date,
         ];
     }
 }

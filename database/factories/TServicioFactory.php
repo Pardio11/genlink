@@ -2,12 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\TServicio;
+use App\Models\TipoServicio;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TServicioFactory extends Factory
 {
-    protected $model = TServicio::class;
+    protected $model = TipoServicio::class;
 
     public function definition()
     {
