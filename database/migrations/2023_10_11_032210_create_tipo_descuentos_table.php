@@ -9,18 +9,21 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('t_servicio', function (Blueprint $table) {
+        Schema::create('tipo_descuentos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->float('costo');
+            $table->decimal('monto', 10, 2); // Usamos el tipo decimal para el monto con 2 decimales
             $table->timestamps();
         });
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
-        Schema::dropIfExists('t_servicio');
+        Schema::dropIfExists('tipo_descuentos');
     }
 };

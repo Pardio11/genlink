@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('servicios', function (Blueprint $table) {
+        Schema::create('tipo_servicios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('t_servicio_id')->constrained('t_servicios');
-            $table->date('fecha_pago');
-            // Agrega otros campos según tus requerimientos
+            $table->string('nombre');
+            $table->float('costo');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('servicios');
+        Schema::dropIfExists('t_servicios');
     }
 };

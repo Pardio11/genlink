@@ -22,7 +22,7 @@ return new class extends Migration
             // Definir las relaciones de llave foránea con opciones para valores nulos
             $table->foreignId('descuento_id')->constrained('descuentos')->nullable();
 
-            $table->foreignId('instalacion_id')->constrained('instalaciones');
+            $table->foreignId('instalacion_id')->constrained('instalacions');
         });
     }
 

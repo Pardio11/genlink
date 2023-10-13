@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('instalaciones', function (Blueprint $table) {
+        Schema::create('instalacions', function (Blueprint $table) {
             $table->id();
             $table->date('fecha_limite'); // Agregar campo fecha_limite de tipo date
             $table->text('nota')->nullable(); // Agregar campo nota de tipo texto y permitir valores nulos
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('instalaciones');
+        Schema::dropIfExists('instalacions');
     }
 };

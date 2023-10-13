@@ -6,7 +6,7 @@ use App\Models\TipoServicio;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TServiciosTableSeeder extends Seeder
+class TipoServiciosTableSeeder extends Seeder
 {
     public function run()
     {

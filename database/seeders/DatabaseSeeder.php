@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Descuento;
+use App\Models\TipoDescuento;
+use App\Models\TipoServicio;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,13 +12,24 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-    public function run(): void
+    public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            DispositivosTableSeeder::class,
+            AntenasTableSeeder::class,
+            RoutersTableSeeder::class,
+            ReportesTableSeeder::class,
+            InstalacionesTableSeeder::class,
+            TipoDescuento::class,
+            TipoServicio::class,
+            Descuento::class,
+            RecargosTableSeeder::class,
+            ContratosTableSeeder::class,
+            PagosTableSeeder::class,
+            ZonasTableSeeder::class,
+            ClientesTableSeeder::class,
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+            // Otros seeders que desees ejecutar
+        ]);
     }
 }

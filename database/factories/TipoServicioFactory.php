@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+
 use App\Models\TipoServicio;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TServicioFactory extends Factory
+class TipoServicioFactory extends Factory
 {
     protected $model = TipoServicio::class;
 
