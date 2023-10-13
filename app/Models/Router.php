@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Router extends Model
@@ -16,9 +17,9 @@ class Router extends Model
     {
         return $this->hasOne(Dispositivo::class);
     }
-    public function cliente(): HasOne
+    public function cliente(): HasMany
     {
-        return $this->hasOne(Cliente::class);
+        return $this->hasMany(Cliente::class);
     }
     public function zona(): BelongsTo
     {
