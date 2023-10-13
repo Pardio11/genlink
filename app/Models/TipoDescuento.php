@@ -4,14 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class TipoDescuento extends Model
 {
+    use HasFactory;
     protected $fillable = ['nombre', 'monto'];
  
-    public function tipoDescuento(): HasOne
+    public function descuento(): HasOne
     {
-        return $this->hasOne(TipoDescuento::class);
+        return $this->hasOne(Descuento::class);
     }
 }
