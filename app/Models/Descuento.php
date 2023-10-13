@@ -11,7 +11,7 @@ class Descuento extends Model
     use HasFactory;
     protected $fillable = ['F_inicio', 'Vigencia', 't_descuento_id'];
 
-    public function Descuento(): BelongsTo
+    public function descuento(): BelongsTo
     {
         return $this->belongsTo(Descuento::class);
     }

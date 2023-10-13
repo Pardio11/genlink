@@ -10,7 +10,7 @@ class TipoDescuento extends Model
 {
     protected $fillable = ['nombre', 'monto'];
  
-    public function TipoDescuento(): HasOne
+    public function tipoDescuento(): HasOne
     {
         return $this->hasOne(TipoDescuento::class);
     }
