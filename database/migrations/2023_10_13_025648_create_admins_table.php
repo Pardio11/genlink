@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pagos', function (Blueprint $table) {
+        Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha_pagado')->nullable();
-            $table->foreignId('contrato_id')->constrained('contratos')->nullable();
-            $table->foreignId('t_servicio_id')->constrained('t_servicios')->nullable();
-            $table->foreignId('recargo_id')->constrained('recargos')->nullable();
+            $table->string('nombre');
+            $table->longText('image_data')->nullable();
+            $table->string('correo');
+            $table->string('numero');
+            $table->string('password');
             $table->timestamps();
-            
         });
     }
 
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pagos');
+        Schema::dropIfExists('admins');
     }
 };
