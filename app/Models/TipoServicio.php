@@ -16,8 +16,8 @@ class TServicio extends Model
         'costo',
     ];
 
-    public function servicios():HasOne
+    public function pago():HasOne
     {
-        return $this->hasOne(Servicio::class);
+        return $this->hasOne(Pago::class);
     }
 }
