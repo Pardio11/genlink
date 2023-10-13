@@ -17,7 +17,7 @@ class Pago extends Model
     protected $fillable = [
         'fecha_pagado',
         'contrato_id',
-        'servicio_id',
+        't_servicio_id',
         'recargo_id'
     ];
     protected $dates = ['fecha_pagado'];
@@ -27,9 +27,9 @@ class Pago extends Model
         return $this->hasOne(Contrato::class);
     }
 
-    public function servicio():HasOne
+    public function tipoServicio():HasOne
     {
-        return $this->hasOne(Servicio::class);
+        return $this->hasOne(TipoServicio::class);
     }
 
     public function clientes():BelongsToMany
