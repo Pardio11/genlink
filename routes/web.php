@@ -1,27 +1,10 @@
 <?php
 
-use App\Livewire\Cancelados;
-use App\Livewire\Clientes;
-use App\Livewire\EstadoCuenta;
-use App\Livewire\PagosAtrasados;
-use App\Livewire\Pendientes;
 use App\Livewire\MisPagos;
 use App\Livewire\PreguntasFrecuentes;
 use App\Livewire\Prueba;
 use App\Livewire\Reportes;
-use App\Livewire\ReportesAdmin;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,21 +18,16 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/mis-pagos',MisPagos::class);
+    Route::get('/mis-pagos',MisPagos::class)->name('mis-pagos');
+    Route::get('/reportes',Reportes::class)->name('reportes');
+    Route::get('/preguntas-frecuentes',PreguntasFrecuentes::class)->name('preguntas-frecuentes');
 
-    Route::get('/reportes',Reportes::class);
-    Route::get('/preguntas-frecuentes',PreguntasFrecuentes::class);
-    Route::get('/clientes',Clientes::class);
-    Route::get('/estado-cuenta',EstadoCuenta::class);
-    Route::get('/pagos-atrasados',PagosAtrasados::class);
-    Route::get('/cancelados',Cancelados::class);
-    Route::get('/pendientes',Pendientes::class);
-    Route::get('/reportes-admin',ReportesAdmin::class);
 
+    Route::get('/clientes',Clientes::class)->name('clientes');
+    Route::get('/estado-cuenta',EstadoCuenta::class)->name('estado-cuenta');
+    Route::get('/pagos-atrasados',PagosAtrasados::class)->name('pagos-atrasados');
+    Route::get('/cancelados',Cancelados::class)->name('cancelados');
+    Route::get('/pendientes',Pendientes::class)->name('pendientes');
+    Route::get('/reportes-admin',ReportesAdmin::class)->name('reportes-admin');
 
 });
-
-
-
-
-
