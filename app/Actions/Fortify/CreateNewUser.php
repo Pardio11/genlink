@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
+use App\Models\Cliente;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -27,13 +28,16 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
 
         return DB::transaction(function () use ($input) {
+            $cliente = Cliente::create([
+                'direccion' => $input['direccion'], 
+                'telefono' => $input['telefono'], 
+            ]);
             return tap(User::create([
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
-                'direccion'=>$input['direccion'],
-                'telefono'=>$input['telefono']
-            ]), function (User $user) {
+                'cliente_id' => $cliente->id,
+            ])->assignRole('Cliente'), function (User $user) {
                 
             });
         });

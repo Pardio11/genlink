@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Instalacion extends Model
 {
@@ -16,8 +15,8 @@ class Instalacion extends Model
         'realizado' => 'boolean' // Convertir realizado a formato booleano
     ];
 
-    public function contrato():HasMany
+    public function cliente():HasOne
     {
-        return $this->hasMany(User::class);
+        return $this->hasOne(Cliente::class);
     }
 }

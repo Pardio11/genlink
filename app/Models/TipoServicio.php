@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class TipoServicio extends Model
 {
@@ -14,8 +15,8 @@ class TipoServicio extends Model
         'costo',
     ];
 
-    public function pago():HasOne
+    public function pagos():HasMany
     {
-        return $this->hasOne(Pago::class);
+        return $this->hasMany(Pago::class);
     }
 }
