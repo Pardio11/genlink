@@ -13,16 +13,16 @@
             <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
                 <!-- Profile Photo File Input -->
                 <input type="file" class="hidden"
-                            wire:model.live="photo"
-                            x-ref="photo"
-                            x-on:change="
-                                    photoName = $refs.photo.files[0].name;
-                                    const reader = new FileReader();
-                                    reader.onload = (e) => {
-                                        photoPreview = e.target.result;
-                                    };
-                                    reader.readAsDataURL($refs.photo.files[0]);
-                            " />
+                       wire:model.live="photo"
+                       x-ref="photo"
+                       x-on:change="
+                            photoName = $refs.photo.files[0].name;
+                            const reader = new FileReader();
+                            reader.onload = (e) => {
+                                photoPreview = e.target.result;
+                            };
+                            reader.readAsDataURL($refs.photo.files[0]);
+                        " />
 
                 <x-label for="photo" value="{{ __('Photo') }}" />
 
@@ -81,6 +81,15 @@
                 @endif
             @endif
         </div>
+
+        <!-- Number -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="number" value="{{ __('Number') }}" />
+            <x-input id="number" type="text" class="mt-1 block w-full" wire:model="state.number" />
+            <x-input-error for="number" class="mt-2" />
+        </div>
+
+   
     </x-slot>
 
     <x-slot name="actions">
