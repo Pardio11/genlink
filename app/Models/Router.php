@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Router extends Model
@@ -17,12 +16,12 @@ class Router extends Model
     {
         return $this->belongsTo(ModeloRouter::class);
     }
-    public function cliente(): HasMany
+    public function cliente(): HasOne
     {
-        return $this->hasMany(Cliente::class);
+        return $this->hasOne(Cliente::class);
     }
-    public function zona(): HasMany
+    public function zona(): HasOne
     {
-        return $this->hasMany(Zona::class);
+        return $this->hasOne(Zona::class);
     }
 }

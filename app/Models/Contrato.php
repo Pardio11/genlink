@@ -3,7 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -18,18 +18,14 @@ class Contrato extends Model
         'precio',
         'activo'
     ];
-    public function descuentos(): BelongsToMany
+    public function descuentos(): HasMany
     {
-        return $this->belongsToMany(Descuento::class);
+        return $this->hasMany(Descuento::class);
     }
     
-    public function pago(): HasMany
+    public function clientes(): HasOne
     {
-        return $this->hasMany(Pago::class);
-    }
-    public function clientes(): HasMany
-    {
-        return $this->hasMany(Cliente::class);
+        return $this->hasOne(Cliente::class);
     }
     
 }

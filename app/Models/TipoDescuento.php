@@ -11,7 +11,7 @@ class TipoDescuento extends Model
     use HasFactory;
     protected $fillable = ['nombre', 'monto'];
     //bien
-    public function descuento(): HasMany
+    public function descuentos(): HasMany
     {
         return $this->hasMany(Descuento::class);
     }
