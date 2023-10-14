@@ -9,7 +9,6 @@ use App\Livewire\MisPagos;
 use App\Livewire\PreguntasFrecuentes;
 use App\Livewire\Prueba;
 use App\Livewire\Reportes;
-use App\Livewire\ReportesAdmin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,18 +34,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/mis-pagos',MisPagos::class);
-
-    Route::get('/reportes',Reportes::class);
-    Route::get('/preguntas-frecuentes',PreguntasFrecuentes::class);
-    Route::get('/clientes',Clientes::class);
-    Route::get('/estado-cuenta',EstadoCuenta::class);
-    Route::get('/pagos-atrasados',PagosAtrasados::class);
-    Route::get('/cancelados',Cancelados::class);
-    Route::get('/pendientes',Pendientes::class);
-    Route::get('/reportes-admin',ReportesAdmin::class);
-
-
+    Route::get('/mis-pagos',MisPagos::class)->name('mis-pagos');
+    Route::get('/reportes',Reportes::class)->name('reportes');
+    Route::get('/preguntas-frecuentes',PreguntasFrecuentes::class)->name('preguntas-frecuentes');
 });
 
 
