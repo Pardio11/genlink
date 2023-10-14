@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('n_id');
             $table->longText('image_data')->nullable();
             $table->string('nombre');
-            $table->string('correo')->unique();
+            $table->string('email')->unique();
             $table->string('direccion');
             $table->string('telefono');
             $table->timestamp('email_verified_at')->nullable();
