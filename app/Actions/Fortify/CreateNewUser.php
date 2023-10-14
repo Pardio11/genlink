@@ -32,14 +32,13 @@ class CreateNewUser implements CreatesNewUsers
                 'direccion' => $input['direccion'], 
                 'telefono' => $input['telefono'], 
             ]);
-            return tap(User::create([
+            $user=User::create([
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
-                'cliente_id' => $cliente->id,
-            ])->assignRole('Cliente'), function (User $user) {
-                
-            });
+                'cliente_id' => $cliente->id
+            ])->assignRole('Cliente');
+            return $user;
         });
     }
 }

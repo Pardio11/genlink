@@ -74,12 +74,12 @@
         </div>
     </div>
     
-    <div class="flex items-center justify-center">
-        <div class="max-w-sm bg-white shadow-md rounded-md p-4">
-            <div class="flex items-center space-x-4 justify-center">
-                <i class="fab fa-whatsapp text-green-500 text-2xl"></i>
-                <i class="fas fa-phone text-blue-500 text-2xl"></i>
-                <i class="fas fa-envelope text-red-500 text-2xl"></i>
+    <div class="flex items-center justify-center ">
+        <div class=" bg-white shadow-md rounded-md p-4">
+            <div class="flex items-center space-x-4 justify-center w-52 h-20">
+                <i class="fab fa-whatsapp text-green-500 text-4xl  "></i>
+                <i class="fas fa-phone text-blue-500 text-3xl "></i>
+                <i class="fas fa-envelope text-red-500 text-4xl ml-1"></i>
             </div>
         </div>
     </div>

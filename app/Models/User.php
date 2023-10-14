@@ -31,7 +31,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password','image_data'
+        'name', 'email', 'password','image_data','cliente_id'
     ];
 
     /**
@@ -62,6 +62,6 @@ class User extends Authenticatable
     //Bien
     public function cliente(): HasOne
     {
-        return $this->hasOne(Instalacion::class);
+        return $this->hasOne(Cliente::class);
     }
 }
