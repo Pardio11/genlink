@@ -11,7 +11,7 @@ class Recargo extends Model
     use HasFactory;
 
     protected $fillable = ['monto', 'descripcion'];
-
+    //bien
     public function pago(): HasOne
     {
         return $this->hasOne(Pago::class);

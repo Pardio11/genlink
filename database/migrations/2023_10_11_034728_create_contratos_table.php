@@ -13,16 +13,11 @@ return new class extends Migration
     {
         Schema::create('contratos', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha_instalacion');
             $table->integer('dia_corte');
             $table->integer('velocidad');
             $table->decimal('precio', 10, 2); // Usamos el tipo decimal para el precio con 2 decimales
+            $table->boolean('activo');
             $table->timestamps();
-
-            // Definir las relaciones de llave foránea con opciones para valores nulos
-            $table->foreignId('descuento_id')->constrained('descuentos')->nullable();
-
-            $table->foreignId('instalacion_id')->constrained('instalacions');
         });
     }
 

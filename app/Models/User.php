@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -26,7 +28,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'n_id','name', 'email', 'password','image_data','direccion','telefono'
     ];
 
     /**
@@ -50,12 +52,39 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
-    protected $appends = [
-        'profile_photo_url',
-    ];
+
+    //Bien
+    public function instalaciones(): BelongsTo
+    {
+        return $this->belongsTo(Instalacion::class);
+    }
+
+    public function pagos(): BelongsToMany
+    {
+        return $this->belongsToMany(Pago::class);
+    }
+    public function reportes(): BelongsToMany
+    {
+        return $this->belongsToMany(Reporte::class);
+    }
+
+    public function contrato(): BelongsTo
+    {
+        return $this->belongsTo(Contrato::class);
+    }
+
+    public function antena(): BelongsTo
+    {
+        return $this->belongsTo(Antena::class);
+    }
+
+    public function router(): BelongsTo
+    {
+        return $this->belongsTo(Router::class);
+    }
+
+    public function zona(): BelongsTo
+    {
+        return $this->belongsTo(Zona::class);
+    }
 }

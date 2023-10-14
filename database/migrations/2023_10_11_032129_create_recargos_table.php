@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('recargos', function (Blueprint $table) {
             $table->id();
             $table->decimal('monto', 10, 2); // Usamos el tipo decimal para el monto con 2 decimales
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->timestamps();
         });
     }

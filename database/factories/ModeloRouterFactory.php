@@ -2,19 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Dispositivo;
+use App\Models\ModeloRouter;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DispositivoFactory extends Factory
+class ModeloRouterFactory extends Factory
 {
-    protected $model = Dispositivo::class;
+    protected $model = ModeloRouter::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
             'modelo' => $this->faker->word,
             'marca' => $this->faker->word,
-            'cantidad' => $this->faker->numberBetween(1, 10),
         ];
     }
 }
