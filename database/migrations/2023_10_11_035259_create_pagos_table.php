@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('pagos', function (Blueprint $table) {
             $table->id();
             $table->date('fecha_pagado')->nullable();
+            $table->date('fecha_limite');
             $table->foreignId('contrato_id')->constrained('contratos')->nullable();
             $table->foreignId('tipo_servicio_id')->constrained('tipo_servicios')->nullable();
             $table->foreignId('recargo_id')->constrained('recargos')->nullable();
             $table->timestamps();
-            
         });
     }
 

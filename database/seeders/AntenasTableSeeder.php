@@ -14,7 +14,7 @@ class AntenasTableSeeder extends Seeder
     public function run(): void
     {
         //
-     Antena::factory(5)->create(); // Esto generará 10 registros de antenas
+     Antena::factory(10)->create(); // Esto generará 10 registros de antenas
 
     }
 }

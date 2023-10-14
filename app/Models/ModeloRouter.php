@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class TipoDescuento extends Model
+class ModeloRouter extends Model
 {
     use HasFactory;
-    protected $fillable = ['nombre', 'monto'];
-    //bien
-    public function descuento(): HasMany
+    protected $fillable = ['modelo', 'marca'];
+
+    public function router(): HasMany
     {
-        return $this->hasMany(Descuento::class);
+        return $this->hasMany(Router::class);
     }
 }

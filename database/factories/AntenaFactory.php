@@ -20,7 +20,7 @@ class AntenaFactory extends Factory
             'mac' => $this->faker->macAddress,
             'user' => $this->faker->userName,
             'password' => bcrypt('password'), // Cambia 'password' por la contraseña que desees
-            'dispositivo_id' => 1, // ID de un dispositivo relacionado
+            'dispositivo_id' => $this->faker->numberBetween(1, 10), // ID de un dispositivo relacionado
         ];
     }
 }

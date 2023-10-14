@@ -11,18 +11,18 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Router extends Model
 {
     use HasFactory;
-    protected $fillable = ['users', 'password', 'ip', 'mac', 'dispositivo_id'];
+    protected $fillable = ['users', 'password', 'ip', 'mac', 'modelo_router_id'];
 
-    public function dispositivo(): HasOne
+    public function modeloRouter(): BelongsTo
     {
-        return $this->hasOne(Dispositivo::class);
+        return $this->belongsTo(ModeloRouter::class);
     }
     public function cliente(): HasMany
     {
         return $this->hasMany(Cliente::class);
     }
-    public function zona(): BelongsTo
+    public function zona(): HasMany
     {
-        return $this->belongsTo(Zona::class);
+        return $this->hasMany(Zona::class);
     }
 }

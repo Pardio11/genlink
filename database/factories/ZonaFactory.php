@@ -16,7 +16,7 @@ class ZonaFactory extends Factory
             'nombre' => $this->faker->name,
             'direccion' => $this->faker->address,
             'alcance' => $this->faker->numberBetween(1, 100),
-            'antena_id' => Antena::factory(),
+            'antena_id' => $this->faker->numberBetween(1, 10),
             // Otros campos de la tabla zonas
         ];
     }

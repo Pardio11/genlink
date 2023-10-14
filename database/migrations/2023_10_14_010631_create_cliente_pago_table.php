@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('recargos', function (Blueprint $table) {
-            $table->id();
-            $table->decimal('monto', 10, 2); // Usamos el tipo decimal para el monto con 2 decimales
-            $table->text('descripcion');
-            $table->timestamps();
+        Schema::create('cliente_pago', function (Blueprint $table) {
+            $table->foreignId('cliente_id')->constrained('clientes');
+            $table->foreignId('pago_id')->constrained('pagos');
         });
     }
 
@@ -24,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('recargos');
+        Schema::dropIfExists('cliente_pago');
     }
 };

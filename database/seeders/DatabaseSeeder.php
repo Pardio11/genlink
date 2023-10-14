@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call([
-            DispositivosTableSeeder::class,
             AntenasTableSeeder::class,
             RoutersTableSeeder::class,
             ReportesTableSeeder::class,

@@ -19,12 +19,12 @@ class ClienteFactory extends Factory
             'telefono' => $this->faker->phoneNumber,
             'correo' => $this->faker->unique()->safeEmail,
             'password' => bcrypt('password'), // Ajusta la contraseña predeterminada si es necesario
-            'pago_id' => \App\Models\Pago::factory(),
-            'contrato_id' => \App\Models\Contrato::factory(),
-            'antena_id' => \App\Models\Antena::factory(),
-            'router_id' => \App\Models\Router::factory(),
-            'zona_id' => \App\Models\Zona::factory(),
-            'reporte_id' => \App\Models\Reporte::factory(),
+            'pago_id' => $this->faker->numberBetween(1, 10),
+            'contrato_id' => $this->faker->numberBetween(1, 10),
+            'antena_id' => $this->faker->numberBetween(1, 10),
+            'router_id' => $this->faker->numberBetween(1, 10),
+            'zona_id' => $this->faker->numberBetween(1, 10),
+            'reporte_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

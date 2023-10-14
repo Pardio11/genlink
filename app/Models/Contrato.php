@@ -3,6 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -12,30 +13,23 @@ class Contrato extends Model
     protected $table = 'contratos';
 
     protected $fillable = [
-        'fecha_instalacion',
         'dia_corte',
         'velocidad',
         'precio',
-        'descuento_id',
-        'instalacion_id'
+        'activo'
     ];
-
-    protected $dates = ['fecha_instalacion'];
-    public function descuentos(): HasMany
+    public function descuentos(): BelongsToMany
     {
-        return $this->hasMany(Descuento::class);
+        return $this->belongsToMany(Descuento::class);
     }
     
-    public function pago(): HasOne
+    public function pago(): HasMany
     {
-        return $this->hasOne(Pago::class);
+        return $this->hasMany(Pago::class);
     }
     public function clientes(): HasMany
     {
         return $this->hasMany(Cliente::class);
     }
-    public function instalaciones(): HasOne
-    {
-        return $this->hasOne(Instalacion::class);
-    }
+    
 }

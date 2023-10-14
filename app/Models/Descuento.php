@@ -5,21 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Descuento extends Model
 {
     use HasFactory;
     protected $fillable = ['fecha_inicio', 'vigencia', 't_descuento_id'];
-    protected $dates = ['fecha_inicio', 'vigencia'];
-    //F a fecha V a v
-    public function tipoDescuento(): HasOne
+    //bien
+    public function tipoDescuento(): BelongsTo
     {
-        return $this->hasOne(TipoDescuento::class);
+        return $this->belongsTo(TipoDescuento::class);
     }
-    public function contrato(): BelongsTo
+    //bien
+    public function contrato(): BelongsToMany
     {
-        return $this->belongsTo(Contrato::class);
+        return $this->belongsToMany(Contrato::class);
     }
     
 }

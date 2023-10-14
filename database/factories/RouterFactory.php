@@ -16,7 +16,7 @@ class RouterFactory extends Factory
             'password' => $this->faker->password,
             'ip' => $this->faker->ipv4,
             'mac' => $this->faker->macAddress,
-            'dispositivo_id' => \App\Models\Dispositivo::factory(),
+            'dispositivo_id' => $this->faker->numberBetween(1, 10),
             // Otros campos de la tabla routers
         ];
     }

@@ -17,9 +17,8 @@ return new class extends Migration
             $table->string('mac');
             $table->string('user');
             $table->string('password');
-            $table->foreignId('dispositivo_id')->constrained('dispositivos');
+            $table->foreignId('modelo_antena_id')->constrained('modelo_antenas');
             $table->timestamps();
-            
         });
     }
 
