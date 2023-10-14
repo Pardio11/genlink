@@ -41,5 +41,6 @@
         @stack('modals')
 
         @livewireScripts
+       @include('prueba')
     </body>
 </html>
