@@ -10,6 +10,7 @@ use App\Livewire\PreguntasFrecuentes;
 use App\Livewire\Prueba;
 use App\Livewire\Reportes;
 use App\Livewire\ReportesAdmin;
+use App\Livewire\SaldoCobrador;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -33,5 +34,8 @@ Route::middleware([
     Route::get('/cancelados',Cancelados::class)->name('cancelados');
     Route::get('/pendientes',Pendientes::class)->name('pendientes');
     Route::get('/reportes-admin',ReportesAdmin::class)->name('reportes-admin');
+
+    Route::get('/saldo-cobrador',SaldoCobrador::class)->name('saldo-cobrador');
+
 
 });
