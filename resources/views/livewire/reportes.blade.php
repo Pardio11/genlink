@@ -1,4 +1,5 @@
 <div>
+    <h1>Siuuu</h1>
     <div class="fixed top-1/2 left-4 transform -translate-y-1/2 bg-white p-8 rounded-lg shadow-lg">
         <div class="flex flex-col items-center space-y-4 w-16 h-full text-5xl">
             <div>

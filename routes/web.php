@@ -1,10 +1,14 @@
 <?php
 
+<<<<<<< HEAD
 use App\Livewire\Cancelados;
 use App\Livewire\Clientes;
 use App\Livewire\EstadoCuenta;
 use App\Livewire\PagosAtrasados;
 use App\Livewire\Pendientes;
+=======
+use App\Livewire\MisPagos;
+>>>>>>> c696f93751e5680148b22942cf69fc7877c3fa13
 use App\Livewire\PreguntasFrecuentes;
 use App\Livewire\Prueba;
 use App\Livewire\Reportes;
@@ -34,6 +38,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/mis-pagos',MisPagos::class);
 
     Route::get('/reportes',Reportes::class);
     Route::get('/preguntas-frecuentes',PreguntasFrecuentes::class);

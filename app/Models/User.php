@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -28,7 +29,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'n_id','name', 'email', 'password','image_data','direccion','telefono'
+        'n_id','name', 'email', 'password','image_data','direccion','telefono','instalacion_id'
     ];
 
     /**
@@ -52,9 +53,22 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            do {
+                $user->n_id = str_pad(mt_rand(1, 9999), 4, '0', STR_PAD_LEFT);
+            } while (self::where('n_id', $user->n_id)->exists());
+        });
+    }
+
 
     //Bien
-    public function instalaciones(): BelongsTo
+    public function instalacion(): BelongsTo
     {
         return $this->belongsTo(Instalacion::class);
     }
