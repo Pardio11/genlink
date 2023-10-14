@@ -29,6 +29,7 @@ Route::middleware([
     Route::get('/cancelados',Cancelados::class)->name('cancelados');
     Route::get('/pendientes',Pendientes::class)->name('pendientes');
     Route::get('/reportes-admin',ReportesAdmin::class)->name('reportes-admin');
+    
 });
 
 
