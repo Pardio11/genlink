@@ -6,17 +6,6 @@ use App\Livewire\Prueba;
 use App\Livewire\Reportes;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -32,6 +21,14 @@ Route::middleware([
     Route::get('/mis-pagos',MisPagos::class)->name('mis-pagos');
     Route::get('/reportes',Reportes::class)->name('reportes');
     Route::get('/preguntas-frecuentes',PreguntasFrecuentes::class)->name('preguntas-frecuentes');
+
+
+    Route::get('/clientes',Clientes::class)->name('clientes');
+    Route::get('/estado-cuenta',EstadoCuenta::class)->name('estado-cuenta');
+    Route::get('/pagos-atrasados',PagosAtrasados::class)->name('pagos-atrasados');
+    Route::get('/cancelados',Cancelados::class)->name('cancelados');
+    Route::get('/pendientes',Pendientes::class)->name('pendientes');
+    Route::get('/reportes-admin',ReportesAdmin::class)->name('reportes-admin');
 });
 
 
