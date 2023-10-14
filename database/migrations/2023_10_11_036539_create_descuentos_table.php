@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('meses_vigente');
             // Llave foránea a la tabla "T_descuento"
             $table->foreignId('tipo_descuento_id')->constrained('tipo_descuentos');
-
+            $table->foreignId('contrato_id')->constrained('contratos');
             // Agrega otros campos según tus requerimientos
 
             $table->timestamps();

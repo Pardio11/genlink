@@ -13,19 +13,14 @@ return new class extends Migration
     {
         Schema::create('clientes', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('n_id');
-            $table->longText('image_data')->nullable();
+            $table->string('n_id')->unique();
             $table->string('direccion');
             $table->string('telefono');
-            $table->string('correo');
-            $table->string('password');
-            $table->foreignId('pago_id')->constrained('pagos');
-            $table->foreignId('contrato_id')->constrained('contratos');
-            $table->foreignId('antena_id')->constrained('antenas');
-            $table->foreignId('router_id')->constrained('routers');
-            $table->foreignId('zona_id')->constrained('zonas');
-            $table->foreignId('reporte_id')->constrained('reportes');
+            $table->foreignId('instalacion_id')->nullable()->constrained('instalacions');
+            $table->foreignId('contrato_id')->nullable()->constrained('contratos');
+            $table->foreignId('antena_id')->nullable()->constrained('antenas');
+            $table->foreignId('router_id')->nullable()->constrained('routers');
+            $table->foreignId('zona_id')->nullable()->constrained('zonas');
             $table->timestamps();
         });
     }

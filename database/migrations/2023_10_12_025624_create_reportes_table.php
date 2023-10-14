@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('asunto');
             $table->text('descripcion');
+            $table->boolean('resuelto');
             $table->timestamps();
+            $table->foreignId('cliente_id')->constrained('clientes');
         });
     }
 

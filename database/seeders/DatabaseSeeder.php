@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
     {
 
         $this->call([
-            ModeloAntenaSeeder::class,
+            RoleSeeder::class
+            /* ModeloAntenaSeeder::class,
             ModeloRouterSeeder::class,
             AntenasTableSeeder::class,
             RoutersTableSeeder::class,
@@ -28,7 +29,7 @@ class DatabaseSeeder extends Seeder
             RecargosTableSeeder::class,
             ContratosTableSeeder::class,
             PagosTableSeeder::class,
-            ZonasTableSeeder::class,
+            ZonasTableSeeder::class, */
 
             // Otros seeders que desees ejecutar
         ]);

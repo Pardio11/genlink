@@ -5,8 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Pago extends Model
@@ -25,11 +23,6 @@ class Pago extends Model
     protected $dates = ['fecha_pagado','fecha_limite'];
 
     //bien
-    public function contrato():BelongsTo
-    {
-        return $this->belongsTo(Contrato::class);
-    }
-    //bien
     public function tipoServicio():BelongsTo
     {
         return $this->belongsTo(TipoServicio::class);
@@ -40,8 +33,8 @@ class Pago extends Model
         return $this->hasOne(Recargo::class);
     }
     //bien
-    public function clientes(): BelongsToMany
+    public function clientes(): BelongsTo
     {
-        return $this->belongsToMany(Cliente::class);
+        return $this->belongsTo(Cliente::class);
     }
 }
