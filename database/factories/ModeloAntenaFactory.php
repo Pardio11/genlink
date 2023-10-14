@@ -2,12 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\ModelAntena;
+use App\Models\ModeloAntena;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ModelAntenaFactory extends Factory
+class ModeloAntenaFactory extends Factory
 {
-    protected $model = ModelAntena::class;
+    protected $model = ModeloAntena::class;
 
     public function definition(): array
     {

@@ -3,19 +3,18 @@
 namespace Database\Factories;
 
 use App\Models\Descuento;
-use App\Models\TipoDescuento;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DescuentoFactory extends Factory
 {
     protected $model = Descuento::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
-            'fecha_inicio' => $this->faker->dateTimeThisDecade,
-            'vigencia' => $this->faker->dateTimeInInterval('now', '+1 year'),
-            'tipo_descuento_id' => $this->faker->numberBetween(1, 10),
+            'mes_inicio' => $this->faker->monthName,
+            'meses_vigente' => $this->faker->date('Y-m-d', '2024-12-31'), // Genera una fecha hasta el 31 de diciembre de 2024
+            'tipo_descuento_id' => random_int(1, 9), // Genera un valor aleatorio entre 1 y 9
         ];
     }
 }

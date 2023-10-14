@@ -1,5 +1,4 @@
 <?php
-
 namespace Database\Factories;
 
 use App\Models\Router;
@@ -9,15 +8,14 @@ class RouterFactory extends Factory
 {
     protected $model = Router::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
             'users' => $this->faker->userName,
             'password' => $this->faker->password,
             'ip' => $this->faker->ipv4,
             'mac' => $this->faker->macAddress,
-            'dispositivo_id' => $this->faker->numberBetween(1, 10),
-            // Otros campos de la tabla routers
+            'modelo_router_id' =>  $this->faker->numberBetween(1, 9), // Genera un valor aleatorio entre 1 y 9
         ];
     }
 }

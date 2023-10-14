@@ -1,19 +1,16 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Seeders;
 
+use Illuminate\Database\Seeder;
 use App\Models\ModeloRouter;
-use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ModeloRouterFactory extends Factory
+class ModeloRouterSeeder extends Seeder
 {
-    protected $model = ModeloRouter::class;
-
-    public function definition(): array
+    public function run()
     {
-        return [
-            'modelo' => $this->faker->word,
-            'marca' => $this->faker->word,
-        ];
+        ModeloRouter::factory(10)->create();
+
     }
 }
+
