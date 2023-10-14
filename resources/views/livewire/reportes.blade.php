@@ -1,7 +1,6 @@
-<div>
-    <h1>Siuuu</h1>
+<div class="relative">
     <div class="fixed top-1/2 left-4 transform -translate-y-1/2 bg-white p-8 rounded-lg shadow-lg">
-        <div class="flex flex-col items-center space-y-4 w-16 h-full text-5xl">
+        <div class="flex flex-col items-center space-y-4 w-6 text-4xl">
             <div>
                 <a href="mailto:correo@example.com" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:transform hover:-translate-y-1 transition-transform">
                     <i class="fas fa-envelope"></i>
@@ -44,7 +43,7 @@
         </div>
     </div>
     
-    <div class="max-w-screen-lg mx-auto my-4">
+    <div class="max-w-screen-md mx-auto my-4">
         <table class="min-w-full bg-white rounded shadow-md mb-12 mx-auto">
             <thead class="bg-gray-800 text-white">
                 <tr>
