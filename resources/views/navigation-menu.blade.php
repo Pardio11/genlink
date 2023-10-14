@@ -60,7 +60,7 @@
                             <x-slot name="content" >
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-500">
-                                {{ __('Número de cliente #84957') }}
+                                {{ __('Número de cliente #') }}{{ Auth::user()->n_id }}
                             </div>
                             
                             <x-dropdown-link href="{{ route('profile.show') }}">

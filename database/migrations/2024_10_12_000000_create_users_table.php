@@ -13,20 +13,20 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('n_id');
+            $table->string('n_id')->unique();
             $table->longText('image_data')->nullable();
-            $table->string('nombre');
+            $table->string('name');
             $table->string('email')->unique();
             $table->string('direccion');
             $table->string('telefono');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->foreignId('instalacion_id')->constrained('instalacions')->nullable();
-            $table->foreignId('contrato_id')->constrained('contratos');
-            $table->foreignId('antena_id')->constrained('antenas');
-            $table->foreignId('router_id')->constrained('routers');
-            $table->foreignId('zona_id')->constrained('zonas');
+            $table->foreignId('instalacion_id')->nullable()->constrained('instalacions');
+            $table->foreignId('contrato_id')->nullable()->constrained('contratos');
+            $table->foreignId('antena_id')->nullable()->constrained('antenas');
+            $table->foreignId('router_id')->nullable()->constrained('routers');
+            $table->foreignId('zona_id')->nullable()->constrained('zonas');
             $table->timestamps();
         });
     }
