@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\BusquedaCliente;
 use App\Livewire\Cancelados;
 use App\Livewire\Clientes;
 use App\Livewire\EstadoCuenta;
@@ -7,7 +8,7 @@ use App\Livewire\MisPagos;
 use App\Livewire\PagosAtrasados;
 use App\Livewire\Pendientes;
 use App\Livewire\PreguntasFrecuentes;
-use App\Livewire\Prueba;
+use App\Livewire\RealizarPago;
 use App\Livewire\Reportes;
 use App\Livewire\ReportesAdmin;
 use Illuminate\Support\Facades\Route;
@@ -33,5 +34,7 @@ Route::middleware([
     Route::get('/cancelados',Cancelados::class)->name('cancelados');
     Route::get('/pendientes',Pendientes::class)->name('pendientes');
     Route::get('/reportes-admin',ReportesAdmin::class)->name('reportes-admin');
+    Route::get('/realizar-pago',RealizarPago::class)->name('realizar-pago');
+    Route::get('/busqueda-cliente',BusquedaCliente::class)->name('busqueda-cliente');
 
 });
