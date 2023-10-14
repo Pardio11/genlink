@@ -11,22 +11,16 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-10 sm:-my-px sm:ml-28 sm:flex">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }} 
+                        {{ __('Home') }} 
                     </x-nav-link>
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Otro Enlace') }}
+                    <x-nav-link href="{{ route('mis-pagos') }}" :active="request()->routeIs('mis-pagos')">
+                        {{ __('Mis pagos') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Otro Enlace') }}
+                    <x-nav-link href="{{ route('preguntas-frecuentes') }}" :active="request()->routeIs('preguntas-frecuentes')">
+                        {{ __('Preguntas frecuentes') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Otro Enlace') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Otro Enlace') }}
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Otro Enlace') }}
+                    <x-nav-link href="{{ route('reportes') }}" :active="request()->routeIs('reportes')">
+                        {{ __('Reportes') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -60,7 +54,7 @@
                             <x-slot name="content" >
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-500">
-                                {{ __('Número de cliente #84957') }}
+                                {{ __('Número de cliente #') }}{{ Auth::user()->n_id }}
                             </div>
                             
                             <x-dropdown-link href="{{ route('profile.show') }}">

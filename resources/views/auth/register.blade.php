@@ -22,12 +22,12 @@
             </div>
 
             <div class="mt-4">
-                <x-label for="email" value="{{ __('Direccion') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+                <x-label for="direccion" value="{{ __('Direccion') }}" />
+                <x-input id="direccion" class="block mt-1 w-full" type="street-address" name="direccion" :value="old('email')" required autocomplete="username" />
             </div>
             <div class="mt-4">
-                <x-label for="email" value="{{ __('Numero de telefono') }}" />
-                <x-input id="direccion" class="block mt-1 w-full" type="text" name="direccion" :value="old('direccion')" required autocomplete="username" />
+                <x-label for="telefono" value="{{ __('Numero de telefono') }}" />
+                <x-input id="telefono" class="block mt-1 w-full" type="tel" name="telefono" :value="old('direccion')" required autocomplete="username" />
             </div>
 
 
