@@ -1,10 +1,13 @@
 <?php
 
+<<<<<<< HEAD
 use App\Livewire\Cancelados;
 use App\Livewire\Clientes;
 use App\Livewire\EstadoCuenta;
 use App\Livewire\PagosAtrasados;
 use App\Livewire\Pendientes;
+=======
+>>>>>>> c6c8a4fcdf75222c5aa79c122d5ed66f7b7d632c
 use App\Livewire\MisPagos;
 use App\Livewire\PreguntasFrecuentes;
 use App\Livewire\Prueba;
