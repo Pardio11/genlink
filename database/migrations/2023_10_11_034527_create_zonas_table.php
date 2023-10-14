@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('zonas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('router_id')->constrained('routers');
             $table->string('nombre');
             $table->string('direccion');
             $table->integer('alcance');
+            $table->foreignId('router_id')->constrained('routers');
             $table->foreignId('antena_id')->constrained('antenas');
             $table->timestamps();
+
         });
     }
 

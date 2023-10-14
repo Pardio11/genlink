@@ -3,6 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Zona extends Model
@@ -11,24 +12,24 @@ class Zona extends Model
     protected $table = 'zonas';
 
     protected $fillable = [
-        'router_id',
         'nombre',
         'direccion',
         'alcance',
         'antena_id',
+        'router_id',
     ];
 
     public function clientes(): HasMany
     {
         return $this->hasMany(Cliente::class);
     }
-    public function routers(): HasMany
+    public function routers(): BelongsTo
     {
-        return $this->hasMany(Router::class);
+        return $this->belongsTo(Router::class);
     }
 
-    public function antenas(): HasMany
+    public function antenas(): BelongsTo
     {
-        return $this->hasMany(Antena::class);
+        return $this->belongsTo(Antena::class);
     }
 }

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('descuentos', function (Blueprint $table) {
             $table->id();
-            $table->date('fecha_inicio');
-            $table->date('vigencia');
+            $table->string('mes_inicio');
+            $table->date('meses_vigente');
             // Llave foránea a la tabla "T_descuento"
             $table->foreignId('tipo_descuento_id')->constrained('tipo_descuentos');
 

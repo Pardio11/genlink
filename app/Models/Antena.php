@@ -12,19 +12,19 @@ class Antena extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['ip', 'mac', 'user', 'password', 'dispositivo_id'];
+    protected $fillable = ['ip', 'mac', 'user', 'password', 'modelo_antena_id'];
 
-    public function dispositivo(): HasOne
+    public function modeloAntena(): BelongsTo
     {
-        return $this->hasOne(Dispositivo::class);
+        return $this->belongsTo(ModeloAntena::class);
     }
     public function cliente(): HasMany
     {
         return $this->hasMany(Cliente::class);
     }
-    public function zona(): BelongsTo
+    public function zona(): HasMany
     {
-        return $this->belongsTo(Zona::class);
+        return $this->hasMany(Zona::class);
     }
 
 }

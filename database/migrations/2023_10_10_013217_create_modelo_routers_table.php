@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contratos', function (Blueprint $table) {
+        Schema::create('modelo_routers', function (Blueprint $table) {
             $table->id();
-            $table->integer('dia_corte');
-            $table->integer('velocidad');
-            $table->decimal('precio', 10, 2); // Usamos el tipo decimal para el precio con 2 decimales
-            $table->boolean('activo');
+            $table->string('modelo');
+            $table->string('marca');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contratos');
+        Schema::dropIfExists('modelo_routers');
     }
 };

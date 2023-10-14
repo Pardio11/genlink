@@ -10,11 +10,11 @@ class TipoServicioFactory extends Factory
 {
     protected $model = TipoServicio::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
             'nombre' => $this->faker->word,
-            'costo' => $this->faker->randomFloat(2, 10, 1000),
+            'costo' => $this->faker->randomFloat(2, 1, 1000), // Genera un valor decimal aleatorio entre 1 y 1000
         ];
     }
 }

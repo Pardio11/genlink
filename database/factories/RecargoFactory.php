@@ -9,10 +9,10 @@ class RecargoFactory extends Factory
 {
     protected $model = Recargo::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
-            'monto' => $this->faker->randomFloat(2, 1, 1000), // Genera un monto decimal aleatorio
+            'monto' => $this->faker->randomFloat(2, 1, 1000), // Genera un valor decimal aleatorio entre 1 y 1000
             'descripcion' => $this->faker->sentence,
         ];
     }

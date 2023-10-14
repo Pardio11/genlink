@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -16,28 +17,31 @@ class Pago extends Model
 
     protected $fillable = [
         'fecha_pagado',
+        'fecha_limite',
         'contrato_id',
         't_servicio_id',
         'recargo_id'
     ];
-    protected $dates = ['fecha_pagado'];
+    protected $dates = ['fecha_pagado','fecha_limite'];
 
-    public function contrato():HasOne
+    //bien
+    public function contrato():BelongsTo
     {
-        return $this->hasOne(Contrato::class);
+        return $this->belongsTo(Contrato::class);
     }
-
-    public function tipoServicio():HasOne
+    //bien
+    public function tipoServicio():BelongsTo
     {
-        return $this->hasOne(TipoServicio::class);
+        return $this->belongsTo(TipoServicio::class);
     }
-
-    public function clientes():BelongsToMany
-    {
-        return $this->BelongsToMany(Cliente::class);
-    }
+    //bien
     public function recargo(): HasOne
     {
         return $this->hasOne(Recargo::class);
+    }
+    //bien
+    public function clientes(): BelongsToMany
+    {
+        return $this->belongsToMany(Cliente::class);
     }
 }

@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dispositivos', function (Blueprint $table) {
+        Schema::create('modelo_antenas', function (Blueprint $table) {
             $table->id();
             $table->string('modelo');
             $table->string('marca');
-            $table->integer('cantidad');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dispositivos');
+        Schema::dropIfExists('modelo_antenas');
     }
 };

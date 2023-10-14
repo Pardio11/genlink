@@ -14,5 +14,6 @@ class InstalacionesTableSeeder extends Seeder
     public function run(): void
     {
         Instalacion::factory(10)->create();
+
     }
 }
