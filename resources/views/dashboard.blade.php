@@ -1,6 +1,4 @@
 <x-app-layout>
-
-    @if (Auth::user()->instalacion_id == null)
         <div class="contrata ">
             <div class="bg-[#f3f3f3] ml-4 mt-9 w-[20vw] h-[70vh] flex flex-col justify-start items-center"
                 style="border-radius: 15px;  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
@@ -24,8 +22,7 @@
                     contectar su hogar</p>
             </div>
         </div>
-    @else
-        @if (Auth::user()->instalacion->realizado == false)
+
             <div class="pendiente ">
                 <div class="bg-[#f3f3f3] ml-4 mt-9 w-[20vw] h-[70vh] flex flex-col justify-start items-center"
                     style="border-radius: 15px;  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
@@ -47,8 +44,7 @@
                         contectar su hogar.</p>
                 </div>
             </div>
-        @else
-            
+
             <div class="activo ">
                 <div class="bg-[#f3f3f3] ml-4 mt-9 w-[20vw] h-[70vh] flex flex-col justify-start items-center"
                     style="border-radius: 15px;  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
@@ -96,7 +92,6 @@
 
                 </div>
             </div>
-        @endif
-    @endif
+
 
 </x-app-layout>
