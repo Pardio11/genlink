@@ -29,10 +29,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/mis-pagos',MisPagos::class);
-
-    Route::get('/reportes',Reportes::class);
-    Route::get('/preguntas-frecuentes',PreguntasFrecuentes::class);
+    Route::get('/mis-pagos',MisPagos::class)->name('mis-pagos');
+    Route::get('/reportes',Reportes::class)->name('reportes');
+    Route::get('/preguntas-frecuentes',PreguntasFrecuentes::class)->name('preguntas-frecuentes');
 });
 
 
