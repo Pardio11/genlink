@@ -24,6 +24,36 @@
                 Para crear una pregunta frecuente, primero debes identificar las preguntas que se hacen con mayor frecuencia en relación con un tema o servicio en particular. Luego, proporciona una respuesta clara y concisa a cada pregunta.
             </div>
         </div>
+        
+        <div class="bg-white p-4 rounded-lg my-4">
+            <div class="flex items-center justify-between cursor-pointer" id="question2">
+                <h2 class="text-xl font-semibold">¿Cómo se crea una pregunta frecuente?</h2>
+                <span class="text-xl">&#9660;</span>
+            </div>
+            <div class="text-gray-600 hidden p-2" id="answer2">
+                Para crear una pregunta frecuente, primero debes identificar las preguntas que se hacen con mayor frecuencia en relación con un tema o servicio en particular. Luego, proporciona una respuesta clara y concisa a cada pregunta.
+            </div>
+        </div>
+        
+        <div class="bg-white p-4 rounded-lg my-4">
+            <div class="flex items-center justify-between cursor-pointer" id="question2">
+                <h2 class="text-xl font-semibold">¿Cómo se crea una pregunta frecuente?</h2>
+                <span class="text-xl">&#9660;</span>
+            </div>
+            <div class="text-gray-600 hidden p-2" id="answer2">
+                Para crear una pregunta frecuente, primero debes identificar las preguntas que se hacen con mayor frecuencia en relación con un tema o servicio en particular. Luego, proporciona una respuesta clara y concisa a cada pregunta.
+            </div>
+        </div>
+        
+        <div class="bg-white p-4 rounded-lg my-4">
+            <div class="flex items-center justify-between cursor-pointer" id="question2">
+                <h2 class="text-xl font-semibold">¿Cómo se crea una pregunta frecuente?</h2>
+                <span class="text-xl">&#9660;</span>
+            </div>
+            <div class="text-gray-600 hidden p-2" id="answer2">
+                Para crear una pregunta frecuente, primero debes identificar las preguntas que se hacen con mayor frecuencia en relación con un tema o servicio en particular. Luego, proporciona una respuesta clara y concisa a cada pregunta.
+            </div>
+        </div>
     </div>
 
     <style>
