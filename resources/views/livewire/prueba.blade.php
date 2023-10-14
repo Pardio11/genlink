@@ -1,4 +1,4 @@
 <div>
-<h1 class="h-[100vh]">HOLAAAAAA</h1>
+<h1 class="h-[100vh] bg-black">HOLAAAAAA</h1>
 
 </div>
