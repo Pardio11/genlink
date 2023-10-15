@@ -10,6 +10,8 @@
 
                 @can('cliente')
                 <!-- Navigation Links -->
+
+                <!-- Navigation Links -->
                 <div class="hidden space-x-10 sm:-my-px sm:ml-28 sm:flex">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Home') }} 
