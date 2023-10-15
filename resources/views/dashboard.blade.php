@@ -1,7 +1,6 @@
 <x-app-layout>
     @can('clientes')
         
-    
     @if (Auth::user()->cliente->instalacion == null)
         <div class="contrata ">
             <div class="bg-[#f3f3f3] ml-4 mt-9 w-[20vw] h-[70vh] flex flex-col justify-start items-center"
