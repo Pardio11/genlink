@@ -60,8 +60,8 @@ class User extends Authenticatable
     
 
     //Bien
-    public function cliente(): HasOne
+    public function cliente(): BelongsTo
     {
-        return $this->hasOne(Instalacion::class);
+        return $this->belongsTo(Cliente::class);
     }
 }
