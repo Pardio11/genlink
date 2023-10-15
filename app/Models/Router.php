@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Router extends Model
 {
     use HasFactory;
-    protected $fillable = ['users', 'password', 'ip', 'mac', 'modelo_router_id'];
+    protected $fillable = ['user', 'password', 'ip', 'mac', 'modelo_router_id'];
 
     public function modeloRouter(): BelongsTo
     {

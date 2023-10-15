@@ -14,5 +14,9 @@ class RecargosTableSeeder extends Seeder
     public function run(): void
     {
         Recargo::factory(10)->create(); 
+        Recargo::create([
+            'monto'=>50, 
+            'descripcion'=>"Pago Atrasado"
+        ]);
     }
 }

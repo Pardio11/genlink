@@ -1,7 +1,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-o3q2U7w5JC9eRa6A5h+ypSd1/u3HP7ZGqX5zCCglXp6WtsH+EG5KG5fNje86axtx" crossorigin="anonymous">
 
 <div class="flex flex-col space-y-4 p-4">
- 
+    @foreach ( Auth::user()->cliente->pagos as $item)
+        {{$item}}
+    @endforeach
  
     <h1 class="text-center text-4xl font-bold mb-11">
         <i class="fas fa-wallet text-blue-500"></i> Mis pagos

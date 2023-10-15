@@ -11,7 +11,7 @@ class RouterFactory extends Factory
     public function definition(): array
     {
         return [
-            'users' => $this->faker->userName,
+            'user' => $this->faker->userName,
             'password' => $this->faker->password,
             'ip' => $this->faker->ipv4,
             'mac' => $this->faker->macAddress,

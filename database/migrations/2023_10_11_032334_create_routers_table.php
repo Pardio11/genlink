@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('routers', function (Blueprint $table) {
             $table->id();
-            $table->string('users');
+            $table->string('user');
             $table->string('password');
             $table->string('ip');
             $table->string('mac');
