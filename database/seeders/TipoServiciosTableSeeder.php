@@ -14,6 +14,11 @@ class TipoServiciosTableSeeder extends Seeder
             'nombre'=>'Instalacion', 
             'costo'=>800,
         ]);
+
+        TipoServicio::create([
+            'nombre'=>'Mensualidad plan', 
+            'costo'=>230,
+        ]);
         
     }
 }

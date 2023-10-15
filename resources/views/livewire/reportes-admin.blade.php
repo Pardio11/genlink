@@ -22,17 +22,28 @@
                 </tr>
             </thead>
             <tbody>
+                @php($contador=0)
+
+                @foreach ($reportes as $r)
                 <tr class="border-b border-gray-600 text-center">
-                    <td class="px-6 py-4">1</td>
-                    <td class="px-6 py-4">ejemplo1@example.com</td>
-                    <td class="px-6 py-4">123-456-7890</td>
-                    <td class="px-6 py-4">123-456-7890</td>
-                    <td>
-                    <div class="flex justify-center">
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded mr-2">Ver</button>
-                    </div>
-                </td>
+
+                        @php($contador++)
+
+                        <td class="px-6 py-4">{{$contador}}</td>
+                        <td class="px-6 py-4">{{$r->cliente->user->name}}</td>
+                        <td class="px-6 py-4">{{$r->cliente->telefono}}</td>
+                        <td class="px-6 py-4">{{$r->cliente->direccion}}</td>
+                        <td>
+                            <div class="flex justify-center">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded mr-2">Ver</button>
+                            </div>
+                        </td>
+
+
+                    
                 </tr>
+                @endforeach
+
             </tbody>
         </table>
 

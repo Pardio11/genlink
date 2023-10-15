@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             AntenasTableSeeder::class,
             RoutersTableSeeder::class,
             ReportesTableSeeder::class,
-            InstalacionesTableSeeder::class,
+            /* InstalacionesTableSeeder::class, */
             TipoDescuentosTableSeeder::class,
             TipoServiciosTableSeeder::class,
             DescuentosTableSeeder::class,

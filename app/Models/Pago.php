@@ -33,7 +33,7 @@ class Pago extends Model
         return $this->hasOne(Recargo::class);
     }
     //bien
-    public function clientes(): BelongsTo
+    public function cliente(): BelongsTo
     {
         return $this->belongsTo(Cliente::class);
     }

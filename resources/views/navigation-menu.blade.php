@@ -2,12 +2,13 @@
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-around h-16">
-            <div class="flex">
+            <div class="flex ">
                 <!-- Logo -->
-                <div class="logoGen">
+                <div class="logoGen  left-0">
                     <img src="{{ asset('genlinkLogo.png') }}" alt="Logo de GenLink" class="mx-auto w-28 h-16">
                 </div>
-                
+
+                @can('cliente')
                 <!-- Navigation Links -->
                 <div class="hidden space-x-10 sm:-my-px sm:ml-28 sm:flex">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
@@ -23,9 +24,10 @@
                         {{ __('Reportes') }}
                     </x-nav-link>
                 </div>
+            
+            @endcan
             </div>
-
-            <div class="hidden sm:flex sm:items-center sm:ml-6">
+            <div class="hidden sm:flex sm:items-center sm:ml-6 flex-grow justify-end">
                 <!-- Teams Dropdown -->
 
                 <!-- Settings Dropdown -->
@@ -53,9 +55,11 @@
                             
                             <x-slot name="content" >
                             <!-- Account Management -->
-                            <div class="block text-xs text-gray-500 text-center">
-                                {{ __('Número de cliente #') }}{{ Auth::user()->n_id }}
-                            </div>
+                            @can('cliente')
+                            <div class="block text-xs text-gray-500 text-center p-2">
+                                {{ __('Número de cliente #') }}{{ Auth::user()->cliente->n_id }}
+                            </div>                                
+                            @endcan
                             
                             <x-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}

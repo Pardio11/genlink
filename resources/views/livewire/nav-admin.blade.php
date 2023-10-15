@@ -21,6 +21,14 @@
             Nuevo
         </a>
 
+         <!-- Estado de Cuenta -->
+         <a href="{{ route('estado-cuenta') }}" :active="request()->routeIs('estado-cuenta')" class="flex items-center gap-4 py-5 border-b border-gray-700 ">
+            <span class="text-xl">
+                <i class="fas fa-file-invoice-dollar"></i>
+            </span>
+            Estado de Cuenta
+        </a>
+
         
         <!-- Reportes -->
         <a href="{{ route('reportes-admin') }}" :active="request()->routeIs('reportes-admin')" class="flex items-center gap-4 py-5 border-b border-gray-700 ">
@@ -54,13 +62,7 @@
             Servicios Cortados
         </a>
 
-        <!-- Estado de Cuenta -->
-        <a href="{{ route('estado-cuenta') }}" :active="request()->routeIs('estado-cuenta')" class="flex items-center gap-4 py-5 border-b border-gray-700 ">
-            <span class="text-xl">
-                <i class="fas fa-file-invoice-dollar"></i>
-            </span>
-            Estado de Cuenta
-        </a>
+       
 
         <!-- Servicio Cancelado -->
         <a href="{{ route('cancelados') }}" :active="request()->routeIs('cancelados')" class="flex items-center gap-4 py-5 border-b border-gray-700 ">

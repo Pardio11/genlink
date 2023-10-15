@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('direccion');
-            $table->integer('alcance');
+            $table->string('alcance');
             $table->foreignId('router_id')->constrained('routers');
             $table->foreignId('antena_id')->constrained('antenas');
             $table->timestamps();
