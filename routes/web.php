@@ -42,7 +42,7 @@ Route::middleware([
 
     Route::get('/saldo-cobrador',SaldoCobrador::class)->name('saldo-cobrador');
 
-    Route::post('/asignar-instalacion/{clienteId}',InstalacionController::class);
+    Route::get('/asignar-instalacion/{clienteId}', [InstalacionController::class, 'asignarInstalacion']);
 
 
 });
