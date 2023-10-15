@@ -42,9 +42,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($clientes as $c)
+                    
+                    @foreach ( $clientes as $c)
                     <tr class="border-b border-gray-600 text-center">
-                       
                         <td class="px-6 py-4">{{$c->n_id}}</td>
                         <td class="px-6 py-4">{{$c->user->name}}</td>
                         <td class="px-6 py-4">{{$c->user->email}}</td>
