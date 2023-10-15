@@ -134,11 +134,11 @@
                     <div class="md:w-1/4 text-left">
                       <h6 class="text-lg  text-white uppercase">Categorias</h6>
                       <ul class="mt-4">
-                        <li><a href="http://scanfcode.com/category/c-language/" class="text-sm text-gray-400 hover:text-white  px-2 py-1 ">Cliente</a></li>
-                        <li><a href="http://scanfcode.com/category/front-end-development/" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Router</a></li>
-                        <li><a href="http://scanfcode.com/category/back-end-development/" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Antenas</a></li>
-                        <li><a href="http://scanfcode.com/category/java-programming-language/" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Dispositivos</a></li>
-                        <li><a href="http://scanfcode.com/category/android/" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Zona</a></li>
+                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1 ">Cliente</a></li>
+                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Router</a></li>
+                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Antenas</a></li>
+                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Dispositivos</a></li>
+                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Zona</a></li>
                       </ul>
                     </div>
             
@@ -146,11 +146,11 @@
                       <h6 class="text-lg  text-white uppercase">Accesos rápidos</h6>
                       <ul class="mt-4">
                         
-                        <li><a href="http://scanfcode.com/contact/" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Preguntas frecuentes</a></li>
-                        <li><a href="http://scanfcode.com/contact/" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Pagos</a></li>
-                        <li><a href="http://scanfcode.com/contribute-at-scanfcode/" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Perfil</a></li>
-                        <li><a href="http://scanfcode.com/privacy-policy/" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Políticas</a></li>
-                        <li><a href="http://scanfcode.com/sitemap/" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Administrador</a></li>
+                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Preguntas frecuentes</a></li>
+                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Pagos</a></li>
+                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Perfil</a></li>
+                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Políticas</a></li>
+                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Administrador</a></li>
                       </ul>
                     </div>
                   </div>
