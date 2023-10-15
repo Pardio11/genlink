@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\InstalacionController;
+use App\Livewire\AgregarCliente;
 use App\Livewire\AgregarObj;
 use App\Livewire\BusquedaCliente;
 use App\Livewire\Cancelados;
@@ -52,5 +53,10 @@ Route::middleware([
     Route::get('/realizar-pago',RealizarPago::class)->name('realizar-pago');
     Route::get('/busqueda-cliente',BusquedaCliente::class)->name('busqueda-cliente');
     Route::get('/agregarObj',AgregarObj::class)->middleware('can:clientes')->name('agregarObj');
+
+
+    Route::get('/agregar-cliente',AgregarCliente::class)->name('agregar-cliente');
+    Route::get('/cortados',AgregarCliente::class)->name('cortados');
+
 
 });

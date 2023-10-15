@@ -5,7 +5,7 @@
     <div class="contanier">
         <div class="max-w-screen-lg mx-auto mb-16 mt-10" >
             <div class="title flex items-center justify-center text-4xl">
-                <i class="icon fas fa-clipboard-list text-yellow-500 text-6xl mr-4"></i> PENDIENTES
+                <i class="icon fas fa-clipboard-list text-yellow-500 text-6xl mr-4"></i>INSTALACIONES PENDIENTES
             </div>
         </div>
     
@@ -22,18 +22,30 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php($cont=0)
+                    @foreach ($instalacion as $i)
+
+                    @if (!($i->realizado))
+
+                    @php($cont++)
+
                     <tr class="border-b border-gray-600 text-center">
-                        <td class="px-6 py-4">1</td>
-                        <td class="px-6 py-4">Ejemplo 1</td>
-                        <td class="px-6 py-4">123-456-7890</td>
-                        <td class="px-6 py-4">123 Calle Ejemplo</td>
-                        <td class="px-6 py-4">2023-12-31</td>
+                        <td class="px-6 py-4">{{$cont}}</td>
+                        <td class="px-6 py-4">{{$i->cliente->user->name}}</td>
+                        <td class="px-6 py-4">{{$i->cliente->telefono}}</td>
+                        <td class="px-6 py-4">{{$i->cliente->user->email}}</td>
+                        <td class="px-6 py-4">{{$i->fecha_limite}}</td>
                         <td>
                           
                             <i class=" fas fa-clipboard-list text-yellow-500 px-6 py-4 text-3xl"  style="cursor: pointer;"></i>
                  
                         </td>
                     </tr>
+                        
+                    @endif
+                    
+                    @endforeach
+                    
                 </tbody>
             </table>
         </div>

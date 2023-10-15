@@ -40,9 +40,9 @@ class Cliente extends Model
     {
         return $this->hasMany(Pago::class);
     }
-    public function reportes(): BelongsTo
+    public function reportes(): HasMany
     {
-        return $this->belongsTo(Reporte::class);
+        return $this->hasMany(Reporte::class);
     }
 
     public function contrato(): BelongsTo
