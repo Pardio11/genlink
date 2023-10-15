@@ -123,12 +123,12 @@
             </main>
 
             <!---FOOTER---->
-            <footer class="bg-[#161618] text-white py-7 md:py-5 text-base leading-6 ">
-                <div class="container mx-auto">
-                  <div class="md:flex md:flex-wrap">
+            <footer class="bg-[#161618] text-white py-7 md:py-5 text-base leading-6  ">
+                <div class="container mx-auto ">
+                  <div class="md:flex md:flex-wrap ">
                     <div class="md:w-1/2 md:pr-8 text-left">
-                      <h6 class="text-lg  text-white uppercase mb-5 md:mt-0">GenLink</h6>
-                      <p class="text-base mt-4 text-gray-400 ">Gen Link, la solución de vanguardia para tus necesidades de internet. Como líderes en la industria de la conectividad, nos enorgullece brindar a nuestros clientes un acceso rápido y confiable a la web. Nuestro compromiso con la innovación y la calidad nos ha permitido establecer nuevos estándares en el mundo de la tecnología.</p>
+                      <h6 class="text-lg  text-white uppercase ml-11 mb-5 md:mt-0">GenLink</h6>
+                      <p class="text-base mt-4 text-gray-400  ml-11 text-justify">GenLink, la solución de vanguardia para tus necesidades de internet. Como líderes en la industria de la conectividad, nos enorgullece brindar a nuestros clientes un acceso rápido y confiable a la web. Nuestro compromiso con la innovación y la calidad nos ha permitido establecer nuevos estándares en el mundo de la tecnología.</p>
                     </div>
             
                     <div class="md:w-1/4 text-left">

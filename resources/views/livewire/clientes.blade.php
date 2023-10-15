@@ -38,13 +38,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="border-b border-gray-600">
-                        <td class="px-6 py-4">1</td>
-                        <td class="px-6 py-4">Ejemplo 1</td>
-                        <td class="px-6 py-4">ejemplo1@example.com</td>
-                        <td class="px-6 py-4">123-456-7890</td>
-                        <td class="px-6 py-4">Calle Ejemplo 123</td>
-                        <td class="px-6 py-4">Zona 1</td>
+                    @foreach ($clientes as $c)
+                    <tr class="border-b border-gray-600 text-center">
+                       
+                        <td class="px-6 py-4">{{$c->n_id}}</td>
+                        <td class="px-6 py-4">{{$c->user->name}}</td>
+                        <td class="px-6 py-4">{{$c->user->email}}</td>
+                        <td class="px-6 py-4">{{ $c->telefono }}</td>
+                        <td class="px-6 py-4">{{ $c->direccion }}</td>
+                        <td class="px-6 py-4">@if (@isset($c->zona->nombre))>
+                            {{ $c->zona->nombre }} 
+                        @else
+                          N/a  
+                        @endif</td>
                         <td class="px-6 py-4">
                             <div class="flex">
                                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded mr-2">Editar</button>
@@ -52,6 +58,7 @@
                             </div>
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
           

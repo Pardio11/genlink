@@ -53,7 +53,7 @@
                             
                             <x-slot name="content" >
                             <!-- Account Management -->
-                            <div class="block px-4 py-2 text-xs text-gray-500">
+                            <div class="block text-xs text-gray-500 text-center">
                                 {{ __('Número de cliente #') }}{{ Auth::user()->n_id }}
                             </div>
                             

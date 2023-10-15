@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\InstalacionController;
 use App\Livewire\BusquedaCliente;
 use App\Livewire\Cancelados;
@@ -13,6 +14,7 @@ use App\Livewire\RealizarPago;
 use App\Livewire\Reportes;
 use App\Livewire\ReportesAdmin;
 use App\Livewire\SaldoCobrador;
+use App\Models\Cliente;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -43,6 +45,10 @@ Route::middleware([
     Route::get('/saldo-cobrador',SaldoCobrador::class)->name('saldo-cobrador');
 
     Route::get('/asignar-instalacion/{clienteId}', [InstalacionController::class, 'asignarInstalacion']);
+
+    
+
+
 
 
 });
