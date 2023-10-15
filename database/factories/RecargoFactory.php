@@ -14,6 +14,7 @@ class RecargoFactory extends Factory
         return [
             'monto' => $this->faker->randomFloat(2, 1, 1000), // Genera un valor decimal aleatorio entre 1 y 1000
             'descripcion' => $this->faker->sentence,
+            
         ];
     }
 }

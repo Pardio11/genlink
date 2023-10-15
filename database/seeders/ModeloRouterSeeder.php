@@ -9,8 +9,15 @@ class ModeloRouterSeeder extends Seeder
 {
     public function run()
     {
-        ModeloRouter::factory(10)->create();
-
+        ModeloRouter::create([
+            'modelo'=>'TP-Link', 
+            'marca'=>'M5 Gen-1',
+           ]);
+           
+           ModeloRouter::create([
+            'modelo'=>'D-Link', 
+            'marca'=>'DIR-2150',
+        ]);
     }
 }
 

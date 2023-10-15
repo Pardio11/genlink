@@ -12,7 +12,7 @@ class ZonaFactory extends Factory
     public function definition(): array
     {
         return [
-            'nombre' => $this->faker->word,
+            'nombre' => $this->faker->name,
             'direccion' => $this->faker->address,
             'alcance' => $this->faker->numberBetween(1, 100),
             'router_id' => Router::factory(),

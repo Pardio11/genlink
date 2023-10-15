@@ -15,7 +15,7 @@ class RouterFactory extends Factory
             'password' => $this->faker->password,
             'ip' => $this->faker->ipv4,
             'mac' => $this->faker->macAddress,
-            'modelo_router_id' =>  $this->faker->numberBetween(1, 9), // Genera un valor aleatorio entre 1 y 9
+            'modelo_router_id' =>  $this->faker->numberBetween(1, 2), // Genera un valor aleatorio entre 1 y 9
         ];
     }
 }

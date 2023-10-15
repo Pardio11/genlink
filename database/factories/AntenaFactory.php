@@ -15,7 +15,7 @@ class AntenaFactory extends Factory
             'mac' => $this->faker->macAddress,
             'user' => $this->faker->userName,
             'password' => $this->faker->password,
-            'modelo_antena_id' => $this->faker->numberBetween(1, 9),
+            'modelo_antena_id' => $this->faker->numberBetween(1, 2),
         ];
     }
 }

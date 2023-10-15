@@ -16,8 +16,8 @@ class Pago extends Model
     protected $fillable = [
         'fecha_pagado',
         'fecha_limite',
-        'contrato_id',
-        't_servicio_id',
+        'cliente_id',
+        'tipo_servicio_id',
         'recargo_id'
     ];
     protected $dates = ['fecha_pagado','fecha_limite'];
