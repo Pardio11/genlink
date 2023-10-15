@@ -33,6 +33,7 @@ Route::middleware([
     Route::get('/mis-pagos',MisPagos::class)->name('mis-pagos');
     Route::get('/reportes',Reportes::class)->name('reportes');
     Route::get('/preguntas-frecuentes',PreguntasFrecuentes::class)->name('preguntas-frecuentes');
+    Route::get('/asignar-instalacion/{clienteId}', [InstalacionController::class, 'asignarInstalacion']);
 });
 
 Route::middleware([
@@ -49,7 +50,7 @@ Route::middleware([
     Route::get('/reportes-admin',ReportesAdmin::class)->name('reportes-admin');
     Route::get('/realizar-pago',RealizarPago::class)->name('realizar-pago');
     Route::get('/busqueda-cliente',BusquedaCliente::class)->name('busqueda-cliente');
-
+    Route::get('/agregarObj',AgregarObj::class)->middleware('can:clientes')->name('agregarObj');
 
 });
 
