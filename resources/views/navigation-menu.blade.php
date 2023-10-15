@@ -4,9 +4,12 @@
         <div class="flex justify-around h-16">
             <div class="flex ">
                 <!-- Logo -->
-                <div class="logoGen  left-0">
-                    <img src="{{ asset('genlinkLogo.png') }}" alt="Logo de GenLink" class="mx-auto w-28 h-16">
+                <div class="logoGen left-0">
+                    <a href="{{ route('dashboard') }}"> 
+                        <img src="{{ asset('genlinkLogo.png') }}" alt="Logo de GenLink" class="mx-auto w-28 h-16">
+                    </a>
                 </div>
+                
 
                 @can('cliente')
                 <!-- Navigation Links -->
@@ -59,12 +62,12 @@
                             <!-- Account Management -->
                             @can('cliente')
                             <div class="block text-xs text-gray-500 text-center p-2">
-                                {{ __('Número de cliente #') }}{{ Auth::user()->cliente->n_id }}
+                                {{ __('Número de cliente #') }} {{ Auth::user()->cliente->n_id }}
                             </div>                                
                             @endcan
                             
                             <x-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profile') }}
+                                {{ __('Mi cuenta') }}
                             </x-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -81,7 +84,7 @@
                                 
                                 <x-dropdown-link href="{{ route('logout') }}"
                                 @click.prevent="$root.submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Salir') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
