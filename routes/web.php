@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\InstalacionController;
+use App\Livewire\AgregarObj;
 use App\Livewire\BusquedaCliente;
 use App\Livewire\Cancelados;
 use App\Livewire\Clientes;
