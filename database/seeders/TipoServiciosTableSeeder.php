@@ -10,7 +10,10 @@ class TipoServiciosTableSeeder extends Seeder
 {
     public function run()
     {
-        TipoServicio::factory(10)->create();
+        TipoServicio::create([
+            'nombre'=>'Instalacion', 
+            'costo'=>800,
+        ]);
         
     }
 }

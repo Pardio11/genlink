@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('descuentos', function (Blueprint $table) {
             $table->id();
             $table->string('mes_inicio');
-            $table->date('meses_vigente');
+            $table->string('meses_vigente');
             // Llave foránea a la tabla "T_descuento"
             $table->foreignId('tipo_descuento_id')->constrained('tipo_descuentos');
             $table->foreignId('contrato_id')->constrained('contratos');
