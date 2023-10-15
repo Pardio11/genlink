@@ -1,5 +1,5 @@
 <x-app-layout>
-    @can('clientes')
+    @can('reportes')
         
     
     @if (Auth::user()->cliente->instalacion == null)

@@ -20,6 +20,7 @@ Route::get('/', function () {
 });
 
 Route::middleware([
+    'role',
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
@@ -28,22 +29,24 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     Route::get('/mis-pagos',MisPagos::class)->name('mis-pagos');
-    Route::get('/preguntas-frecuentes',PreguntasFrecuentes::class)->name('preguntas-frecuentes');
     Route::get('/reportes',Reportes::class)->name('reportes');
-    Route::get('/clientes',Clientes::class)->middleware('can:clientes');
+    Route::get('/preguntas-frecuentes',PreguntasFrecuentes::class)->name('preguntas-frecuentes');
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/clientes',Clientes::class)->name('clientes');
     Route::get('/estado-cuenta',EstadoCuenta::class)->name('estado-cuenta');
     Route::get('/pagos-atrasados',PagosAtrasados::class)->name('pagos-atrasados');
     Route::get('/cancelados',Cancelados::class)->name('cancelados');
     Route::get('/pendientes',Pendientes::class)->name('pendientes');
     Route::get('/reportes-admin',Reportes::class)->name('reportes-admin');
     Route::get('/reportes-admin',ReportesAdmin::class)->name('reportes-admin');
-
     Route::get('/realizar-pago',RealizarPago::class)->name('realizar-pago');
     Route::get('/busqueda-cliente',BusquedaCliente::class)->name('busqueda-cliente');
-
-    Route::get('/saldo-cobrador',SaldoCobrador::class)->name('saldo-cobrador');
-
-    Route::get('/asignar-instalacion/{clienteId}', [InstalacionController::class, 'asignarInstalacion']);
 
 
 });
