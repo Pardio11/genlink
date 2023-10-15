@@ -14,6 +14,7 @@ use App\Livewire\Reportes;
 use App\Livewire\ReportesAdmin;
 use App\Livewire\SaldoCobrador;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Validation\Rules\Can;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,6 +26,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
+    
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
