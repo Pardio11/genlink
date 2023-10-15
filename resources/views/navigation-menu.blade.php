@@ -10,6 +10,8 @@
 
                 @can('cliente')
                 <!-- Navigation Links -->
+
+                <!-- Navigation Links -->
                 <div class="hidden space-x-10 sm:-my-px sm:ml-28 sm:flex">
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Home') }} 
@@ -55,9 +57,11 @@
                             
                             <x-slot name="content" >
                             <!-- Account Management -->
+                            @can('cliente')
                             <div class="block text-xs text-gray-500 text-center p-2">
                                 {{ __('Número de cliente #') }}{{ Auth::user()->cliente->n_id }}
-                            </div>
+                            </div>                                
+                            @endcan
                             
                             <x-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}

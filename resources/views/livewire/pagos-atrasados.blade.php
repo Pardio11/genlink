@@ -23,31 +23,30 @@
                         <th class="px-6 py-3 border-b border-gray-600">Nombre</th>
                         <th class="px-6 py-3 border-b border-gray-600">Telefono</th>
                         <th class="px-6 py-3 border-b border-gray-600">Direccion</th>
-                        <th class="px-6 py-3 border-b border-gray-600">Fecha Atraso</th>
+                        <th class="px-6 py-3 border-b border-gray-600">Fecha Atrasada</th>
                     </tr>
                 </thead>
                 <tbody>
-                {{-- VARIABLES CON LA FECHA ACTUAL --}}
+                {{-- COMPARACION FECHA  --}}
 
+                    @php($cont=0)
                     @foreach ($pagos as $p)
+                        
                         @if ($this->compararFecha($p->fecha_limite))
-    
+                        @php($cont++)
                         <tr class="border-b border-gray-600 text-center">
-                            <td class="px-6 py-4">1</td>
-                            <td class="px-6 py-4">Ejemplo 1</td>
-                            <td class="px-6 py-4">123-456-7890</td>
-                            <td class="px-6 py-4">123 Calle Ejemplo</td>
-                            <td class="px-6 py-4">2023-12-31</td>
+                            <td class="px-6 py-4">{{$cont}}</td>
+                            <td class="px-6 py-4">{{$p->cliente->user->name}}</td>
+                            <td class="px-6 py-4">{{$p->cliente->telefono}}</td>
+                            <td class="px-6 py-4">{{$p->cliente->direccion}}</td>
+                            <td class="px-6 py-4">{{$p->fecha_limite}}</td>
                         </tr>
     
-                        @else
-                         <h1>no</h1>
-
                         @endif
     
                     @endforeach
 
-                {{-- VARIABLES CON LA FECHA ACTUAL --}}
+                {{-- COMPARACION FECHA --}}
                     
                 </tbody>
             </table>
