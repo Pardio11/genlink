@@ -1,8 +1,7 @@
 <div>
-    
     @if (Auth::user()->cliente->instalacion == null)
-    <div class="contrata ">
-        <div class="bg-[#f3f3f3] ml-4 mt-9 w-[20vw] h-[70vh] flex flex-col justify-start items-center"
+    <div class="contrata  pb-16 pt-2 ">
+        <div class="bg-[#f3f3f3] mr-10 ml-10 mt-12 w-[20vw] h-[70vh] flex flex-col justify-start items-center"
             style="border-radius: 15px;  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
 
 
@@ -27,7 +26,7 @@
         </div>
     </div>
 @else
-    @if (Auth::user()->cliente->instalacion->instalado == false)
+    @if (Auth::user()->cliente->instalacion->realizado == false)
         <div class="pendiente  pb-16 pt-2 ">
             <div class="bg-[#f3f3f3] mr-10 ml-10 mt-12 w-[20vw] h-[70vh] flex flex-col justify-start items-center"
                 style="border-radius: 15px;  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
@@ -52,10 +51,10 @@
     @else
         @if (Auth::user()->cliente->contrato)
             @if (Auth::user()->cliente->contrato->activo == true)
-                <div class="activo ">
-                    <div class="bg-[#f3f3f3] ml-4 mt-9 w-[20vw] h-[70vh] flex flex-col justify-start items-center"
-                        style="border-radius: 15px;  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
-
+            <div class="activo  pb-16 pt-2 ">
+                <div class="bg-[#f3f3f3] mr-10 ml-10 mt-12 w-[20vw] h-[70vh] flex flex-col justify-start items-center"
+                    style="border-radius: 15px;  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+    
 
                         <div class="w-[100%]  h-[45%]"
                             style="border-top-right-radius: 15px; border-top-left-radius: 15px;  
@@ -76,10 +75,10 @@
                     </div>
                 </div>
             @else
-                <div class="inactivo ">
-                    <div class="bg-[#f3f3f3] ml-4 mt-9 w-[20vw] h-[70vh] flex flex-col justify-start items-center"
-                        style="border-radius: 15px;  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
-
+            <div class="inactivo  pb-16 pt-2 ">
+                <div class="bg-[#f3f3f3] mr-10 ml-10 mt-12 w-[20vw] h-[70vh] flex flex-col justify-start items-center"
+                    style="border-radius: 15px;  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;">
+    
 
                         <div class="w-[100%]  h-[45%]"
                             style="border-top-right-radius: 15px; border-top-left-radius: 15px;  
