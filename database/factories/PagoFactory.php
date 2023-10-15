@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Cliente;
 use App\Models\Pago;
 use App\Models\Contrato;
 use App\Models\Recargo;
@@ -17,7 +18,7 @@ class PagoFactory extends Factory
         return [
             'fecha_pagado' => $this->faker->date, // Generar una fecha aleatoria
             'fecha_limite' => $this->faker->date('Y-m-d', '2024-12-31'), // Genera una fecha hasta el 31 de diciembre de 2024
-            'contrato_id' => Contrato::factory(),
+            'cliente_id' => $this->faker->numberBetween(1, 8),
             'tipo_servicio_id' => TipoServicio::factory(),
             'recargo_id' => Recargo::factory(),
         ];

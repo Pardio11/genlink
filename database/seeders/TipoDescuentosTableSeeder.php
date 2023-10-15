@@ -13,8 +13,16 @@ class TipoDescuentosTableSeeder extends Seeder
      */
     public function run(): void
     {
-        TipoDescuento::factory(10)->create();
         //
+        TipoDescuento::create([
+            'nombre'=>'Apertura', 
+            'monto'=>30,
+           ]);
+           
+        TipoDescuento::create([
+        'nombre'=>'Mes Gratis', 
+        'monto'=>230,
+        ]);
 
     }
 }

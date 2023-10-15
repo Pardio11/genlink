@@ -17,20 +17,20 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             RoleSeeder::class,
-            UserSeeder::class
-            /* ModeloAntenaSeeder::class,
+            ModeloAntenaSeeder::class,
             ModeloRouterSeeder::class,
+            UserSeeder::class,
             AntenasTableSeeder::class,
             RoutersTableSeeder::class,
             ReportesTableSeeder::class,
-            InstalacionesTableSeeder::class,
+            /* InstalacionesTableSeeder::class, */
             TipoDescuentosTableSeeder::class,
             TipoServiciosTableSeeder::class,
             DescuentosTableSeeder::class,
             RecargosTableSeeder::class,
             ContratosTableSeeder::class,
             PagosTableSeeder::class,
-            ZonasTableSeeder::class, */
+            ZonasTableSeeder::class,
 
             // Otros seeders que desees ejecutar
         ]);

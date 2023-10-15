@@ -1,6 +1,10 @@
-<div>
+<div class="flex flex-row">
 
-    <div class="max-w-screen-lg mx-auto">
+
+
+    @livewire('nav-admin')
+
+    <div class="w-[79vw] mx-auto p-4 h-[100rem]">
         <!-- Filtros -->
         <div class="bg-white p-2 rounded shadow-md mb-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -38,9 +42,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($clientes as $c)
+                    
+                    @foreach ( $clientes as $c)
                     <tr class="border-b border-gray-600 text-center">
-                       
                         <td class="px-6 py-4">{{$c->n_id}}</td>
                         <td class="px-6 py-4">{{$c->user->name}}</td>
                         <td class="px-6 py-4">{{$c->user->email}}</td>

@@ -1,7 +1,9 @@
-<div>
+<div class="flex flex-row">
 
-    <div class="max-w-screen-lg mx-auto ">
-        <div class="flex justify-between items-center">
+    @livewire('nav-admin')
+
+    <div class="p-4 w-[75vw] mx-auto ">
+        <div class="flex justify-between items-center  mb-9">
             <div class="calendar w-1/4 p-4 border bg-gray-300">
                 <div class="bg-red-500 text-white text-2xl font-bold mb-4 p-2 rounded">Calendario</div>
                 <div class="grid grid-cols-4 gap-4">
