@@ -2,6 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Models\Cliente;
+use App\Models\Reporte;
+
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -11,6 +14,9 @@ class ReportesAdmin extends Component
 {
     public function render()
     {
-        return view('livewire.reportes-admin');
+        
+        $reportes = Reporte::all();
+
+        return view('livewire.reportes-admin',['reportes'=>$reportes ]);
     }
 }
