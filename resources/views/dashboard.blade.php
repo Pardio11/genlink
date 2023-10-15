@@ -1,4 +1,7 @@
 <x-app-layout>
+    @can('clientes')
+        
+    
     @if (Auth::user()->cliente->instalacion == null)
         <div class="contrata ">
             <div class="bg-[#f3f3f3] ml-4 mt-9 w-[20vw] h-[70vh] flex flex-col justify-start items-center"
@@ -17,8 +20,9 @@
                     <p>Solicita tu instalacion hoy, y disfruta del internet de GenLink<br><br>Costo: <span
                             class="text-[13px] text-[#8e8e8e]">$800</span></p>
                 </div>
+              
 
-                <button class="bg-blue-500 text-white p-2 rounded-md mt-5 ">Contrata</button>
+                <a href="{{ url('/asignar-instalacion/' . Auth::user()->cliente->id)}}" ><button class="bg-blue-500 text-white p-2 rounded-md mt-5 ">Contrata</button></a>
                 <p class="text-[10px] text-[#8e8e8e] mx-10 mt-4 text-center">*Se instalara una antena y router para
                     contectar su hogar</p>
             </div>
@@ -101,7 +105,7 @@
 
     @endif
 
-
+    @endcan
 
 
 
