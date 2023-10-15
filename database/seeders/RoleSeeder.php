@@ -22,7 +22,7 @@ class RoleSeeder extends Seeder
         Permission::create(['name'=>'preguntas-frecuentes'])->assignRole($role2);
         Permission::create(['name'=>'reportes'])->assignRole($role2);
 
-        Permission::create(['name'=>'clientes'])->middleware('can:clientes')->assignRole($role1);
+        Permission::create(['name'=>'clientes'])->assignRole($role1);
         Permission::create(['name'=>'estado-cuenta'])->assignRole($role1);
         Permission::create(['name'=>'pagos-atrasados'])->assignRole($role1);
         Permission::create(['name'=>'cancelados'])->assignRole($role1);
