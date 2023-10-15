@@ -25,11 +25,14 @@ class Cliente extends Model
         });
     }
 
-
-    //Bien
-    public function instalacion(): HasOne
+    public function user(): HasOne
     {
-        return $this->hasOne(Instalacion::class);
+        return $this->hasOne(User::class);
+    }
+    //Bien
+    public function instalacion(): BelongsTo
+    {
+        return $this->belongsTo(Instalacion::class);
     }
 
     public function pagos(): BelongsTo
@@ -41,23 +44,23 @@ class Cliente extends Model
         return $this->belongsTo(Reporte::class);
     }
 
-    public function contrato(): HasOne
+    public function contrato(): BelongsTo
     {
-        return $this->hasOne(Contrato::class);
+        return $this->belongsTo(Contrato::class);
     }
 
-    public function antena(): HasOne
+    public function antena(): BelongsTo
     {
-        return $this->hasOne(Antena::class);
+        return $this->belongsTo(Antena::class);
     }
 
-    public function router(): HasOne
+    public function router(): BelongsTo
     {
-        return $this->hasOne(Router::class);
+        return $this->belongsTo(Router::class);
     }
 
-    public function zona(): HasOne
+    public function zona(): BelongsTo
     {
-        return $this->hasOne(Zona::class);
+        return $this->belongsTo(Zona::class);
     }
 }
