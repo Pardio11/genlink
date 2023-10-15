@@ -1,10 +1,10 @@
 <x-form-section submit="updateProfileInformation">
     <x-slot name="title">
-        {{ __('Profile Information') }}
+        {{ __('Información del perfil') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Update your account\'s profile information and email address.') }}
+        {{ __('Actualiza tus datos información personal y dirección de correo.') }}
     </x-slot>
 
     <x-slot name="form">
@@ -54,14 +54,16 @@
 
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
-            <x-label for="name" value="{{ __('Name') }}" />
+            <label for="name" class="text-black">{{ __('Nombre') }}</label>
+            
             <x-input id="name" type="text" class="mt-1 block w-full" wire:model="state.name" required autocomplete="name" />
             <x-input-error for="name" class="mt-2" />
         </div>
 
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
-            <x-label for="email" value="{{ __('Email') }}" />
+            <label for="email" class="text-black">{{ __('Correo') }}</label>
+            
             <x-input id="email" type="email" class="mt-1 block w-full" wire:model="state.email" required autocomplete="username" />
             <x-input-error for="email" class="mt-2" />
 
@@ -84,7 +86,8 @@
 
         <!-- Number -->
         <div class="col-span-6 sm:col-span-4">
-            <x-label for="number" value="{{ __('Number') }}" />
+            <label for="number" class="text-black">{{ __('Telefono') }}</label>
+            
             <x-input id="number" type="text" class="mt-1 block w-full" wire:model="state.number" />
             <x-input-error for="number" class="mt-2" />
         </div>
@@ -94,11 +97,11 @@
 
     <x-slot name="actions">
         <x-action-message class="mr-3" on="saved">
-            {{ __('Saved.') }}
+            {{ __('Guardado.') }}
         </x-action-message>
 
         <x-button wire:loading.attr="disabled" wire:target="photo">
-            {{ __('Save') }}
+            {{ __('Guardar') }}
         </x-button>
     </x-slot>
 </x-form-section>
