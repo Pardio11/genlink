@@ -10,11 +10,15 @@ class UserController extends Controller
     public function eliminar($id)
 {
     $user = User::find($id);
-
+    
     if (!$user) {
         return redirect()->back()->with('error', 'Usuario no encontrado');
     }
-    
+    $cliente = $user->cliente;
+
+    if ($cliente) {
+        $cliente->delete();
+    }
     $user->delete();
 
     return redirect()->back()->with('success', 'Instalación creada y asignada exitosamente.');
