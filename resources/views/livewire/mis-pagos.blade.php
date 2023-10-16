@@ -19,13 +19,16 @@
         @if ($this->compararFecha($pago->fecha_limite))
             <div class="flex items-center">
                 <div class="bg-[#282828] text-white flex-grow  flex items-center ">
-                    <div class="bg-[#2999a8] text-zinc-100 font-semibold  p-5  w-1/12 mr-10 text-center ">
+                    
+                    <div class="@if($this->pasoCorte($pago->fecha_limite)) bg-[#2999a8] @else bg-[#e6b516] @endif text-zinc-100 font-semibold  p-5  w-1/12 mr-10 text-center ">
                         {{ $this->obtenerMes($pago->fecha_limite) }}</div>
 
                     <p>Fecha de corte: <span class="text-gray-300 ml-1 text-sm">{{ $pago->fecha_limite }}</span></p>
+                    @isset($pago->recargo)<p class="ml-7">Recargo: <span class="text-gray-300 ml-1 text-sm"> {{$pago->recargo->monto}}</p>@endisset
                     <p class="ml-7">Total: <span class="text-gray-100 ml-1 text-base"> ${{$this->calcularTotal($pago)}}</p>
+                    @if(!$this->pasoCorte($pago->fecha_limite)) <div class="w-64 ml-6  text-center">  <span class="text-gray-300  text-xs"> *Tiene hasta el dia 12 para pagar, evite que cancelemos su servico</span></div>@endif
                     <div class="ml-auto  p-1 mr-5">
-                        <button class="bg-blue-500 text-white rounded-[5px] w-32 p-2">Pagar</button>
+                        <a href="{{ url('/realizarPago/' . Auth::user()->cliente->id) }}"><button class="bg-blue-500 text-white rounded-[5px] w-32 p-2"  >Pagar</button></a>
                     </div>
                 </div>
             </div>
@@ -36,7 +39,7 @@
                         text-zinc-100 font-semibold p-5 w-1/12 mr-10 text-center">
                         {{ $this->obtenerMes($pago->fecha_limite) }}</div>
                     <p>Fecha de pago: <span class="text-gray-300 ml-1 text-sm"> @isset($pago->fecha_pagado) {{ $pago->fecha_pagado }} @else N/A @endisset</span></p>
-                    @isset($pago->recargo)<p class="ml-7">Recargo: <span class="text-gray-300 ml-1 text-sm"> {{$pago->recargo->monto}}</p>@endisset 
+                    
                     <p class="ml-7">Total: <span class="text-gray-100 ml-1 text-base"> ${{$this->calcularTotal($pago)}}</p>
                     <div class="ml-auto p-1 mr-5">
                         <button class="bg-blue-500 text-white rounded-[5px] p-2 mr-2">Facturar</button>
@@ -51,6 +54,7 @@
 
 
     <div class="flex items-center justify-center ">
+
         <div class=" bg-white shadow-md rounded-md p-4">
             <div class="flex items-center space-x-4 justify-center w-52 h-20">
                 <i class="fab fa-whatsapp text-green-500 text-4xl  "></i>

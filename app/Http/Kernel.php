@@ -2,10 +2,19 @@
 
 namespace App\Http;
 
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
+
+    protected function schedule(Schedule $schedule): void
+    {
+        //generar recargo y revisar si no es un mes consecutivo para retirar antena
+        $schedule->command('pago:corte')->monthlyOn(6, '01:00')->timezone('America/Mexico_City');
+        //mandar alerta de cortar servico y luego poner contrato en inactivo manualmente
+        $schedule->command('pago:cortarServicio')->monthlyOn(12, '20:00')->timezone('America/Mexico_City');
+    }
     /**
      * The application's global HTTP middleware stack.
      *
