@@ -69,16 +69,29 @@
 
                                     @if ($reporteSelect)
                                     {{$reporteSelect['descripcion']}}
+                                    
                                     @endif
                                         
 
                                     
                                 </p>
                             </div>
-                            <div class="mt-6 text-right">
-                                <button class="modal-close-button text-base font-semibold text-red-600" wire:click="hide()">
-                                    Cerrar
-                                </button>
+                            <div class="mt-6 flex flex-row ">
+                                <div class="izquierda text-left  w-[50%]">
+                                    @if ($reporteSelect)
+                                    <a href="{{ url('/resolverReporte/' . $reporteSelect['id']) }}"><button class="modal-close-button text-base font-semibold text-blue-600 " wire:click="hide()">
+                                        Resolver
+                                    </button></a>
+                                    @endif
+                                </div>
+                                <div class="derecha text-right  w-[50%]">
+                                    <button class="modal-close-button text-base font-semibold text-red-600" wire:click="hide()">
+                                        Cerrar
+                                    </button>
+                                </div>
+
+                                
+                                
                             </div>
                         </div>
                     </div>
