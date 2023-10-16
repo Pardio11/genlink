@@ -167,8 +167,9 @@
                     <div class="md:w-1/4 text-left">
                       <h6 class="text-lg  text-white uppercase">Accesos rápidos</h6>
                       <ul class="mt-4">
-                        
+                        @can('cliente')
                         <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Número de cliente #{{ Auth::user()->cliente->n_id }} </a></li>
+                        @endcan
                         <li><a href="{{ route('profile.show') }}" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Perfil</a></li>
                         <li><a href="{{ route('logout') }}" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Salir</a></li>
                         <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Términos y condiciones</a></li>
