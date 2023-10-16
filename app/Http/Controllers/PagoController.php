@@ -33,7 +33,7 @@ class PagoController extends Controller
         $pagosFiltrados = $pagos->filter(function ($pago) {
             $fechaLimite = \Carbon\Carbon::parse($pago->fecha_limite);
             $fechaActual = now();
-            return $fechaActual->format('m-Y') <= $fechaLimite->format('m-Y');
+            return $fechaActual->format('Y-m') <= $fechaLimite->format('Y-m');
         });
         $ultimoMes=null;
         foreach ($pagosFiltrados as $pago) {
