@@ -22,13 +22,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="border-b border-gray-600 text-center">
-                        <td class="px-6 py-4">1</td>
-                        <td class="px-6 py-4">Ejemplo 1</td>
-                        <td class="px-6 py-4">123-456-7890</td>
-                        <td class="px-6 py-4">123 Calle Ejemplo</td>
-                        <td class="px-6 py-4">2023-12-31</td>
-                    </tr>
+                    @php($cont=0)
+                    @foreach ($contratos as $c)
+
+                    @if (!($c->activo))
+                        @php($cont++)
+
+                        <tr class="border-b border-gray-600 text-center">
+                            <td class="px-6 py-4">{{$cont}}</td>
+                            <td class="px-6 py-4">{{$c->cliente}}</td>
+                            <td class="px-6 py-4">1234</td>
+                            <td class="px-6 py-4">123 Calle Ejemplo</td>
+                            <td class="px-6 py-4">2023-12-31</td>
+                        </tr>
+                    @endif
+                        
+                    @endforeach
+                    
                 </tbody>
             </table>
         </div>
