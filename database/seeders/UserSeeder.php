@@ -124,6 +124,25 @@ class UserSeeder extends Seeder
 
         ])->assignRole('Cliente');
 
+        $cliente = Cliente::create([
+            'n_id' => 5556,
+            'direccion' => "Calle Tepozan 350, Amp. Eduardo Ruiz",
+            'telefono' => "4431205706",
+            'instalacion_id' => Instalacion::create([
+                'fecha_limite' => "2022-07-16",
+                'nota' => "Es en un segundo piso, hay un arbol grande se ocuparon 3 metros de tubo",
+                'realizado' => true
+            ])->id,
+        ]);
+
+        User::create([
+            'name' => 'Amaro Flores',
+            'email' => 'amaro@gmail.com',
+            'password' => Hash::make('12345678'),
+            'cliente_id' => $cliente->id,
+
+        ])->assignRole('Cliente');
+
         User::create([
             'name' => 'Javier Tadeo Ramirez Moreno',
             'email' => 'tadeo@gmail.com',
