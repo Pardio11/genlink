@@ -18,11 +18,13 @@ class RoleSeeder extends Seeder
         $role2 = Role::create(['name'=>'Cliente']);
         $role3 = Role::create(['name'=>'Cobrador']);
 
+        
         Permission::create(['name'=>'cliente'])->assignRole($role2);
         Permission::create(['name'=>'mis-pagos'])->assignRole($role2);
         Permission::create(['name'=>'preguntas-frecuentes'])->assignRole($role2);
         Permission::create(['name'=>'reportes'])->assignRole($role2);
 
+        
         Permission::create(['name'=>'admin'])->assignRole($role1);
         Permission::create(['name'=>'clientes'])->assignRole($role1);
         Permission::create(['name'=>'estado-cuenta'])->assignRole($role1);

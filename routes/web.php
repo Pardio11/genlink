@@ -61,7 +61,7 @@ Route::middleware([
 
     Route::get('/agregar-cliente',AgregarCliente::class)->name('agregar-cliente');
 
-    Route::get('/eliminar-user/{userId}',[UserController::class, 'eliminar'])->middleware('can:admin')->name('eliminar-user');
+    Route::delete('/eliminar-user/{userId}',[UserController::class, 'eliminar'])->middleware('can:admin')->name('eliminar.user');
 
     
 
