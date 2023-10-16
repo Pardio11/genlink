@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\InstalacionController;
 use App\Http\Controllers\PagoController;
+use App\Http\Controllers\PaypalController;
 use App\Livewire\AgregarCliente;
 use App\Livewire\AgregarObj;
 use App\Livewire\BusquedaCliente;
@@ -16,6 +17,7 @@ use App\Livewire\RealizarPago;
 use App\Livewire\Reportes;
 use App\Livewire\ReportesAdmin;
 use App\Livewire\SaldoCobrador;
+use Faker\Provider\ar_EG\Payment;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\Rules\Can;
 
@@ -58,6 +60,10 @@ Route::middleware([
 
     Route::get('/agregar-cliente',AgregarCliente::class)->name('agregar-cliente');
     Route::get('/cortados',AgregarCliente::class)->name('cortados');
+
+    Route::post('/paypal/payment',[PaypalController::class,'payment'])->name('paypal');
+    Route::get('/paypal/success',[PaypalController::class,'success'])->name('paypal_success');
+    Route::get('/paypal/cancel',[PaypalController::class,'cancel'])->name('paypal_cancel');
 
 
 });
