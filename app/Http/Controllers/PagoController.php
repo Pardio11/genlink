@@ -28,6 +28,7 @@ class PagoController extends Controller
     }
     public function realizarPago($clienteId)
     {
+        dd("aqui");
         $cliente = Cliente::find($clienteId);
         $pagos=$cliente->pagos->where('fecha_pagado', null);
         $pagosFiltrados = $pagos->filter(function ($pago) {

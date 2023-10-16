@@ -40,12 +40,14 @@
                     <div class="ml-auto  p-1 mr-5">
                         <form action="{{ route('paypal') }}" method="POST">
                             @csrf
-                            <input type="hidden" name="price" value="20.0">
-                            <button type="submit"
-                             class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                              PayPal
-                        </button>
+                            <!-- Otros campos de tu formulario, si los hay -->
+                            <input type="hidden" name="price" value="{{ $this->calcularTotal($pago) }}">
+                            <input type="hidden" name="clienteId" value="{{ Auth::user()->cliente->id }}">
+                            <button type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                                PayPal
+                            </button>
                         </form>
+                        
                     </div>
                 </div>
             </div>
@@ -82,18 +84,5 @@
         </div>
     </div>
 
-    <div class="paypal">
-        <h2>Producto:internet seguro</h2>
-        <h3>Precio: 20 dolars</h3>
 
-        <form action="{{ route('paypal') }}" method="POST">
-            @csrf
-            <input type="hidden" name="price" value="20.0">
-            <button type="submit"
-                class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                PayPal
-            </button>
-        </form>
-        
-    </div>
 </div>
