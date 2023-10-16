@@ -41,7 +41,11 @@
                             <td class="px-6 py-4">{{$c->user->email}}</td>
                             <td>
                                 <div class="flex justify-center">
-                                    <a href="{{ url('/eliminar-user/' . $c->user->id) }}"> <button class="show-popup-button bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded mr-2">Eliminar</button></a>
+                                    <form action="{{ route('eliminar.user',$c->user->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="show-popup-button bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded mr-2">Eliminar</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
