@@ -41,8 +41,9 @@ class PagoController extends Controller
             $pago->save();
             $ultimoMes=$pago->fecha_limite;
         }
-        $cliente->contrato->activo=true;
-        $cliente->save();
+        $contrato=$cliente->contrato;
+        $contrato->activo=true;
+        $contrato->save();
         $this->generarPago($clienteId,$ultimoMes);
         return redirect()->back()->with('success', 'Instalación creada y asignada exitosamente.');
     }
