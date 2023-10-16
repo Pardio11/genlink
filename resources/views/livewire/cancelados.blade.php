@@ -18,24 +18,35 @@
                         <th class="px-6 py-3 border-b border-gray-600">Nombre</th>
                         <th class="px-6 py-3 border-b border-gray-600">Telefono</th>
                         <th class="px-6 py-3 border-b border-gray-600">Direccion</th>
-                        <th class="px-6 py-3 border-b border-gray-600">Fecha Cancelado</th>
+                        <th class="px-6 py-3 border-b border-gray-600">Email</th>
+                        <th class="px-6 py-3 border-b border-gray-600"></th>
+
                     </tr>
                 </thead>
                 <tbody>
                     @php($cont=0)
-                    @foreach ($contratos as $c)
+                    @foreach ($clientes as $c)
 
-                    @if (!($c->activo))
+                    @isset ($c->contrato)
+                       
+
+                        @else
                         @php($cont++)
 
                         <tr class="border-b border-gray-600 text-center">
                             <td class="px-6 py-4">{{$cont}}</td>
-                            <td class="px-6 py-4">{{$c->cliente}}</td>
-                            <td class="px-6 py-4">1234</td>
-                            <td class="px-6 py-4">123 Calle Ejemplo</td>
-                            <td class="px-6 py-4">2023-12-31</td>
+                            <td class="px-6 py-4">{{$c->user->name}}</td>
+                            <td class="px-6 py-4">{{$c->telefono}}</td>
+                            <td class="px-6 py-4">{{$c->direccion}}</td>
+                            <td class="px-6 py-4">{{$c->user->email}}</td>
+                            <td>
+                                <div class="flex justify-center">
+                                    <a href="{{ url('/eliminar-user/' . $c->user->id) }}"> <button class="show-popup-button bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded mr-2">Eliminar</button></a>
+                                </div>
+                            </td>
                         </tr>
-                    @endif
+
+                    @endisset
                         
                     @endforeach
                     

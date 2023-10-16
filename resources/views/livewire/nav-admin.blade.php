@@ -43,24 +43,19 @@
             <span class="text-xl">
                 <i class="fas fa-clock"></i>
             </span>
-            Pendientes
+            Instalaciones Pendientes
         </a>
 
         <!-- Pagos Atrasados -->
-        <a href="{{ route('pagos-atrasados') }}" :active="request()->routeIs('pagos-atrasados')"class="flex items-center gap-4 py-5 border-b  border-gray-700 ">
+        <a href="{{ route('pagos-pendientes') }}" :active="request()->routeIs('pagos-atrasados')"class="flex items-center gap-4 py-5 border-b  border-gray-700 ">
             <span class="text-xl">
                 <i class="fas fa-exclamation-circle"></i>
             </span>
-            Pagos Atrasados
+            Pagos Pendientes
         </a>
 
         <!-- Servicios Cortados -->
-        <a href="{{ route('cortados') }}" :active="request()->routeIs('cortados')" class="flex items-center gap-4 py-4 border-b border-gray-700 ">
-            <span class="text-xl">
-                <i class="fas fa-cut"></i>
-            </span>
-            Servicios Cortados
-        </a>
+       
 
        
 
