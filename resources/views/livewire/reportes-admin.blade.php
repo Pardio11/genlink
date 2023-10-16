@@ -38,22 +38,40 @@
                                 <button class="show-popup-button bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded mr-2">Ver</button>
                             </div>
                         </td>
-
-      
-                    
                 </tr>
                 @endforeach
-                          <!-- Popup -->
                 <div id="popup" class="fixed inset-0 flex items-center justify-center hidden">
-                    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-
+                    <div class="modal-overlay modal-close-div absolute w-full h-full bg-gray-900 opacity-50" id="overlay"></div>
+                
                     <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-                        <div class="modal-content py-4 text-left px-6">
-                            <!-- Contenido del popup aquí -->
-                            <button class="modal-close-button modal-close absolute top-0 right-0 px-6 py-4">Cerrar</button>
+                        <div class="modal-content py-6 text-left px-8">
+                            <div class="border-b-2 border-gray-300 pb-2">
+                                <h2 class="text-3xl font-bold text-gray-800">Asunto</h2>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-gray-800 text-lg ml-4 text-justify">
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint vel animi excepturi
+                                </p>
+                            </div>
+                            <div class="border-b-2 border-gray-300 pb-2 pt-4">
+                                <h2 class="text-3xl font-bold text-gray-800">Descripción</h2>
+                            </div>
+                            <div class="mt-4">
+                                <p class="text-gray-800 text-lg ml-4 text-justify">
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint vel animi excepturi
+                                </p>
+                            </div>
+                            <div class="mt-6 text-right">
+                                <button class="modal-close-button text-base font-semibold text-red-600">
+                                    Cerrar
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
+                
+                
+                        
 
             </tbody>
         </table>
@@ -87,6 +105,7 @@
 <script>
 const showPopupButtons = document.querySelectorAll('.show-popup-button');
 const closePopupButtons = document.querySelectorAll('.modal-close-button');
+const closePopupDiv = document.querySelectorAll('.modal-close-div');
 
 showPopupButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -100,6 +119,11 @@ closePopupButtons.forEach(button => {
     });
 });
 
+closePopupDiv.forEach(click => {
+    click.addEventListener('click', () => {
+        popup.classList.add('hidden');
+    });
+});
 </script>
 
     
