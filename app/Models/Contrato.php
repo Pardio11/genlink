@@ -23,7 +23,7 @@ class Contrato extends Model
         return $this->hasMany(Descuento::class);
     }
     
-    public function clientes(): HasOne
+    public function cliente(): HasOne
     {
         return $this->hasOne(Cliente::class);
     }

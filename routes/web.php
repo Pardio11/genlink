@@ -3,6 +3,7 @@
 use App\Http\Controllers\InstalacionController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\UserController;
 use App\Livewire\AgregarCliente;
 use App\Livewire\AgregarObj;
 use App\Livewire\BusquedaCliente;
@@ -17,7 +18,6 @@ use App\Livewire\RealizarPago;
 use App\Livewire\Reportes;
 use App\Livewire\ReportesAdmin;
 use App\Livewire\SaldoCobrador;
-use Faker\Provider\ar_EG\Payment;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\Rules\Can;
 
@@ -48,18 +48,22 @@ Route::middleware([
 ])->group(function () {
     Route::get('/clientes',Clientes::class)->name('clientes');
     Route::get('/estado-cuenta',EstadoCuenta::class)->name('estado-cuenta');
-    Route::get('/pagos-atrasados',PagosAtrasados::class)->name('pagos-atrasados');
+    Route::get('/pagos-pendientes',PagosAtrasados::class)->name('pagos-pendientes');
     Route::get('/cancelados',Cancelados::class)->name('cancelados');
     Route::get('/pendientes',Pendientes::class)->name('pendientes');
     Route::get('/reportes-admin',Reportes::class)->name('reportes-admin');
     Route::get('/reportes-admin',ReportesAdmin::class)->name('reportes-admin');
+    Route::get('/registarPago/{clienteId}', [PagoController::class, 'realizarPago']);
     Route::get('/realizar-pago',RealizarPago::class)->name('realizar-pago');
     Route::get('/busqueda-cliente',BusquedaCliente::class)->name('busqueda-cliente');
-    Route::get('/agregarObj',AgregarObj::class)->middleware('can:clientes')->name('agregarObj');
+    Route::get('/agregarObj',AgregarObj::class)->middleware('can:admin')->name('agregarObj');
 
 
     Route::get('/agregar-cliente',AgregarCliente::class)->name('agregar-cliente');
-    Route::get('/cortados',AgregarCliente::class)->name('cortados');
+
+    Route::get('/eliminar-user/{userId}',[UserController::class, 'eliminar'])->middleware('can:admin')->name('eliminar-user');
+
+    
 
     Route::post('/paypal/payment',[PaypalController::class,'payment'])->name('paypal');
     Route::get('/paypal/success',[PaypalController::class,'success'])->name('paypal_success');

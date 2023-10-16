@@ -56,15 +56,9 @@
                         class=" @isset($pago->fecha_pagado) bg-[#2999a8] @else bg-[#d3472e] @endisset 
                         text-zinc-100 font-semibold p-5 w-1/12 mr-10 text-center">
                         {{ $this->obtenerMes($pago->fecha_limite) }}</div>
-                    <p>Fecha de pago: <span class="text-gray-300 ml-1 text-sm"> @isset($pago->fecha_pagado)
-                                {{ $pago->fecha_pagado }}
-                            @else
-                                N/A
-                            @endisset
-                        </span></p>
-
-                    <p class="ml-7">Total: <span class="text-gray-100 ml-1 text-base">
-                            ${{ $this->calcularTotal($pago) }}</p>
+                    <p>Fecha de pago: <span class="text-gray-300 ml-1 text-sm"> @isset($pago->fecha_pagado) {{ $pago->fecha_pagado }} @else N/A @endisset</span></p>
+                    
+                    <p class="ml-7">Total: <span class="text-gray-100 ml-1 text-base"> ${{$this->calcularTotal($pago)}}</p>
                     <div class="ml-auto p-1 mr-5">
                         <button class="bg-blue-500 text-white rounded-[5px] p-2 mr-2">Facturar</button>
                         <button class="bg-blue-500 text-white rounded-[5px] p-2">Comprobante</button>

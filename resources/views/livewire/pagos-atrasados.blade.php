@@ -11,7 +11,7 @@
 
         <div class="w-[75vw] mx-auto mb-16  mt-10">
             <div class="title flex items-center justify-center text-4xl">
-                <i class="icon fas fa-money-check text-red-500  text-6xl mr-4"></i> PAGOS ATRASADOS
+                <i class="icon fas fa-money-check text-red-500  text-6xl mr-4"></i> PAGOS PENDIENTES
             </div>
         </div>
     
@@ -24,6 +24,8 @@
                         <th class="px-6 py-3 border-b border-gray-600">Telefono</th>
                         <th class="px-6 py-3 border-b border-gray-600">Direccion</th>
                         <th class="px-6 py-3 border-b border-gray-600">Fecha Atrasada</th>
+                        <th class="px-6 py-3 border-b border-gray-600"></th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +35,11 @@
                     @foreach ($pagos as $p)
                         
                         @if ($this->compararFecha($p->fecha_limite))
+                        @isset($p->fecha_pagado)
+
+                        
+
+                        @else
                         @php($cont++)
                         <tr class="border-b border-gray-600 text-center">
                             <td class="px-6 py-4">{{$cont}}</td>
@@ -40,7 +47,16 @@
                             <td class="px-6 py-4">{{$p->cliente->telefono}}</td>
                             <td class="px-6 py-4">{{$p->cliente->direccion}}</td>
                             <td class="px-6 py-4">{{$p->fecha_limite}}</td>
+                            <td>
+                                <div class="flex justify-center">
+                                    <a href="{{ url('/registarPago/' . $p->cliente->id) }}"> <button class="show-popup-button bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded mr-2">Pagar</button></a>
+                                </div>
+                            </td>
                         </tr>
+
+                        @endisset
+
+                        
     
                         @endif
     

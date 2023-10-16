@@ -17,7 +17,7 @@ class ReporteFactory extends Factory
             'asunto' => $this->faker->sentence,
             'descripcion' => $this->faker->paragraph,
             'resuelto' => $this->faker->boolean(),
-            'cliente_id'=> $this->faker->numberBetween(1, 10),
+            'cliente_id'=> $this->faker->numberBetween(1, 2),
         ];
     }
 }

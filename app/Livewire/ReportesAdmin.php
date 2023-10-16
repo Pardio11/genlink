@@ -12,11 +12,28 @@ use Livewire\Component;
 
 class ReportesAdmin extends Component
 {
+    public $reporteSelect;
+    public $hidePopup =true;
+
+    public function asignReporte($reporte)
+    {
+        
+        $this->hidePopup=false;
+        $this->reporteSelect = $reporte;
+
+
+    }
+    public function hide()
+    {
+        $this->hidePopup=true;
+    }
+
     public function render()
     {
         
         $reportes = Reporte::all();
 
+            
         return view('livewire.reportes-admin',['reportes'=>$reportes ]);
     }
 

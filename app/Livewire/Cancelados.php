@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Cliente;
 use App\Models\Contrato;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -12,7 +13,7 @@ class Cancelados extends Component
     public function render()
     {
 
-        $contratos=Contrato::all();
-        return view('livewire.cancelados',['contratos'=>$contratos]);
+        $clientes=Cliente::all();
+        return view('livewire.cancelados',['clientes'=>$clientes]);
     }
 }
