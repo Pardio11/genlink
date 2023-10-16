@@ -61,7 +61,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-[#9a9a9a] hover:text-[#00A5FE] rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                    {{ __('ya tienes una cuenta?') }}
+                    {{ __('¿Ya tienes una cuenta?') }}
                 </a>
 
                 <x-button class="ml-4">

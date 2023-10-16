@@ -21,7 +21,6 @@ use Illuminate\Validation\Rules\Can;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::middleware([
     'role',
     'auth:sanctum',

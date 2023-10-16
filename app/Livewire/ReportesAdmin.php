@@ -19,4 +19,8 @@ class ReportesAdmin extends Component
 
         return view('livewire.reportes-admin',['reportes'=>$reportes ]);
     }
+
+  
+
+    
 }

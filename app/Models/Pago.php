@@ -28,9 +28,9 @@ class Pago extends Model
         return $this->belongsTo(TipoServicio::class);
     }
     //bien
-    public function recargo(): HasOne
+    public function recargo(): BelongsTo
     {
-        return $this->hasOne(Recargo::class);
+        return $this->belongsTo(Recargo::class);
     }
     //bien
     public function cliente(): BelongsTo

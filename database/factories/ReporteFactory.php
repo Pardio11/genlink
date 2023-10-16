@@ -13,6 +13,7 @@ class ReporteFactory extends Factory
     public function definition(): array
     {
         return [
+            'fecha' => $this->faker->date("Y-m-d"),
             'asunto' => $this->faker->sentence,
             'descripcion' => $this->faker->paragraph,
             'resuelto' => $this->faker->boolean(),

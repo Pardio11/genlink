@@ -18,6 +18,29 @@
         @livewireStyles
         <!-----STILE-FOOTER------>
         <style>
+        /*------------------*/
+        .popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+        /*------------------*/
+
             .site-footer .social-icons
         {
           text-align:start
@@ -134,11 +157,10 @@
                     <div class="md:w-1/4 text-left">
                       <h6 class="text-lg  text-white uppercase">Categorias</h6>
                       <ul class="mt-4">
-                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1 ">Cliente</a></li>
-                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Router</a></li>
-                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Antenas</a></li>
-                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Dispositivos</a></li>
-                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Zona</a></li>
+                        <li><a href="{{ route('dashboard') }}" class="text-sm text-gray-400 hover:text-white  px-2 py-1 ">Home</a></li>
+                        <li><a href="{{ route('mis-pagos') }}" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Mis pagos</a></li>
+                        <li><a href="{{ route('preguntas-frecuentes') }}" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Preguntas frecuentes</a></li>
+                        <li><a href="{{ route('reportes') }}" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Reportes</a></li>
                       </ul>
                     </div>
             
@@ -146,11 +168,11 @@
                       <h6 class="text-lg  text-white uppercase">Accesos rápidos</h6>
                       <ul class="mt-4">
                         
-                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Preguntas frecuentes</a></li>
-                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Pagos</a></li>
-                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Perfil</a></li>
-                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Políticas</a></li>
-                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Administrador</a></li>
+                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Número de cliente #{{ Auth::user()->cliente->n_id }} </a></li>
+                        <li><a href="{{ route('profile.show') }}" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Perfil</a></li>
+                        <li><a href="{{ route('logout') }}" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Salir</a></li>
+                        <li><a href="" class="text-sm text-gray-400 hover:text-white  px-2 py-1">Términos y condiciones</a></li>
+                        
                       </ul>
                     </div>
                   </div>

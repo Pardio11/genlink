@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Reporte extends Model
 {
     use HasFactory;
-    protected $fillable = ['asunto', 'descripcion','resuelto','cliente_id'];
+    protected $fillable = ['asunto', 'descripcion','resuelto','cliente_id','fecha'];
     public function cliente():BelongsTo
     {
         return $this->belongsTo(Cliente::class);
