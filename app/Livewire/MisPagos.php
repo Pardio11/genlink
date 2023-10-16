@@ -14,7 +14,7 @@ class MisPagos extends Component
     $fechaActual = now(); 
     $fechaLimite = Carbon::createFromFormat('Y-m-d', $fechaLimite);
 
-    if ($fechaActual->format('m-Y') > $fechaLimite->format('m-Y')) {
+    if ($fechaActual->format('Y-m') > $fechaLimite->format('Y-m')) {
         return false;
     } else {
         return true;
