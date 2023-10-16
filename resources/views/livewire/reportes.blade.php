@@ -79,7 +79,7 @@
                             <tr class="border-b border-gray-600 text-center">
                                 <td class="px-6 py-4">{{$cont}}</td>
                                 <td class="px-6 py-4">{{$r->asunto}}</td>
-                                <td class="px-6 py-4 text-justify">{{$r->descripcion}}</td>
+                                <td class="px-6 py-4">{{$r->descripcion}}</td>
                                 <td class="px-6 py-4">{{$r->fecha}}</td>
                                 <td>
                                     @if ($r->resuelto)

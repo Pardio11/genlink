@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\InstalacionController;
 use App\Http\Controllers\PagoController;
+use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\UserController;
 use App\Livewire\AgregarCliente;
 use App\Livewire\AgregarObj;
@@ -17,7 +18,6 @@ use App\Livewire\RealizarPago;
 use App\Livewire\Reportes;
 use App\Livewire\ReportesAdmin;
 use App\Livewire\SaldoCobrador;
-use App\Livewire\Cortados;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\Rules\Can;
 
@@ -64,6 +64,10 @@ Route::middleware([
     Route::delete('/eliminar-user/{userId}',[UserController::class, 'eliminar'])->middleware('can:admin')->name('eliminar.user');
 
     
+
+    Route::post('/paypal/payment',[PaypalController::class,'payment'])->name('paypal');
+    Route::get('/paypal/success',[PaypalController::class,'success'])->name('paypal_success');
+    Route::get('/paypal/cancel',[PaypalController::class,'cancel'])->name('paypal_cancel');
 
 
 });
