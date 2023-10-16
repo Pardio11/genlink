@@ -27,7 +27,7 @@
                         @isset($pago->fecha_pagado)
 
 
-                        <p>Fecha de pagada: <span class="text-gray-300 ml-1 text-sm">  {{ $pago->fecha_pagado }}</span></p>
+                        <p>Fecha de pago: <span class="text-gray-300 ml-1 text-sm">  {{ $pago->fecha_pagado }}</span></p>
                     
                         <p class="ml-7">Total: <span class="text-gray-100 ml-1 text-base"> ${{$this->calcularTotal($pago)}}</p>
                             <div class="ml-auto p-1 mr-5">
