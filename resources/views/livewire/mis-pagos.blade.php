@@ -22,14 +22,34 @@
                     
                     <div class="@if($this->pasoCorte($pago->fecha_limite)) bg-[#2999a8] @else bg-[#e6b516] @endif text-zinc-100 font-semibold  p-5  w-1/12 mr-10 text-center ">
                         {{ $this->obtenerMes($pago->fecha_limite) }}</div>
+                    
+                    
+                        @isset($pago->fecha_pagado)
 
-                    <p>Fecha de corte: <span class="text-gray-300 ml-1 text-sm">{{ $pago->fecha_limite }}</span></p>
-                    @isset($pago->recargo)<p class="ml-7">Recargo: <span class="text-gray-300 ml-1 text-sm"> {{$pago->recargo->monto}}</p>@endisset
-                    <p class="ml-7">Total: <span class="text-gray-100 ml-1 text-base"> ${{$this->calcularTotal($pago)}}</p>
-                    @if(!$this->pasoCorte($pago->fecha_limite)) <div class="w-64 ml-6  text-center">  <span class="text-gray-300  text-xs"> *Tiene hasta el dia 12 para pagar, evite que cancelemos su servico</span></div>@endif
-                    <div class="ml-auto  p-1 mr-5">
-                        <button class="bg-blue-500 text-white rounded-[5px] w-32 p-2" wire:click.prevent="agregarReporte({{Auth::user()->cliente->user->cliente_id}})" >Pagar</button>
-                    </div>
+
+                        <p>Fecha de pagada: <span class="text-gray-300 ml-1 text-sm">  {{ $pago->fecha_pagado }}</span></p>
+                    
+                        <p class="ml-7">Total: <span class="text-gray-100 ml-1 text-base"> ${{$this->calcularTotal($pago)}}</p>
+                            <div class="ml-auto p-1 mr-5">
+                                <button class="bg-blue-500 text-white rounded-[5px] p-2 mr-2">Facturar</button>
+                                <button class="bg-blue-500 text-white rounded-[5px] p-2">Comprobante</button>
+                            </div> 
+
+                        @else
+
+
+                            <p>Fecha de corte: <span class="text-gray-300 ml-1 text-sm">{{ $pago->fecha_limite }}</span></p>
+                            @isset($pago->recargo)<p class="ml-7">Recargo: <span class="text-gray-300 ml-1 text-sm"> {{$pago->recargo->monto}}</p>@endisset
+                            <p class="ml-7">Total: <span class="text-gray-100 ml-1 text-base"> ${{$this->calcularTotal($pago)}}</p>
+                            @if(!$this->pasoCorte($pago->fecha_limite)) <div class="w-64 ml-6  text-center">  <span class="text-gray-300  text-xs"> *Tiene hasta el dia 12 para pagar, evite que cancelemos su servico</span></div>@endif
+                            <div class="ml-auto  p-1 mr-5">
+                            <a href="{{ url('/realizarPago/' . Auth::user()->cliente->id) }}"><button class="bg-blue-500 text-white rounded-[5px] w-32 p-2"  >Pagar</button></a>
+                            </div>
+
+                        @endisset
+                    
+
+
                 </div>
             </div>
         @else
@@ -41,10 +61,15 @@
                     <p>Fecha de pago: <span class="text-gray-300 ml-1 text-sm"> @isset($pago->fecha_pagado) {{ $pago->fecha_pagado }} @else N/A @endisset</span></p>
                     
                     <p class="ml-7">Total: <span class="text-gray-100 ml-1 text-base"> ${{$this->calcularTotal($pago)}}</p>
-                    <div class="ml-auto p-1 mr-5">
-                        <button class="bg-blue-500 text-white rounded-[5px] p-2 mr-2">Facturar</button>
-                        <button class="bg-blue-500 text-white rounded-[5px] p-2">Comprobante</button>
-                    </div>
+                        @isset($pago->fecha_pagado)
+                        <div class="ml-auto p-1 mr-5">
+                            <button class="bg-blue-500 text-white rounded-[5px] p-2 mr-2">Facturar</button>
+                            <button class="bg-blue-500 text-white rounded-[5px] p-2">Comprobante</button>
+                        </div>
+                         @else
+
+                         @endisset
+                        
                 </div>
             </div>
         @endif
