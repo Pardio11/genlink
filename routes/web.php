@@ -35,6 +35,7 @@ Route::middleware([
     Route::get('/reportes',Reportes::class)->name('reportes');
     Route::get('/preguntas-frecuentes',PreguntasFrecuentes::class)->name('preguntas-frecuentes');
     Route::get('/asignar-instalacion/{clienteId}', [InstalacionController::class, 'asignarInstalacion']);
+    Route::get('/asignar-instalacion/{clienteId}', [PagoController::class, 'realizarPago']);
 });
 
 Route::middleware([

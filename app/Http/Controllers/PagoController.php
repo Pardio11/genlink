@@ -17,4 +17,10 @@ class Pago extends Controller
         }
 
     }
+    public function realizarPago($clienteId)
+    {
+        $cliente = Cliente::find($clienteId);
+        $pagos=$cliente->pagos->whereNull('fecha_pagado')->get();
+        dd($pagos);
+    }
 }

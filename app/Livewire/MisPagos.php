@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Carbon\Carbon;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 #[Layout('layouts.app')]
@@ -9,6 +10,17 @@ use Livewire\Component;
 class MisPagos extends Component
 {
     public function compararFecha($fechaLimite)
+{
+    $fechaActual = now(); 
+    $fechaLimite = Carbon::createFromFormat('Y-m-d', $fechaLimite);
+
+    if ($fechaActual->format('m-Y') > $fechaLimite->format('m-Y')) {
+        return false;
+    } else {
+        return true;
+    }
+}
+    public function pasoCorte($fechaLimite)
     {
         $fechaActual = now(); 
         if ($fechaActual->gt($fechaLimite)) {
@@ -32,7 +44,7 @@ class MisPagos extends Component
         return $total;
     }
     public function render()
-    {
+    {  
         return view('livewire.mis-pagos');
     }
 }
