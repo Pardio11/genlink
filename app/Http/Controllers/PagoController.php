@@ -21,6 +21,15 @@ class PagoController extends Controller
     {
         $cliente = Cliente::find($clienteId);
         $pagos=$cliente->pagos->where('fecha_pagado', null);
-        dd($pagos);
+        $pagosFiltrados = $pagos->filter(function ($pago) {
+            $fechaLimite = \Carbon\Carbon::parse($pago->fecha_limite);
+            $fechaActual = now();
+            return $fechaActual->format('m-Y') <= $fechaLimite->format('m-Y');
+        });
+        foreach ($pagosFiltrados as $pago) {
+            $pago->fecha_pagado = now();
+            $pago->save();
+        }
+        return redirect()->back()->with('success', 'Instalación creada y asignada exitosamente.');
     }
 }
