@@ -37,7 +37,6 @@
                         <th class="px-6 py-3 border-b border-gray-600">Correo</th>
                         <th class="px-6 py-3 border-b border-gray-600">Teléfono</th>
                         <th class="px-6 py-3 border-b border-gray-600">Dirección</th>
-                        <th class="px-6 py-3 border-b border-gray-600">Zonas</th>
                         <th class="px-6 py-3 border-b border-gray-600">Acciones</th>
                     </tr>
                 </thead>
@@ -50,14 +49,9 @@
                         <td class="px-6 py-4">{{$c->user->email}}</td>
                         <td class="px-6 py-4">{{ $c->telefono }}</td>
                         <td class="px-6 py-4">{{ $c->direccion }}</td>
-                        <td class="px-6 py-4">@if (@isset($c->zona->nombre))>
-                            {{ $c->zona->nombre }} 
-                        @else
-                          N/a  
-                        @endif</td>
                         <td class="px-6 py-4">
-                            <div class="flex">
-                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded mr-2">Editar</button>
+                            <div class="flex-col ">
+                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded mb-3">Editar</button>
                                 <button class="bg-red-500 hover:bg-red-700 text-white font-bold w-20 h-8 rounded">Eliminar</button>
                             </div>
                         </td>
