@@ -44,7 +44,7 @@ public $correo; // Agrega la propiedad para el correo
 
 public $zona_id=1;
 
-public $precio;
+public $precio=230;
 
 public $nota;
 
