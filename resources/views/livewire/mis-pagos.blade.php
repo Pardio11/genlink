@@ -28,7 +28,7 @@
                     <p class="ml-7">Total: <span class="text-gray-100 ml-1 text-base"> ${{$this->calcularTotal($pago)}}</p>
                     @if(!$this->pasoCorte($pago->fecha_limite)) <div class="w-64 ml-6  text-center">  <span class="text-gray-300  text-xs"> *Tiene hasta el dia 12 para pagar, evite que cancelemos su servico</span></div>@endif
                     <div class="ml-auto  p-1 mr-5">
-                        <button class="bg-blue-500 text-white rounded-[5px] w-32 p-2" wire:click.prevent="agregarReporte({{Auth::user()->cliente->user->cliente_id}})" >Pagar</button>
+                        <a href="{{ url('/realizarPago/' . Auth::user()->cliente->id) }}"><button class="bg-blue-500 text-white rounded-[5px] w-32 p-2"  >Pagar</button></a>
                     </div>
                 </div>
             </div>

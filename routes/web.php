@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\InstalacionController;
+use App\Http\Controllers\PagoController;
 use App\Livewire\AgregarCliente;
 use App\Livewire\AgregarObj;
 use App\Livewire\BusquedaCliente;
@@ -35,7 +36,7 @@ Route::middleware([
     Route::get('/reportes',Reportes::class)->name('reportes');
     Route::get('/preguntas-frecuentes',PreguntasFrecuentes::class)->name('preguntas-frecuentes');
     Route::get('/asignar-instalacion/{clienteId}', [InstalacionController::class, 'asignarInstalacion']);
-    Route::get('/asignar-instalacion/{clienteId}', [PagoController::class, 'realizarPago']);
+    Route::get('/realizarPago/{clienteId}', [PagoController::class, 'realizarPago']);
 });
 
 Route::middleware([

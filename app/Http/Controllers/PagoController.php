@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 
-class Pago extends Controller
+class PagoController extends Controller
 {
     public function generarPago($clienteId)
     {
@@ -20,7 +20,7 @@ class Pago extends Controller
     public function realizarPago($clienteId)
     {
         $cliente = Cliente::find($clienteId);
-        $pagos=$cliente->pagos->whereNull('fecha_pagado')->get();
+        $pagos=$cliente->pagos->where('fecha_pagado', null);
         dd($pagos);
     }
 }
