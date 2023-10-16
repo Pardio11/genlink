@@ -16,23 +16,29 @@ class PagosTableSeeder extends Seeder
         Pago::create([
             'fecha_pagado' =>'2023-7-4',
             'fecha_limite' => '2023-7-5', // Genera una fecha hasta el 31 de diciembre de 2024
-            'cliente_id' => 11,
+            'cliente_id' => 1,
             'tipo_servicio_id' => 2,
         ]);
         Pago::create([
             'fecha_limite' => '2023-8-5', // Genera una fecha hasta el 31 de diciembre de 2024
-            'cliente_id' => 11,
+            'cliente_id' => 1,
             'tipo_servicio_id' => 2,
         ]);
         Pago::create([
             'fecha_pagado' =>'2023-9-4',
             'fecha_limite' => '2023-9-5', // Genera una fecha hasta el 31 de diciembre de 2024
-            'cliente_id' => 11,
+            'cliente_id' => 1,
             'tipo_servicio_id' => 2,
         ]);
         Pago::create([
             'fecha_limite' => '2023-10-5', // Genera una fecha hasta el 31 de diciembre de 2024
-            'cliente_id' => 11,
+            'cliente_id' => 1,
+            'tipo_servicio_id' => 2,
+            'recargo_id'=>11
+        ]);
+        Pago::create([
+            'fecha_limite' => '2023-10-5', // Genera una fecha hasta el 31 de diciembre de 2024
+            'cliente_id' => 2,
             'tipo_servicio_id' => 2,
             'recargo_id'=>11
         ]);
