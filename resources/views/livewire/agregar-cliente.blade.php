@@ -17,7 +17,7 @@
                     <h2 class="text-2xl font-bold mb-4">Paso 1: Información de usuario</h2>
                     <div class="mb-4">
                         <label for="user" class="block">Nombre:</label>
-                        <input wire:model="user" type="text" id="user" name="user" class="w-1/2 p-2 border rounded" required>
+                        <input wire:model="user" type="text" id="user" name="user" value="{{$cliente->user->name}}" class="w-1/2 p-2 border rounded"  required>
                     </div>
                     
                     <div class="mb-4">
