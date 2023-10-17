@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cliente;
+use App\Models\Pago;
 use Srmklive\PayPal\Facades\PayPal;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
@@ -12,6 +13,13 @@ class PaypalController extends PagoController
 
     public function payment(Request $request)
     {
+        $pago = Pago::find($request->pagoId);
+        $price = 0;
+        if($pago->tipoServicio)
+            $price+=$pago->tipoServicio->costo;
+        if($pago->recargo)
+            $price+=$pago->recargo->monto;  
+
         /* dd($request->price); */
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
@@ -21,7 +29,7 @@ class PaypalController extends PagoController
  
             "intent" => "CAPTURE",
             "application_context" => [
-                "return_url" => route('paypal_success', $request->clienteId),
+                "return_url" => route('paypal_success', $request->pagoId),
                 "cancel_url" => route('paypal_cancel')
             ],
             "purchase_units"=> 
@@ -29,7 +37,7 @@ class PaypalController extends PagoController
                     [
                     "amount"=> [
                         "currency_code" => "USD",
-                        "value" => $request->price
+                        "value" => $price
                         ]
                     ]
                 ]            
@@ -46,7 +54,7 @@ class PaypalController extends PagoController
                 return redirect()->route('paypal_cancel');
             } 
     }
-    public function success(Request $request, $clienteId)
+    public function success(Request $request, $pagoId)
     {
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
@@ -55,7 +63,7 @@ class PaypalController extends PagoController
 
 
         if(isset($response['status']) && $response['status']== 'COMPLETED'){
-            $this->realizarPago($clienteId);
+            $this->realizarPago($pagoId);
             return redirect()->route('mis-pagos');
             
             //return redirect()->route('realizarPago',['clienteId' => $clienteId]);

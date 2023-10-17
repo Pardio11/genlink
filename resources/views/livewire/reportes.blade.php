@@ -72,7 +72,7 @@
 
                         @php($cont=0)
                         @isset (Auth::user()->cliente->reportes)
-                        @foreach (Auth::user()->cliente->reportes as $r)
+                        @foreach (Auth::user()->cliente->reportes->reverse() as $r)
 
                             @php($cont++)
 
