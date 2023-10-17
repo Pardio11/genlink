@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('tipo_servicios', function (Blueprint $table) {
             $table->id();
+            $table->string('tipo');
             $table->string('nombre');
             $table->float('costo');
             $table->timestamps();

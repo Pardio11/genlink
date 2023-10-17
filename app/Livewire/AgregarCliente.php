@@ -10,9 +10,12 @@ use App\Models\Router;
 
 use App\Models\ModeloAntena;
 use App\Models\ModeloRouter;
+use App\Models\Pago;
 use App\Models\TipoDescuento;
+use App\Models\TipoServicio;
 use App\Models\User;
 use App\Models\Zona;
+use DateTime;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
@@ -21,10 +24,10 @@ use Illuminate\Support\Facades\Hash;
 
 class AgregarCliente extends Component
 {
-    public $cliente;
-    public $user;
-    public $password;
-    public $userAntena;
+public $cliente;
+public $user;
+public $password;
+public $userAntena;
 
 public $passwordAntena;
 public $ipAntena; // Agrega la propiedad para la IP
@@ -45,15 +48,17 @@ public $correo; // Agrega la propiedad para el correo
 
 public $zona_id=1;
 
-public $precio=230;
-
+public $tipoServicoId=2;
+public $tipoServico;
 public $nota;
 public $selectedInstalacion;
+public $planes;
 protected $listeners = ['instalacionSeleccionada'];
 
 
     public function mount()
     {
+        $this->planes=TipoServicio::where('tipo', 'Plan')->get();
         $this->reset([
             'cliente',
             'user',
@@ -70,6 +75,7 @@ protected $listeners = ['instalacionSeleccionada'];
             $this->telefono=$this->cliente->telefono;
             $this->correo=$this->cliente->user->email;
             $this->direccion=$this->cliente->direccion;
+            $this->selectedInstalacion=$this->cliente->instalacion;
         }
         
     }
@@ -91,7 +97,8 @@ protected $listeners = ['instalacionSeleccionada'];
     {
 
 
-        
+        $this->tipoServico = TipoServicio::find($this->tipoServicoId);
+
         // ///////////////////////////////////////////////////////////////CLIENTE////////////////////////////////////////////////////////////////////
 
 
@@ -142,23 +149,46 @@ protected $listeners = ['instalacionSeleccionada'];
              $Contrato= Contrato::create([
                 'dia_corte' => 5,
                 'velocidad' => "50 megas",
-                'precio' => $this->precio,
+                'precio' => $this->tipoServico->costo,
                 'activo' => true,
 
 
             ]);
+            if($this->password!="********"){
+                $Instalacion= Instalacion::create([
+                    'fecha_limite' => now(),
+                    'nota' => $this->nota,
+                    'realizado' => true,
+                ]);
+                $cliente->instalacion()->associate($Instalacion);
+            }else{
+                $this->selectedInstalacion->realizado = true;
+                $this->selectedInstalacion->nota = $this->nota;
+                $this->selectedInstalacion->save();
+            }
 
-            $Instalacion= Instalacion::create([
-                'fecha_limite' => now(),
-                'nota' => $this->nota,
-                'realizado' => true,
-            ]);
-            $cliente->instalacion()->associate($Instalacion);
+            
             $cliente->contrato()->associate($Contrato);
             $cliente->antena()->associate($antena);
             $cliente->router()->associate($router);
             $cliente->zona_id=$this->zona_id;
             $cliente->save();
+            
+            // Obtener la fecha de hoy
+            $fechaObjeto = new DateTime('now');
+
+            // Añadir un mes y establecer el día en 5
+            $fechaSiguienteMes = $fechaObjeto->modify('+1 month')->setDate($fechaObjeto->format('Y'), $fechaObjeto->format('m'), 5);
+
+            // Obtener la fecha formateada en el formato deseado (Y-m-d)
+            $fechaResultado = $fechaSiguienteMes->format('Y-m-d');
+
+            Pago::create([
+                'fecha_limite' => $fechaResultado, // Genera una fecha hasta el 5 del siguiente mes
+                'cliente_id' => $cliente->id,
+                'tipo_servicio_id' => $this->tipoServico->id
+            ]);
+
             $this->reset([
                 'cliente',
                 'user',
@@ -181,7 +211,7 @@ protected $listeners = ['instalacionSeleccionada'];
          }
 
          public function crearUser(){
-            if($this->cliente){
+            if($this->password!="********"){
             $this->validate([
                 'direccion' => 'required',
                 'telefono' => 'required',
@@ -195,7 +225,7 @@ protected $listeners = ['instalacionSeleccionada'];
     
             $this->validate([
                 'user' => 'required',
-                'password' => 'required',
+                'password' => 'required','different:********',
                 'correo' => 'required',
             ]);
 

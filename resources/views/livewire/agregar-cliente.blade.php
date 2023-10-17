@@ -43,10 +43,10 @@
 
                     <div class="mb-4">
                         <label for="zonaFK">Precio:</label>
-                        <select wire:model="precio" id="precio" name="precio" class="w-1/2 p-2 border rounded block" required>
-                                <option value="230">230</option>
-                                <option value="250">250</option>
-                                <option value="300">300</option>
+                        <select wire:model="tipoServicoId" id="tipoServicoId" name="tipoServicoId" class="w-1/2 p-2 border rounded block" required>
+                                @foreach($planes as $plan)
+                                    <option value="{{ $plan->id }}">{{ $plan->nombre }}</option>
+                                @endforeach
                         </select>
                     </div>
 

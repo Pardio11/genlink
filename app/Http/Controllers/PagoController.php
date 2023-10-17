@@ -25,12 +25,12 @@ class PagoController extends Controller
             'cliente_id' => $clienteId,
             'tipo_servicio_id' => 2
         ]);
+        
     }
     public function realizarPago($pagoId)
     {
-
         $pago = Pago::find($pagoId);
-
+        
         $fechaLimite = \Carbon\Carbon::parse($pago->fecha_limite);
         $fechaActual = now();
         if($fechaActual->format('Y-m') <= $fechaLimite->format('Y-m') && $pago->fecha_pagado == null){
@@ -45,6 +45,7 @@ class PagoController extends Controller
             $contrato->save();
             $this->generarPago($cliente->id,$ultimoMes);
         }
+        return redirect()->back()->with('success', 'Pago exitoso.');
         
     }
 }

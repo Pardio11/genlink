@@ -49,7 +49,13 @@
                             <td class="px-6 py-4">{{$p->fecha_limite}}</td>
                             <td>
                                 <div class="flex justify-center">
-                                    <a href="{{ url('/registarPago/' . $p->cliente->id) }}"> <button class="show-popup-button bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded mr-2">Pagar</button></a>
+                                    <form action="{{ route('registarPago', ['pagoId' => $p->id]) }}" method="post">
+                                        @method('PATCH')
+                                        @csrf
+                                    
+                                        <!-- Aquí van los campos y botones de tu formulario -->
+                                        <button type="submit" class="show-popup-button bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded mr-2">Pagar</button>
+                                    </form>
                                 </div>
                             </td>
                         </tr>
