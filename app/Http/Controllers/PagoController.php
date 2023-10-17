@@ -35,6 +35,7 @@ class PagoController extends Controller
             $fechaActual = now();
             return $fechaActual->format('Y-m') <= $fechaLimite->format('Y-m');
         });
+        
         $ultimoMes=null;
         foreach ($pagosFiltrados as $pago) {
             $pago->fecha_pagado = now();
@@ -45,6 +46,5 @@ class PagoController extends Controller
         $contrato->activo=true;
         $contrato->save();
         $this->generarPago($clienteId,$ultimoMes);
-        return redirect()->back()->with('success', 'Instalación creada y asignada exitosamente.');
     }
 }

@@ -38,7 +38,7 @@ Route::middleware([
     Route::get('/reportes',Reportes::class)->name('reportes');
     Route::get('/preguntas-frecuentes',PreguntasFrecuentes::class)->name('preguntas-frecuentes');
     Route::get('/asignar-instalacion/{clienteId}', [InstalacionController::class, 'asignarInstalacion']);
-    Route::get('/realizarPago/{clienteId}', [PagoController::class, 'realizarPago']);
+    Route::put('/realizarPago/{clienteId}', [PagoController::class, 'realizarPago'])->name('realizarPago');
 });
 
 Route::middleware([
@@ -61,20 +61,13 @@ Route::middleware([
 
     Route::get('/agregar-cliente',AgregarCliente::class)->name('agregar-cliente');
 
-    Route::get('/eliminar-user/{userId}',[UserController::class, 'eliminar'])->middleware('can:admin')->name('eliminar-user');
+    Route::delete('/eliminar-user/{userId}',[UserController::class, 'eliminar'])->middleware('can:admin')->name('eliminar.user');
 
     
 
     Route::post('/paypal/payment',[PaypalController::class,'payment'])->name('paypal');
-    Route::get('/paypal/success',[PaypalController::class,'success'])->name('paypal_success');
+    Route::get('/paypal/success/{clienteId}',[PaypalController::class,'success'])->name('paypal_success');
     Route::get('/paypal/cancel',[PaypalController::class,'cancel'])->name('paypal_cancel');
-
-
-
-
-    
-
-    
 
 
 });
