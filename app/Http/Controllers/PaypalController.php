@@ -7,7 +7,7 @@ use App\Models\Cliente;
 use Srmklive\PayPal\Facades\PayPal;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
-class PaypalController extends Controller
+class PaypalController extends PagoController
 {
 
     public function payment(Request $request)
@@ -55,9 +55,10 @@ class PaypalController extends Controller
 
 
         if(isset($response['status']) && $response['status']== 'COMPLETED'){
-
+            $this->realizarPago($clienteId);
+            return redirect()->route('mis-pagos');
             
-            return redirect()->route('realizarPago',['clienteId' => $clienteId]);
+            //return redirect()->route('realizarPago',['clienteId' => $clienteId]);
 
         } else{
             return redirect()->route('paypal_cancel');
