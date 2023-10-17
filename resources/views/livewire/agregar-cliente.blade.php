@@ -9,7 +9,7 @@
         <div class="justify-center h-auto mb-12  w-[75vw] mt-14">
             <div class="mb-4 text-center">
                 <i class="fas fa-user text-4xl text-blue-500 mb-2"></i>
-                <h2 class="text-2xl font-semibold">Formulario de Antena</h2>
+                <h2 class="text-2xl font-semibold">Formulario de Cliente</h2>
             </div>
             <form id="clienteForm" wire:submit.prevent="crearUser" class="bg-white rounded shadow-md p-6 mx-auto w-1/2">
                 <!-- Paso 1: Información básica -->
@@ -17,7 +17,8 @@
                     <h2 class="text-2xl font-bold mb-4">Paso 1: Información de usuario</h2>
                     <div class="mb-4">
                         <label for="user" class="block">Nombre:</label>
-                        <input wire:model="user" type="text" id="user" name="user" value="{{$cliente->user->name}}" class="w-1/2 p-2 border rounded"  required>
+
+                        <input wire:model="user" type="text" id="user" name="user" class="w-1/2 p-2 border rounded"  required>
                     </div>
                     
                     <div class="mb-4">
@@ -83,7 +84,7 @@
             
                 <!-- Paso 2: Información de antena -->
                 <div class="form-step" id="step2" wire:loading.attr="disabled" wire:target="agregarCliente" style="display: none;">
-                    <h2 class="text-2xl font-bold mb-4">Paso 2: Información de antena</h2>
+                    <h2 class="text-2xl font-bold mb-4">Paso 2: Información de Antena</h2>
                     <!-- Campos de entrada de Antena -->
                     <div class="mb-4">
                         <label for="userAntena">Usuario:</label>
@@ -123,7 +124,7 @@
             
                 <!-- Paso 3: Información del router -->
                 <div class="form-step" id="step3" wire:loading.attr="disabled" wire:target="agregarCliente" style="display: none;">
-                    <h2 class="text-2xl font-bold mb-4">Paso 3: Información del router</h2>
+                    <h2 class="text-2xl font-bold mb-4">Paso 3: Información del Router</h2>
                     <div class="mb-4">
                         <label for="userRouter">Usuario:</label>
                         <input wire:model="userRouter" type="text" id="userRouter" name="userRouter" class="w-1/2 p-2 border rounded block" required>
