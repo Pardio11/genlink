@@ -3,6 +3,7 @@
 use App\Http\Controllers\InstalacionController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\UserController;
 use App\Livewire\AgregarCliente;
 use App\Livewire\AgregarObj;
@@ -62,6 +63,7 @@ Route::middleware([
     Route::get('/agregar-cliente',AgregarCliente::class)->name('agregar-cliente');
 
     Route::delete('/eliminar-user/{userId}',[UserController::class, 'eliminar'])->middleware('can:admin')->name('eliminar.user');
+    Route::post('/resolver-reporte/{reporteId}',[ReporteController::class, 'resolverReporte'])->middleware('can:admin')->name('resolver.reporte');
 
     
 

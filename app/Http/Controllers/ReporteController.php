@@ -67,9 +67,12 @@ class ReporteController extends Controller
 
     public function resolverReporte($repoteId)
     {
+
+        dd($repoteId);
         $reporte = Reporte::find($repoteId);
         $reporte->resuelto=true;
         $reporte->save();
+
         return redirect()->back()->with('success', 'Reporte Resuelto');
 
        /*  $pagos=$cliente->pagos->where('fecha_pagado', null);

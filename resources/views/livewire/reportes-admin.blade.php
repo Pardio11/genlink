@@ -45,7 +45,12 @@
                         
                 </tr>
                 @endforeach
-                
+
+
+                @if ($reporteSelect)
+                <form action="{{ route('resolver.reporte',$reporteSelect['id']) }}" method="POST">
+                    @csrf
+                    @method('POST')
                 <div id="popup" class="fixed inset-0 flex items-center justify-center @if($hidePopup)hidden @endif ">
                     <div class="modal-overlay modal-close-div absolute w-full h-full bg-gray-900 opacity-50  " id="overlay" wire:click="hide()"></div>
                 
@@ -76,13 +81,15 @@
                                     
                                 </p>
                             </div>
+                            
                             <div class="mt-6 flex flex-row ">
                                 <div class="izquierda text-left  w-[50%]">
-                                    @if ($reporteSelect)
-                                    <a href="{{ url('/resolverReporte/' . $reporteSelect['id']) }}"><button class="modal-close-button text-base font-semibold text-blue-600 " wire:click="hide()">
-                                        Resolver
-                                    </button></a>
-                                    @endif
+                                   
+                                       
+                                        <button type="submit" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded mr-2">Eliminar</button>
+
+
+                                    
                                 </div>
                                 <div class="derecha text-right  w-[50%]">
                                     <button class="modal-close-button text-base font-semibold text-red-600" wire:click="hide()">
@@ -93,9 +100,13 @@
                                 
                                 
                             </div>
+                            
+
                         </div>
                     </div>
                 </div>
+            </form>
+            @endif
                 
                 
                         
