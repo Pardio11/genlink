@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AgregarCliente extends Component
 {
+    public $cliente;
     public $user;
     public $password;
     public $userAntena;
@@ -49,18 +50,24 @@ public $precio=230;
 public $nota;
 
 public $selectedInstalacion;
+protected $listeners = ['instalacionSeleccionada'];
+
 
 
     
     public function render()
     {
+        $this->cliente = session('cliente');
+        dd($this->cliente);
         $Router = ModeloRouter::all();
         $Antenas = ModeloAntena::all();
         $Descuentos =TipoDescuento::all();
         $Zonas=Zona::all();
-
-        return view('livewire.agregar-cliente',['routers' => $Router, 'antenas' => $Antenas,'descuentos' => $Descuentos,'zonas' => $Zonas]);
+        
+        return view('livewire.agregar-cliente',['routers' => $Router, 'antenas' => $Antenas,'descuentos' => $Descuentos,'zonas' => $Zonas,'cliente'=>$this->cliente]);
     }
+
+
     
 
     public function agregarCliente($cliente)
