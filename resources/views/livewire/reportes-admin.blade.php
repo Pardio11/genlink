@@ -3,7 +3,6 @@
     @livewire('nav-admin')
 
     <div class="container">
-
         <div class="max-w-screen-lg mx-auto mb-16">
             <div class="title flex items-center justify-center text-4xl mt-10">
                 <i class="icon fas fa-exclamation-triangle text-yellow-500  text-6xl mr-4"></i> REPORTES
@@ -47,10 +46,7 @@
                 @endforeach
 
 
-                @if ($reporteSelect)
-                <form action="{{ route('resolver.reporte',$reporteSelect['id']) }}" method="POST">
-                    @csrf
-                    @method('POST')
+                
                 <div id="popup" class="fixed inset-0 flex items-center justify-center @if($hidePopup)hidden @endif ">
                     <div class="modal-overlay modal-close-div absolute w-full h-full bg-gray-900 opacity-50  " id="overlay" wire:click="hide()"></div>
                 
@@ -84,11 +80,13 @@
                             
                             <div class="mt-6 flex flex-row ">
                                 <div class="izquierda text-left  w-[50%]">
-                                   
-                                       
+                                    
+
+                                    <form action="{{ route('resolver.reporte',['reporteId' => ($reporteSelect) ? $reporteSelect['id'] : 0 ]) }}" method="post">
+                                        @method('PATCH')
+                                        @csrf
                                         <button type="submit" class=" bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded mr-2">Eliminar</button>
-
-
+                                    </form>
                                     
                                 </div>
                                 <div class="derecha text-right  w-[50%]">
@@ -105,8 +103,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
-            @endif
+            
                 
                 
                         

@@ -49,13 +49,13 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/clientes',Clientes::class)->name('clientes');
-    Route::get('/estado-cuenta',EstadoCuenta::class)->name('estado-cuenta');
+    Route::get('/clientes',Clientes::class)->middleware('can:admin')->name('clientes');
+    Route::get('/estado-cuenta',EstadoCuenta::class)->middleware('can:admin')->name('estado-cuenta');
     Route::get('/pagos-pendientes',PagosAtrasados::class)->name('pagos-pendientes');
-    Route::get('/cancelados',Cancelados::class)->name('cancelados');
-    Route::get('/pendientes',Pendientes::class)->name('pendientes');
-    Route::get('/reportes-admin',Reportes::class)->name('reportes-admin');
-    Route::get('/reportes-admin',ReportesAdmin::class)->name('reportes-admin');
+    Route::get('/cancelados',Cancelados::class)->middleware('can:admin')->name('cancelados');
+    Route::get('/pendientes',Pendientes::class)->middleware('can:admin')->name('pendientes');
+    Route::get('/reportes-admin',Reportes::class)->middleware('can:admin')->name('reportes-admin');
+    Route::get('/reportes-admin',ReportesAdmin::class)->middleware('can:admin')->name('reportes-admin');
     Route::patch('/registarPago/{pagoId}', [PagoController::class, 'realizarPago'])->middleware('can:admin')->name('registarPago');
     Route::get('/busqueda-cliente',BusquedaCliente::class)->name('busqueda-cliente');
     Route::get('/agregarObj',AgregarObj::class)->middleware('can:admin')->name('agregarObj');
@@ -64,6 +64,6 @@ Route::middleware([
     Route::get('/agregar-cliente',AgregarCliente::class)->name('agregar-cliente');
 
     Route::delete('/eliminar-user/{userId}',[UserController::class, 'eliminar'])->middleware('can:admin')->name('eliminar.user');
-    Route::post('/resolver-reporte/{reporteId}',[ReporteController::class, 'resolverReporte'])->middleware('can:admin')->name('resolver.reporte');
+    Route::patch('/resolver-reporte/{reporteId}',[ReporteController::class, 'resolverReporte'])->middleware('can:admin')->name('resolver.reporte');
 
 });
