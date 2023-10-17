@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->date('fecha_pagado')->nullable();
             $table->date('fecha_limite');
-            $table->foreignId('cliente_id')->constrained('clientes');
+            $table->foreignId('cliente_id')->constrained('clientes')->cascadeOnDelete();;
             $table->foreignId('tipo_servicio_id')->constrained('tipo_servicios');
             $table->foreignId('recargo_id')->nullable()->constrained('recargos');
             $table->timestamps();

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('descripcion');
             $table->boolean('resuelto');
             $table->timestamps();
-            $table->foreignId('cliente_id')->constrained('clientes');
+            $table->foreignId('cliente_id')->constrained('clientes')->cascadeOnDelete();;
         });
     }
 

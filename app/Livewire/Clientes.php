@@ -32,9 +32,6 @@ class Clientes extends Component
         $cliente = Cliente::find($clienteId);
     
         if ($cliente) {
-            $cliente->reportes()->delete();
-    
-            // Luego elimina el cliente
             $cliente->delete();
     
             session()->flash('success', 'Registros de reportes y cliente eliminados exitosamente');
