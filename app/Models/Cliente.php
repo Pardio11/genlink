@@ -25,6 +25,7 @@ class Cliente extends Model
             } while (self::where('n_id', $user->n_id)->exists());
         });
     }
+    
 
     public function user(): HasOne
     {
@@ -44,24 +45,24 @@ class Cliente extends Model
     {
         return $this->hasMany(Reporte::class);
     }
-
+    
     public function contrato(): BelongsTo
     {
-        return $this->belongsTo(Contrato::class);
+        return $this->belongsTo(Contrato::class)->onCascade('delete');
     }
 
     public function antena(): BelongsTo
     {
-        return $this->belongsTo(Antena::class);
+        return $this->belongsTo(Antena::class)->onCascade('delete');
     }
 
     public function router(): BelongsTo
     {
-        return $this->belongsTo(Router::class);
+        return $this->belongsTo(Router::class)->onCascade('delete');
     }
 
     public function zona(): BelongsTo
     {
-        return $this->belongsTo(Zona::class);
+        return $this->belongsTo(Zona::class)->onCascade('delete');
     }
 }

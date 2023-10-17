@@ -30,11 +30,11 @@ class Pago extends Model
     //bien
     public function recargo(): BelongsTo
     {
-        return $this->belongsTo(Recargo::class);
+        return $this->belongsTo(Recargo::class)->onCascade('delete');
     }
     //bien
     public function cliente(): BelongsTo
     {
-        return $this->belongsTo(Cliente::class);
+        return $this->belongsTo(Cliente::class)->onCascade('delete');
     }
 }
