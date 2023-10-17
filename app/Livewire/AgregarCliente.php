@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AgregarCliente extends Component
 {
+    public $cliente;
     public $user;
     public $password;
     public $userAntena;
@@ -47,9 +48,31 @@ public $zona_id=1;
 public $precio=230;
 
 public $nota;
+public $selectedInstalacion;
+protected $listeners = ['instalacionSeleccionada'];
 
 
-
+    public function mount()
+    {
+        $this->reset([
+            'cliente',
+            'user',
+            'password',
+            'direccion',
+            'telefono',
+            'correo',
+        ]);
+        $this->cliente = session('cliente');
+        if($this->cliente){
+            session()->forget('cliente');
+            $this->user = $this->cliente->user->name;
+            $this->password ="********";
+            $this->telefono=$this->cliente->telefono;
+            $this->correo=$this->cliente->user->email;
+            $this->direccion=$this->cliente->direccion;
+        }
+        
+    }
     
     public function render()
     {
@@ -57,9 +80,12 @@ public $nota;
         $Antenas = ModeloAntena::all();
         $Descuentos =TipoDescuento::all();
         $Zonas=Zona::all();
-
-        return view('livewire.agregar-cliente',['routers' => $Router, 'antenas' => $Antenas,'descuentos' => $Descuentos,'zonas' => $Zonas]);
+        
+        return view('livewire.agregar-cliente',['routers' => $Router, 'antenas' => $Antenas,'descuentos' => $Descuentos,'zonas' => $Zonas,'cliente'=>$this->cliente]);
     }
+
+
+    
 
     public function agregarCliente($cliente)
     {
@@ -133,11 +159,29 @@ public $nota;
             $cliente->router()->associate($router);
             $cliente->zona_id=$this->zona_id;
             $cliente->save();
+            $this->reset([
+                'cliente',
+                'user',
+                'password',
+                'userAntena',
+                'passwordAntena',
+                'ipAntena',
+                'macAntena',
+                'userRouter',
+                'passwordRouter',
+                'macRouter',
+                'ipRouter',
+                'direccion',
+                'telefono',
+                'correo',
+                'nota'
+            ]);
             return redirect("agregar-cliente");
 
          }
 
          public function crearUser(){
+            if($this->cliente){
             $this->validate([
                 'direccion' => 'required',
                 'telefono' => 'required',
@@ -162,8 +206,11 @@ public $nota;
                 'cliente_id' =>$cliente->id
             
             ])->assignRole('Cliente');
-
-        $this->agregarCliente($cliente);
+            $this->agregarCliente($cliente);
+            }else{
+                $this->agregarCliente($this->cliente);
+            }
+        
         
         
 

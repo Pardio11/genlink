@@ -26,25 +26,25 @@ class PagoController extends Controller
             'tipo_servicio_id' => 2
         ]);
     }
-    public function realizarPago($clienteId)
+    public function realizarPago($pagoId)
     {
-        $cliente = Cliente::find($clienteId);
-        $pagos=$cliente->pagos->where('fecha_pagado', null);
-        $pagosFiltrados = $pagos->filter(function ($pago) {
-            $fechaLimite = \Carbon\Carbon::parse($pago->fecha_limite);
-            $fechaActual = now();
-            return $fechaActual->format('Y-m') <= $fechaLimite->format('Y-m');
-        });
-        $ultimoMes=null;
-        foreach ($pagosFiltrados as $pago) {
+
+        $pago = Pago::find($pagoId);
+
+        $fechaLimite = \Carbon\Carbon::parse($pago->fecha_limite);
+        $fechaActual = now();
+        if($fechaActual->format('Y-m') <= $fechaLimite->format('Y-m') && $pago->fecha_pagado == null){
+            $ultimoMes=null;
+
             $pago->fecha_pagado = now();
             $pago->save();
             $ultimoMes=$pago->fecha_limite;
+            $cliente=$pago->cliente;
+            $contrato=$cliente->contrato;
+            $contrato->activo=true;
+            $contrato->save();
+            $this->generarPago($cliente->id,$ultimoMes);
         }
-        $contrato=$cliente->contrato;
-        $contrato->activo=true;
-        $contrato->save();
-        $this->generarPago($clienteId,$ultimoMes);
-        return redirect()->back()->with('success', 'Instalación creada y asignada exitosamente.');
+        
     }
 }

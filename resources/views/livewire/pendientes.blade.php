@@ -5,7 +5,7 @@
     <div class="contanier">
         <div class="max-w-screen-lg mx-auto mb-16 mt-10" >
             <div class="title flex items-center justify-center text-4xl">
-                <i class="icon fas fa-clipboard-list text-yellow-500 text-6xl mr-4"></i>INSTALACIONES PENDIENTES
+                <i class="icon fas fa-check-square text-red-500 text-6xl mr-4"></i>INSTALACIONES PENDIENTES
             </div>
         </div>
     
@@ -37,7 +37,7 @@
                         <td class="px-6 py-4">{{$i->fecha_limite}}</td>
                         <td>
                           
-                            <i class=" fas fa-clipboard-list text-yellow-500 px-6 py-4 text-3xl"  style="cursor: pointer;"></i>
+                            <i wire:click="selectInstalacion({{ $i->id }})" class=" fas fa-clipboard-list text-yellow-500 px-6 py-4 text-3xl"  style="cursor: pointer;"></i>
                  
                         </td>
                     </tr>
@@ -49,9 +49,20 @@
                 </tbody>
             </table>
         </div>
+
+        
     </div>
 
 
     
 
 </div>
+
+<script>
+    let selectedInstalacion = null; // Variable para almacenar la instalación seleccionada
+
+    function selectInstalacion(instalacionId) {
+        selectedInstalacion = instalacionId;
+    }
+</script>
+
