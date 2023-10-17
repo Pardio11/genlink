@@ -9,6 +9,8 @@ use Livewire\Component;
 
 class Pendientes extends Component
 {
+
+
     public function render()
     {
 

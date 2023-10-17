@@ -28,7 +28,6 @@ class DatabaseSeeder extends Seeder
             TipoServiciosTableSeeder::class,
             DescuentosTableSeeder::class,
             RecargosTableSeeder::class,
-            ContratosTableSeeder::class,
             PagosTableSeeder::class,
             ZonasTableSeeder::class,
 

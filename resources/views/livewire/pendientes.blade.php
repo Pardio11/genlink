@@ -37,7 +37,7 @@
                         <td class="px-6 py-4">{{$i->fecha_limite}}</td>
                         <td>
                           
-                            <i class=" fas fa-clipboard-list text-yellow-500 px-6 py-4 text-3xl"  style="cursor: pointer;"></i>
+                            <i  onclick="selectInstalacion({{ $i->id }})" class=" fas fa-clipboard-list text-yellow-500 px-6 py-4 text-3xl"  style="cursor: pointer;"></i>
                  
                         </td>
                     </tr>
@@ -49,9 +49,20 @@
                 </tbody>
             </table>
         </div>
+
+        
     </div>
 
 
     
 
 </div>
+
+<script>
+    let selectedInstalacion = null; // Variable para almacenar la instalación seleccionada
+
+    function selectInstalacion(instalacionId) {
+        selectedInstalacion = instalacionId;
+    }
+</script>
+

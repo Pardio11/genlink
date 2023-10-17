@@ -48,6 +48,7 @@ public $precio=230;
 
 public $nota;
 
+public $selectedInstalacion;
 
 
     
@@ -60,6 +61,7 @@ public $nota;
 
         return view('livewire.agregar-cliente',['routers' => $Router, 'antenas' => $Antenas,'descuentos' => $Descuentos,'zonas' => $Zonas]);
     }
+    
 
     public function agregarCliente($cliente)
     {

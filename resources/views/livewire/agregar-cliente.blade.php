@@ -2,6 +2,9 @@
     @livewire('nav-admin')
 
 
+    <input type="hidden" id="selectedInstalacion" value="{{ $selectedInstalacion }}">
+
+
     <div id="formCliente" class=" flex justify-center items-center ">
         <div class="justify-center h-auto mb-12  w-[75vw] mt-14">
             <div class="mb-4 text-center">
@@ -179,4 +182,13 @@
         currentStep = step;
         formSteps[currentStep - 1].style.display = 'block';
     }
+
+    let selectedInstalacion = document.getElementById('selectedInstalacion').value;
+    
+    if (selectedInstalacion) {
+        // Utiliza el valor de selectedInstalacion para prellenar tu formulario
+        nombreInstalacionInput.value = selectedInstalacion;
+
+    }
 </script>
+

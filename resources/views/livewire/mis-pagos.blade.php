@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     integrity="sha384-o3q2U7w5JC9eRa6A5h+ypSd1/u3HP7ZGqX5zCCglXp6WtsH+EG5KG5fNje86axtx" crossorigin="anonymous">
-
 <div class="flex flex-col space-y-4 p-4">
 
 
@@ -19,57 +18,51 @@
         @if ($this->compararFecha($pago->fecha_limite))
             <div class="flex items-center">
                 <div class="bg-[#282828] text-white flex-grow  flex items-center ">
-                    
-                    <div class="@if($this->pasoCorte($pago->fecha_limite)) bg-[#2999a8] @else bg-[#e6b516] @endif text-zinc-100 font-semibold  p-5  w-1/12 mr-10 text-center ">
+
+                    <div
+                        class="@if ($this->pasoCorte($pago->fecha_limite)) bg-[#2999a8] @else bg-[#e6b516] @endif text-zinc-100 font-semibold  p-5  w-1/12 mr-10 text-center ">
                         {{ $this->obtenerMes($pago->fecha_limite) }}</div>
-                    
-                    
-                        @isset($pago->fecha_pagado)
 
-
-                        <p>Fecha de pago: <span class="text-gray-300 ml-1 text-sm">  {{ $pago->fecha_pagado }}</span></p>
-                    
-                        <p class="ml-7">Total: <span class="text-gray-100 ml-1 text-base"> ${{$this->calcularTotal($pago)}}</p>
-                            <div class="ml-auto p-1 mr-5">
-                                <button class="bg-blue-500 text-white rounded-[5px] p-2 mr-2">Facturar</button>
-                                <button class="bg-blue-500 text-white rounded-[5px] p-2">Comprobante</button>
-                            </div> 
-
-                        @else
-
-
-                            <p>Fecha de corte: <span class="text-gray-300 ml-1 text-sm">{{ $pago->fecha_limite }}</span></p>
-                            @isset($pago->recargo)<p class="ml-7">Recargo: <span class="text-gray-300 ml-1 text-sm"> {{$pago->recargo->monto}}</p>@endisset
-                            <p class="ml-7">Total: <span class="text-gray-100 ml-1 text-base"> ${{$this->calcularTotal($pago)}}</p>
-                            @if(!$this->pasoCorte($pago->fecha_limite)) <div class="w-64 ml-6  text-center">  <span class="text-gray-300  text-xs"> *Tiene hasta el dia 12 para pagar, evite que cancelemos su servico</span></div>@endif
-                            <div class="ml-auto  p-1 mr-5">
-                            <a href="{{ url('/realizarPago/' . Auth::user()->cliente->id) }}"><button class="bg-blue-500 text-white rounded-[5px] w-32 p-2"  >Pagar</button></a>
-                            </div>
-
-                        @endisset
+                    <p>Fecha de corte: <span class="text-gray-300 ml-1 text-sm">{{ $pago->fecha_limite }}</span></p>
+                    @isset($pago->recargo)
+                        <p class="ml-7">Recargo: <span class="text-gray-300 ml-1 text-sm"> {{ $pago->recargo->monto }}</p>
+                    @endisset
+                    <p class="ml-7">Total: <span class="text-gray-100 ml-1 text-base">
+                            ${{ $this->calcularTotal($pago) }}</p>
+                    @if (!$this->pasoCorte($pago->fecha_limite))
+                        <div class="w-64 ml-6  text-center"> <span class="text-gray-300  text-xs"> *Tiene hasta el dia
+                                12 para pagar, evite que cancelemos su servico</span></div>
+                    @endif
                     
 
 
+
+                    <div class="ml-auto  p-1 mr-5">
+                        <form action="{{ route('paypal') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="price" value="20.0">
+                            <button type="submit"
+                             class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                              PayPal
+                        </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         @else
             <div class="flex items-center">
                 <div class="bg-[#282828] text-white flex-grow  flex items-center">
-                    <div class=" @isset($pago->fecha_pagado) bg-[#2999a8] @else bg-[#d3472e] @endisset 
+                    <div
+                        class=" @isset($pago->fecha_pagado) bg-[#2999a8] @else bg-[#d3472e] @endisset 
                         text-zinc-100 font-semibold p-5 w-1/12 mr-10 text-center">
                         {{ $this->obtenerMes($pago->fecha_limite) }}</div>
                     <p>Fecha de pago: <span class="text-gray-300 ml-1 text-sm"> @isset($pago->fecha_pagado) {{ $pago->fecha_pagado }} @else N/A @endisset</span></p>
                     
                     <p class="ml-7">Total: <span class="text-gray-100 ml-1 text-base"> ${{$this->calcularTotal($pago)}}</p>
-                        @isset($pago->fecha_pagado)
-                        <div class="ml-auto p-1 mr-5">
-                            <button class="bg-blue-500 text-white rounded-[5px] p-2 mr-2">Facturar</button>
-                            <button class="bg-blue-500 text-white rounded-[5px] p-2">Comprobante</button>
-                        </div>
-                         @else
-
-                         @endisset
-                        
+                    <div class="ml-auto p-1 mr-5">
+                        <button class="bg-blue-500 text-white rounded-[5px] p-2 mr-2">Facturar</button>
+                        <button class="bg-blue-500 text-white rounded-[5px] p-2">Comprobante</button>
+                    </div>
                 </div>
             </div>
         @endif
@@ -89,5 +82,18 @@
         </div>
     </div>
 
+    <div class="paypal">
+        <h2>Producto:internet seguro</h2>
+        <h3>Precio: 20 dolars</h3>
 
+        <form action="{{ route('paypal') }}" method="POST">
+            @csrf
+            <input type="hidden" name="price" value="20.0">
+            <button type="submit"
+                class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                PayPal
+            </button>
+        </form>
+        
+    </div>
 </div>
