@@ -14,6 +14,7 @@ class PaypalController extends PagoController
     public function payment(Request $request)
     {
         $pago = Pago::find($request->pagoId);
+        
         $price = 0;
         if($pago->tipoServicio)
             $price+=$pago->tipoServicio->costo;
@@ -57,6 +58,7 @@ class PaypalController extends PagoController
     public function success(Request $request, $pagoId)
     {
         $provider = new PayPalClient;
+        dd($provider);
         $provider->setApiCredentials(config('paypal'));
         $paypalToken=$provider->getAccessToken();  
         $response = $provider->capturePaymentOrder($request->token);

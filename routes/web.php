@@ -52,17 +52,17 @@ Route::middleware([
 ])->group(function () {
     Route::get('/clientes',Clientes::class)->middleware('can:admin')->name('clientes');
     Route::get('/estado-cuenta',EstadoCuenta::class)->middleware('can:admin')->name('estado-cuenta');
-    Route::get('/pagos-pendientes',PagosAtrasados::class)->name('pagos-pendientes');
+    Route::get('/pagos-pendientes',PagosAtrasados::class)->middleware('can:admin')->name('pagos-pendientes');
     Route::get('/cancelados',Cancelados::class)->middleware('can:admin')->name('cancelados');
     Route::get('/pendientes',Pendientes::class)->middleware('can:admin')->name('pendientes');
     Route::get('/reportes-admin',Reportes::class)->middleware('can:admin')->name('reportes-admin');
     Route::get('/reportes-admin',ReportesAdmin::class)->middleware('can:admin')->name('reportes-admin');
     Route::patch('/registarPago/{pagoId}', [PagoController::class, 'realizarPago'])->middleware('can:admin')->name('registarPago');
-    Route::get('/busqueda-cliente',BusquedaCliente::class)->name('busqueda-cliente');
+    Route::get('/busqueda-cliente',BusquedaCliente::class)->middleware('can:admin')->name('busqueda-cliente');
     Route::get('/agregarObj',AgregarObj::class)->middleware('can:admin')->name('agregarObj');
 
 
-    Route::get('/agregar-cliente',AgregarCliente::class)->name('agregar-cliente');
+    Route::get('/agregar-cliente',AgregarCliente::class)->middleware('can:admin')->name('agregar-cliente');
 
     Route::delete('/eliminar-user/{userId}',[UserController::class, 'eliminar'])->middleware('can:admin')->name('eliminar.user');
     Route::patch('/resolver-reporte/{reporteId}',[ReporteController::class, 'resolverReporte'])->middleware('can:admin')->name('resolver.reporte');
@@ -77,5 +77,5 @@ Route::middleware([
     Route::post('/assignarCliente',[RealizarPago::class,'assignarCliente'])->middleware('can:cobrador')->name('assignarCliente');
     Route::post('/realizarPago',RealizarPago::class)->middleware('can:cobrador')->name('realizarPago');
     Route::get('/busquedaCliente',BusquedaCliente::class)->middleware('can:cobrador')->name('busquedaCliente');
-    Route::post('/reportarPagos',[CajaController::class,'reportarPagos'])->name('reportarPagos');
+    Route::post('/reportarPagos',[CajaController::class,'reportarPagos'])->middleware('can:cobrador')->name('reportarPagos');
 });
