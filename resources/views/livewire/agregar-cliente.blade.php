@@ -28,7 +28,7 @@
                     
                     <div class="mb-4">
                         <label for="correo" class="block">Correo:</label>
-                        <input wire:model="correo" type="text" id="correo" name="correo" class="w-1/2 p-2 border rounded" required>
+                        <input wire:model="correo" type="email" id="correo" name="correo" class="w-1/2 p-2 border rounded" required>
                     </div>
                     
                     <div class="mb-4">
@@ -38,7 +38,7 @@
                     
                     <div class="mb-4">
                         <label for="telefono" class="block">Teléfono:</label>
-                        <input wire:model="telefono" type="text" id="telefono" name="telefono" class="w-1/2 p-2 border rounded" required>
+                        <input wire:model="telefono" type="number" id="telefono" name="telefono" class="w-1/2 p-2 border rounded" required>
                     </div>
 
                     <div class="mb-4">
