@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('cliente_id')->constrained('clientes')->cascadeOnDelete();;
             $table->foreignId('tipo_servicio_id')->constrained('tipo_servicios');
             $table->foreignId('recargo_id')->nullable()->constrained('recargos');
+            $table->foreignId('caja_id')->nullable()->constrained('cajas');
             $table->timestamps();
         });
     }

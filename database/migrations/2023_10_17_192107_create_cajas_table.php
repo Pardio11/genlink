@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('zonas', function (Blueprint $table) {
+        Schema::create('cajas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('direccion');
-            $table->string('alcance');
-            $table->foreignId('router_id')->constrained('routers')->cascadeOnDelete();
-            $table->foreignId('antena_id')->constrained('antenas')->cascadeOnDelete();
+            $table->date('fecha');
+            $table->foreignId('cobrador_id')->constrained('cobradors')->cascadeOnDelete();
             $table->timestamps();
-
         });
     }
 
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('zonas');
+        Schema::dropIfExists('cajas');
     }
 };

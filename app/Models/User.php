@@ -65,4 +65,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Cliente::class);
     }
+    public function cobrador(): BelongsTo
+    {
+        return $this->belongsTo(Cobrador::class);
+    }
 }

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Antena;
 use App\Models\Cliente;
+use App\Models\Cobrador;
 use App\Models\Contrato;
 use App\Models\Instalacion;
 use App\Models\Router;
@@ -66,8 +67,8 @@ class UserSeeder extends Seeder
                 'nombre' => "Primo Tapia",
                 'direccion' => "Tepozan 350",
                 'alcance' => "100km",
-                'antena_id' => 1,
-                'router_id' => 1,
+                'antena_id' => 3,
+                'router_id' => 3,
             ])->id,
         ]);
 
@@ -111,8 +112,8 @@ class UserSeeder extends Seeder
                 'nombre' => "Primo Tapia",
                 'direccion' => "Tepozan 350",
                 'alcance' => "100km",
-                'antena_id' => 1,
-                'router_id' => 1,
+                'antena_id' => 2,
+                'router_id' => 2,
             ])->id
         ]);
 
@@ -148,5 +149,21 @@ class UserSeeder extends Seeder
             'email' => 'tadeo@gmail.com',
             'password' => Hash::make('12345678')
         ])->assignRole('Admin');
+
+        $cobrador = Cobrador::create([
+            'nombre'=> "Doña Chula",
+            'telefono' => "4431205706",
+            'ubicacion' => "https://maps.app.goo.gl/fabHQJuByZK775MKA"
+        ]);
+
+        User::create([
+            'name' => 'Maria Flores',
+            'email' => 'chula@gmail.com',
+            'password' => Hash::make('12345678'),
+            'cobrador_id' => $cobrador->id,
+
+        ])->assignRole('Cobrador');
+        
+        
     }
 }

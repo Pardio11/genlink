@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->foreignId('cliente_id')->nullable()->constrained('clientes')->cascadeOnDelete();
+            $table->foreignId('cobrador_id')->nullable()->constrained('cobradors')->cascadeOnDelete();
             $table->timestamps();
         });
     }

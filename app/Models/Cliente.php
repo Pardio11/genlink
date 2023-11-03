@@ -48,21 +48,21 @@ class Cliente extends Model
     
     public function contrato(): BelongsTo
     {
-        return $this->belongsTo(Contrato::class)->onCascade('delete');
+        return $this->belongsTo(Contrato::class);
     }
 
     public function antena(): BelongsTo
     {
-        return $this->belongsTo(Antena::class)->onCascade('delete');
+        return $this->belongsTo(Antena::class);
     }
 
     public function router(): BelongsTo
     {
-        return $this->belongsTo(Router::class)->onCascade('delete');
+        return $this->belongsTo(Router::class);
     }
 
     public function zona(): BelongsTo
     {
-        return $this->belongsTo(Zona::class)->onCascade('delete');
+        return $this->belongsTo(Zona::class);
     }
 }

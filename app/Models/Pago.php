@@ -18,7 +18,8 @@ class Pago extends Model
         'fecha_limite',
         'cliente_id',
         'tipo_servicio_id',
-        'recargo_id'
+        'recargo_id',
+        'caja_id',
     ];
     protected $dates = ['fecha_pagado','fecha_limite'];
 
@@ -30,11 +31,15 @@ class Pago extends Model
     //bien
     public function recargo(): BelongsTo
     {
-        return $this->belongsTo(Recargo::class)->onCascade('delete');
+        return $this->belongsTo(Recargo::class);
     }
     //bien
     public function cliente(): BelongsTo
     {
-        return $this->belongsTo(Cliente::class)->onCascade('delete');
+        return $this->belongsTo(Cliente::class);
+    }
+    public function caja(): BelongsTo
+    {
+        return $this->belongsTo(Caja::class);
     }
 }

@@ -23,6 +23,9 @@ class CheckUserRole
         if ($role=='Admin') {
             return redirect('/clientes');  
         }
+        if ($role=='Cobrador') {
+            return redirect('/busquedaCliente');  
+        }
         return $next($request);
     }
 }

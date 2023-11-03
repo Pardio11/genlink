@@ -19,15 +19,16 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             ModeloAntenaSeeder::class,
             ModeloRouterSeeder::class,
-            UserSeeder::class,
             AntenasTableSeeder::class,
             RoutersTableSeeder::class,
+            UserSeeder::class,
             ReportesTableSeeder::class,
             /* InstalacionesTableSeeder::class, */
             TipoDescuentosTableSeeder::class,
             TipoServiciosTableSeeder::class,
             DescuentosTableSeeder::class,
             RecargosTableSeeder::class,
+            CajaTableSeeder::class,
             PagosTableSeeder::class,
             ZonasTableSeeder::class,
 

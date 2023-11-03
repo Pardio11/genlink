@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CajaController;
 use App\Http\Controllers\InstalacionController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\PaypalController;
@@ -66,4 +67,15 @@ Route::middleware([
     Route::delete('/eliminar-user/{userId}',[UserController::class, 'eliminar'])->middleware('can:admin')->name('eliminar.user');
     Route::patch('/resolver-reporte/{reporteId}',[ReporteController::class, 'resolverReporte'])->middleware('can:admin')->name('resolver.reporte');
 
+});
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::post('/assignarCliente',[RealizarPago::class,'assignarCliente'])->middleware('can:cobrador')->name('assignarCliente');
+    Route::post('/realizarPago',RealizarPago::class)->middleware('can:cobrador')->name('realizarPago');
+    Route::get('/busquedaCliente',BusquedaCliente::class)->middleware('can:cobrador')->name('busquedaCliente');
+    Route::post('/reportarPagos',[CajaController::class,'reportarPagos'])->name('reportarPagos');
 });

@@ -14,6 +14,6 @@ class Reporte extends Model
     protected $fillable = ['asunto', 'descripcion','resuelto','cliente_id','fecha'];
     public function cliente():BelongsTo
     {
-        return $this->belongsTo(Cliente::class)->onCascade('delete');
+        return $this->belongsTo(Cliente::class);
     }
 }
