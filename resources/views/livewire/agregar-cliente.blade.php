@@ -28,7 +28,7 @@
                     
                     <div class="mb-4">
                         <label for="correo" class="block">Correo:</label>
-                        <input wire:model="correo" type="text" id="correo" name="correo" class="w-1/2 p-2 border rounded" required>
+                        <input wire:model="correo" type="email" id="correo" name="correo" class="w-1/2 p-2 border rounded" required>
                     </div>
                     
                     <div class="mb-4">
@@ -38,7 +38,7 @@
                     
                     <div class="mb-4">
                         <label for="telefono" class="block">Teléfono:</label>
-                        <input wire:model="telefono" type="text" id="telefono" name="telefono" class="w-1/2 p-2 border rounded" required>
+                        <input wire:model="telefono" type="number" id="telefono" name="telefono" class="w-1/2 p-2 border rounded" required>
                     </div>
 
                     <div class="mb-4">
@@ -168,11 +168,25 @@
 
 </div>
 
+
+
+
 <script>
     let currentStep = 1;
     const formSteps = document.querySelectorAll('.form-step');
 
     function nextStep(step) {
+        
+        if (currentStep === 1 && !validateStep1()) {
+            alert('Por favor, completa todos los campos requeridos en el Paso 1.');
+            return;
+        }
+        if (currentStep === 2 && !validateStep2()) {
+            alert('Por favor, completa todos los campos requeridos en el Paso 2.');
+            return;
+        }
+        
+
         formSteps[currentStep - 1].style.display = 'none';
         currentStep = step;
         formSteps[currentStep - 1].style.display = 'block';
@@ -184,12 +198,40 @@
         formSteps[currentStep - 1].style.display = 'block';
     }
 
-    let selectedInstalacion = document.getElementById('selectedInstalacion').value;
-    
-    if (selectedInstalacion) {
-        // Utiliza el valor de selectedInstalacion para prellenar tu formulario
-        nombreInstalacionInput.value = selectedInstalacion;
+    function validateStep1() {
+        const user = document.getElementById('user').value;
+        const password = document.getElementById('password').value;
+        const correo = document.getElementById('correo').value;
+        const direccion = document.getElementById('direccion').value;
+        const telefono = document.getElementById('telefono').value;
+        
 
+        if (!user || !password || !correo || !direccion || !telefono) {
+            return false; 
+        }
+      
+        return true; 
+    }
+
+    function validateStep2() {
+        
+        const userAntena = document.getElementById('userAntena').value;
+        const passwordAntena = document.getElementById('passwordAntena').value;
+        
+
+        if (!userAntena || !passwordAntena) {
+            return false; 
+        }
+        
+        return true; 
+    }
+
+    
+    let selectedInstalacion = document.getElementById('selectedInstalacion').value;
+    if (selectedInstalacion) {
+
+        nombreInstalacionInput.value = selectedInstalacion;
     }
 </script>
+
 
