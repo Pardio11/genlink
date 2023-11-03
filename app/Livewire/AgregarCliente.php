@@ -67,8 +67,10 @@ protected $listeners = ['instalacionSeleccionada'];
             'telefono',
             'correo',
         ]);
+        
         $this->cliente = session('cliente');
         if($this->cliente){
+            
             session()->forget('cliente');
             $this->user = $this->cliente->user->name;
             $this->password ="********";
@@ -212,7 +214,11 @@ protected $listeners = ['instalacionSeleccionada'];
 
          public function crearUser(){
             if($this->password!="********"){
+
             $this->validate([
+                'user' => 'required',
+                'password' => ['required','different:********'],
+                'correo' => 'required',
                 'direccion' => 'required',
                 'telefono' => 'required',
             ]);
@@ -221,12 +227,6 @@ protected $listeners = ['instalacionSeleccionada'];
            $cliente = Cliente::create([
                 'direccion' => $this->direccion,
                 'telefono' => $this->telefono,
-            ]);
-    
-            $this->validate([
-                'user' => 'required',
-                'password' => 'required','different:********',
-                'correo' => 'required',
             ]);
 
             $user=User::create([
