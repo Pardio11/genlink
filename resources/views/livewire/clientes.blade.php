@@ -52,7 +52,8 @@
                         <td class="px-6 py-4">
                             <div class="flex-col ">
                                 <button wire:click="openEditModal({{ $c->id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded mb-3">Editar</button>
-                                <button wire:click="deleteCliente({{ $c->id }})" class="bg-red-500 hover:bg-red-700 text-white font-bold w-20 h-8 rounded">Eliminar</button>                            </div>
+                                <button wire:click="deleteCliente({{ $c->id }})" class="bg-red-500 hover:bg-red-700 text-white font-bold w-20 h-8 rounded">Eliminar</button>                            
+                            </div>
                         </td>
                     </tr>
                     @endforeach
@@ -76,7 +77,7 @@
                     <form wire:submit.prevent="updateCliente">
                         <div>
                             <label for="nombre" class="block font-semibold">Nombre:</label>
-                            <input wire:model="editingCliente.user.name" type="text" id="nombre" name="nombre" class="w-full p-2 border rounded">
+                            <input wire:model="clienteSeleccionado.user.name" type="text" id="nombre" name="nombre" class="w-full p-2 border rounded">
                         </div>
                         <div>
                             <label for="correo" class="block font-semibold">Correo:</label>

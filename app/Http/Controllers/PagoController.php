@@ -27,7 +27,7 @@ class PagoController extends Controller
         ]);
         
     }
-    public function realizarPago($pagoId)
+    public function realizarPago($pagoId, $redirect=true)
     {
         $pago = Pago::find($pagoId);
         
@@ -45,7 +45,9 @@ class PagoController extends Controller
             $contrato->save();
             $this->generarPago($cliente->id,$ultimoMes);
         }
-        return redirect()->back()->with('success', 'Pago exitoso.');
+        if($redirect){
+            return redirect()->back()->with('success', 'Pago exitoso.');
+        }
         
     }
 }

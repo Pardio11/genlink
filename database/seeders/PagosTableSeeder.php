@@ -44,7 +44,7 @@ class PagosTableSeeder extends Seeder
             'cliente_id' => 1,
             'tipo_servicio_id' => 2,
             'recargo_id'=>11,
-            'caja_id'=>1
+            'caja_id'=>2
         ]);
         Pago::create([
             'fecha_limite' => '2023-12-5', // Genera una fecha hasta el 31 de diciembre de 2024
@@ -64,6 +64,11 @@ class PagosTableSeeder extends Seeder
             'cliente_id' => 2,
             'tipo_servicio_id' => 2,
             
+        ]);
+        Pago::create([
+            'fecha_limite' => '2023-11-5', // Genera una fecha hasta el 31 de diciembre de 2024
+            'cliente_id' => 2,
+            'tipo_servicio_id' => 2
         ]);
 
         /////////////////PAGOS DE PRUEBA/////////////////////
