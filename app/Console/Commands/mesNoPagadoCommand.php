@@ -41,7 +41,7 @@ class mesNoPagadoCommand extends Command
 
                 }else
                 {
-                    $this->crearRecargoMes($p->cliente_id);                    
+                    $this->crearRecargoMes($p);                    
                 }
             }
         }
@@ -75,47 +75,49 @@ class mesNoPagadoCommand extends Command
 
 }
 
-public function crearRecargoMes($cliente_id)
+public function crearRecargoMes($p)
 {
 
-    $pagos = Pago::all();
-
+    $pagos=Pago::all();
+    
     $anioActual = date("Y");
     $mesActual = date("m");
 
-    
-    
 
-    
-
+    $fecha_limite = $anioActual . '-' . $mesActual . '-05';
+    $existe=false;
 
 
-    foreach ($pagos as $p)
-    {
-        $fechaPago= new DateTime($p->fecha_limite);
-        $anioFecha= $fechaPago->format("Y");
-        $mesFecha = $fechaPago->format("m");
+                foreach ($pagos as $pa)
+                {
+                    
+                        if($pa->fecha_limite===$fecha_limite&&$pa->cliente_id===$p->cliente_id)
+                    {
+                        $existe=true;
+                        echo("existe"); //ya existe un pago, implementar metodo para notificar.
+                        break;
+                    }
+                    
+                    
+                }
 
-        if ($anioFecha == $anioActual && $mesFecha == $mesActual) 
-        {
-            if($p->recargo_id===NULL&&$p->cliente_id===$cliente_id)
-            {
-                $recargo= new Recargo;
-                $recargo->monto="100";
-                $recargo->descripcion="Mes anteriro no pagado desde controller";
-                $recargo->save();
-                $p->recargo_id = $recargo->id;
-                $p->save();
-            }
+                if(!$existe)
+                {
+                    $recargo= new Recargo;
+                    $recargo->monto="100";
+                    $recargo->descripcion="Mes anterior no pagado";
+                    $recargo->save();
+
+                    $pago= new Pago;
+                    $pago->fecha_limite = $fecha_limite;
+                    $pago->cliente_id = $p->cliente_id;
+                    $pago->tipo_servicio_id = $p->tipo_servicio_id;
+                    $pago->recargo_id = $recargo->id;
+
+                    $pago->save();
+                }
             
-        } else 
-        {
-
-            
-        }
-
-    }
-
+        
 
     
 

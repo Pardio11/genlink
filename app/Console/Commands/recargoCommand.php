@@ -33,7 +33,7 @@ class recargoCommand extends Command
 
         foreach ($pagos as $p) 
         {
-            if ($this->compare()&&$this->compareMes($p->fecha_limite))
+            if ($this->compareMes($p->fecha_limite))
             {
                 if ($this->compareMes($p->fecha_pagado)&&($p->fecha_pagado!=NULL))
                 {
@@ -54,18 +54,7 @@ class recargoCommand extends Command
         
     }
 
-    public function compare()
-{
-
-    $dia_actual = date('d');
-
-if ($dia_actual == '04') {
-    return true;
-} else {
-    return false;
-}
-
-}
+  
 
 public function compareMes($fechaS)
 {
@@ -98,7 +87,7 @@ public function crearRecargo($idPago)
 
     $recargo= new Recargo;
     $recargo->monto="50";
-    $recargo->descripcion="Recargo desde controller";
+    $recargo->descripcion="Pago Atrasado :(";
     $recargo->save();
 
     $pago = Pago::find($idPago);
@@ -109,7 +98,8 @@ public function crearRecargo($idPago)
         $pago->save();
 
         
-    } else {
+    } else 
+    {
         
     }
 
