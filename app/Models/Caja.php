@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Caja extends Model
 {
     use HasFactory;
-    protected $fillable = ['fecha','cobrador_id'];
+    protected $fillable = ['fecha','cobrador_id','recaudado'];
     public function pagos(): HasMany
     {
         return $this->hasMany(Pago::class);

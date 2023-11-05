@@ -46,7 +46,6 @@ class PagoController extends Controller
             $this->generarPago($cliente->id,$ultimoMes);
         }
         if($redirect){
-            dd("redir");
             return redirect()->back()->with('success', 'Pago exitoso.');
         }
         

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('cajas', function (Blueprint $table) {
             $table->id();
             $table->date('fecha');
+            $table->boolean('recaudado')->default(false);
             $table->foreignId('cobrador_id')->constrained('cobradors')->cascadeOnDelete();
             $table->timestamps();
         });
