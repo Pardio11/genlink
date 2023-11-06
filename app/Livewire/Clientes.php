@@ -3,6 +3,7 @@
 namespace App\Livewire;
 use App\Models\User;
 use App\Models\Cliente;
+use App\Models\Contrato;
 use App\Models\Pago;
 use App\Models\Recargo;
 use DateTime;
@@ -15,6 +16,7 @@ use Livewire\Component;
 class Clientes extends Component
 {
     public $zona_id;
+    public $estatus;
 
     public $editingCliente;
     public $idC;
@@ -27,52 +29,54 @@ class Clientes extends Component
     public $userMail;
     public $userTel;
     public $userDirec;
-    
-
-
-/*     public function render()
-    {
-        $clientes = Cliente::all();
-         $clientes = Cliente::when($this->zona_id, function ($query) {
-            $query->whereHas('zonas', function ($query) {
-                $query->where('zona_id', $this->zona_id);
-            });
-        })->get();
-
-        $Pagos = Pago::all();
-        $zonas = Zona::all();
-    
-        return view('livewire.clientes', [
-            'clientes' => $clientes, 
-            'pagos' => $Pagos,
-            'zonas' => $zonas
-        ]);
-    }
-     */
 
      public function mount()
 {
     $this->zona_id = ''; // o algún valor predeterminado si es necesario
+    $this->estatus = '';
 }
 
      public function render()
 {
+    
     $clientesQuery = Cliente::query();
 
     if ($this->zona_id) {
-        $clientesQuery->whereHas('zonas', function ($query) {
-            $query->where('zona_id', $this->zona_id);
+        $clientesQuery->whereHas('zona', function ($query) {
+            $query->where('id', $this->zona_id);
         });
     }
-
+    
+    
+    
+    if ($this->estatus!='') {
+        
+        $clientesQuery->whereHas('contrato', function ($query) {
+            $query->where('activo', $this->estatus);
+        });
+    
+    }
+  
     $clientes = $clientesQuery->get();
+
+ 
+ 
+
+    
+
+
+
+
     $pagos = Pago::all();
     $zonas = Zona::all();
+    $contrato= Contrato::all();
 
     return view('livewire.clientes', [
         'clientes' => $clientes, 
         'pagos' => $pagos,
-        'zonas' => $zonas
+        'zonas' => $zonas,
+        'contrato'=>$contrato,
+
     ]);
 }
 
@@ -82,7 +86,11 @@ class Clientes extends Component
         $this->idC=$this->editingCliente->id;
         $this->isEditing = true;
     }
-
+    public function applyFilter()
+    {
+    
+    }
+    
     public function openEditModal($clienteId)
     {
         $this->editingCliente = Cliente::find($clienteId);
