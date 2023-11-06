@@ -15,6 +15,8 @@ class Clientes extends Component
     public $editingCliente;
     public $isEditing = false;
 
+        
+
   
 
     public function render()
