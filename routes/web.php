@@ -78,4 +78,5 @@ Route::middleware([
     Route::post('/realizarPago',RealizarPago::class)->middleware('can:cobrador')->name('realizarPago');
     Route::get('/busquedaCliente',BusquedaCliente::class)->middleware('can:cobrador')->name('busquedaCliente');
     Route::post('/reportarPagos',[CajaController::class,'reportarPagos'])->middleware('can:cobrador')->name('reportarPagos');
+    Route::post('/adelantarPagos',[CajaController::class,'adelantarPagos'])->middleware('can:cobrador')->name('adelantarPagos');
 });

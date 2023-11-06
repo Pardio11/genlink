@@ -92,7 +92,7 @@ class UserSeeder extends Seeder
                 'dia_corte' => 5,
                 'velocidad' => 40,
                 'precio' => 230,
-                'activo' => false
+                'activo' => true
             ])->id,
             'antena_id' => Antena::create([
                 'ip' => '192.0.0.1',
@@ -134,6 +134,12 @@ class UserSeeder extends Seeder
                 'nota' => "Es en un segundo piso, hay un arbol grande se ocuparon 3 metros de tubo",
                 'realizado' => true
             ])->id,
+            'contrato_id' => Contrato::create([
+                'dia_corte' => 5,
+                'velocidad' => 40,
+                'precio' => 230,
+                'activo' => true
+            ])->id
         ]);
 
         User::create([

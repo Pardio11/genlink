@@ -123,6 +123,87 @@
     </div>
 @endif
 
+{{-----
+<div class="contenedor flex">
+
+    <div class="izquierda w-[20%]  items-center ">
+        @foreach ($clientes as $c)
+
+<h1>{{$c->user->name}}</h1>
+@foreach ($c->pagos as $p)
+@php
+$obj=json_decode($p,true);
+
+
+@endphp
+<h1>
+{{$obj['fecha_pagado']}}
+
+</h1>
+@endforeach
+    <h1>------------------------------------------</h1>
+@endforeach
+    </div>
+
+    <div class="medio">
+
+
+        @foreach ($clientes as $c)
+
+    @foreach ($c->pagos as $p)
+    @php
+    $obj=json_decode($p,true);
+    @endphp
+    @if ($this->compare()&&$this->compareMes($obj['fecha_limite']))
+        
+    @if ($this->compareMes($obj['fecha_pagado'])&&($obj['fecha_pagado']!=NULL))
+      <h1>{{$c->user->name}}</h1>
+      <h1>tiene</h1>  
+    @else
+        @if ($p->recargo_id===NULL)
+        @php($this->crearRecargo($p->id))
+            
+        @endif
+    <h1>{{$c->user->name}}</h1>
+    <h1>no tiene</h1>
+      @endif
+
+
+@endif
+
+
+@endforeach
+<h1>------------------------------------------</h1>
+@endforeach
+    </div>
+
+    <div class="derecha">
+@foreach ($clientes as $c)
+
     
+<h1>{{$c->user->name}}</h1>
+@foreach ($c->pagos as $p)
+
+@isset($p->recargo_id)
+<h1>{{$p->recargo_id}}</h1>
     
+@endisset
+    
+@endforeach
+    
+
+@endforeach
+    </div>
+
+
+
 </div>
+--}}
+
+
+
+
+
+    
+    
+</div>{{-----final-del-template----}}

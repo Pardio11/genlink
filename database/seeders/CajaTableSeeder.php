@@ -17,5 +17,9 @@ class CajaTableSeeder extends Seeder
             'fecha' => '2023-10-17',
             'cobrador_id'=>1
         ]);
+        Caja::create([
+            'fecha' => '2023-11-1',
+            'cobrador_id'=>1
+        ]);
     }
 }
