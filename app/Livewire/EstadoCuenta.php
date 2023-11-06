@@ -7,6 +7,8 @@ use App\Models\Pago;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Redirect;
+
 #[Layout('layouts.app')]
 class EstadoCuenta extends Component
 {
@@ -29,6 +31,7 @@ class EstadoCuenta extends Component
             $caja->recaudado = true;
             $caja->save();
         }
+        return redirect()->route('estado-cuenta')->with('success', 'Caja recaudado correctamente');
     }
     public function cajaRecaudado()
     {
