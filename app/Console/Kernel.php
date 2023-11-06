@@ -13,6 +13,17 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
+
+        $schedule->command("recargo:mesANT")->everyMinute();
+        $schedule->command("recargo:created")->everyMinute();
+        $schedule->command("contrato:change")->everyMinute();
+
+        //$schedule->command("recargo:mesANT")->monthly();
+        //$schedule->command("recargo:created")->cron('0 0 6 * *');
+        //$schedule->command("contrato:change")->cron('0 0 14 * *');
+
+        
+        
     }
 
     /**

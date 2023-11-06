@@ -178,11 +178,11 @@
     function nextStep(step) {
         
         if (currentStep === 1 && !validateStep1()) {
-            alert('Por favor, completa todos los campos requeridos en el Paso 1.');
+            alert('Por favor, completa todos los campos requeridos en Información de usuario.');
             return;
         }
         if (currentStep === 2 && !validateStep2()) {
-            alert('Por favor, completa todos los campos requeridos en el Paso 2.');
+            alert('Por favor, completa todos los campos requeridos en Información de antenas');
             return;
         }
         
