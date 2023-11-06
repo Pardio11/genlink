@@ -7,15 +7,18 @@ use App\Models\Pago;
 use App\Models\Recargo;
 use DateTime;
 use App\Models\Zona;
+
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 #[Layout('layouts.app')]
 
 class Clientes extends Component
 {
-    
+    public $zona_id;
+
     public $editingCliente;
     public $idC;
+
     
     public $isEditing = false;
     
@@ -26,13 +29,58 @@ class Clientes extends Component
     public $userDirec;
     
 
-    public function render()
+
+/*     public function render()
     {
         $clientes = Cliente::all();
-        $Pagos=Pago::all();
-        $zonas= Zona::all();
+         $clientes = Cliente::when($this->zona_id, function ($query) {
+            $query->whereHas('zonas', function ($query) {
+                $query->where('zona_id', $this->zona_id);
+            });
+        })->get();
 
-        return view('livewire.clientes', ['clientes' => $clientes, 'pagos' => $Pagos,'zonas'=>$zonas]);
+        $Pagos = Pago::all();
+        $zonas = Zona::all();
+    
+        return view('livewire.clientes', [
+            'clientes' => $clientes, 
+            'pagos' => $Pagos,
+            'zonas' => $zonas
+        ]);
+    }
+     */
+
+     public function mount()
+{
+    $this->zona_id = ''; // o algún valor predeterminado si es necesario
+}
+
+     public function render()
+{
+    $clientesQuery = Cliente::query();
+
+    if ($this->zona_id) {
+        $clientesQuery->whereHas('zonas', function ($query) {
+            $query->where('zona_id', $this->zona_id);
+        });
+    }
+
+    $clientes = $clientesQuery->get();
+    $pagos = Pago::all();
+    $zonas = Zona::all();
+
+    return view('livewire.clientes', [
+        'clientes' => $clientes, 
+        'pagos' => $pagos,
+        'zonas' => $zonas
+    ]);
+}
+
+    public function openFilter($clienteId)
+    {
+        $this->editingCliente = Cliente::find($clienteId);
+        $this->idC=$this->editingCliente->id;
+        $this->isEditing = true;
     }
 
     public function openEditModal($clienteId)
