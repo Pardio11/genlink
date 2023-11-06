@@ -23,12 +23,6 @@ class Clientes extends Component
 
     
     public $isEditing = false;
-<<<<<<< HEAD
-
-        
-
-  
-=======
     
     public $clienteId;
     public $userName;
@@ -36,7 +30,6 @@ class Clientes extends Component
     public $userTel;
     public $userDirec;
     
->>>>>>> 370cc7c858545a80148e211fa8aee326b1496d61
 
 
 /*     public function render()
