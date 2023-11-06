@@ -23,12 +23,41 @@ class Clientes extends Component
 
     
     public $isEditing = false;
+<<<<<<< HEAD
+
+        
+
+  
+=======
     
     public $clienteId;
     public $userName;
     public $userMail;
     public $userTel;
     public $userDirec;
+    
+>>>>>>> 370cc7c858545a80148e211fa8aee326b1496d61
+
+
+/*     public function render()
+    {
+        $clientes = Cliente::all();
+         $clientes = Cliente::when($this->zona_id, function ($query) {
+            $query->whereHas('zonas', function ($query) {
+                $query->where('zona_id', $this->zona_id);
+            });
+        })->get();
+
+        $Pagos = Pago::all();
+        $zonas = Zona::all();
+    
+        return view('livewire.clientes', [
+            'clientes' => $clientes, 
+            'pagos' => $Pagos,
+            'zonas' => $zonas
+        ]);
+    }
+     */
 
      public function mount()
 {

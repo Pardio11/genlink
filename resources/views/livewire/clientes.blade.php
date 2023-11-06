@@ -63,8 +63,6 @@
                               N/A
                             @endisset
                           </td>
-
-                        
                         <td class="px-6 py-4">{{ $c->direccion }}</td>
                         <td class="px-6 py-4">
                             <div class="flex-col ">
