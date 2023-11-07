@@ -29,6 +29,7 @@
     <form action="{{ route('realizarPago') }}" method="post" >
         @csrf
         @method('POST')
+        <input type="hidden" name="caja_id" id="caja_id" value="{{ $caja->id }}">
         <input type="text" name="numeroCliente" id="numeroCliente" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[30%] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Buscar cliente" >
         <div class="container flex row-auto justify-center mt-6">    
             <button type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
