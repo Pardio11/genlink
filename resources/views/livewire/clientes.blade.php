@@ -54,7 +54,7 @@
                         <td class="px-6 py-4">{{$c->user->name}}</td>
                         <td class="px-6 py-4">{{$c->user->email}}</td>
                         <td class="px-6 py-4">{{ $c->telefono }}</td>
-                        <td class="px-6 py-4">{{ $c->zona->nombre }}</td>
+                        <td class="px-6 py-4">{{ $c->zona->nombre}}</td>
                         <td class="px-6 py-4">{{ $c->direccion }}</td>
                         <td class="px-6 py-4">
                             <div class="flex-col ">
