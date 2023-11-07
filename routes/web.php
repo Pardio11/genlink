@@ -22,6 +22,8 @@ use App\Livewire\ReportesAdmin;
 use App\Livewire\SaldoCobrador;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\Rules\Can;
+use Facturapi\Facturapi;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,6 +45,8 @@ Route::middleware([
     Route::post('/paypal/payment',[PaypalController::class,'payment'])->name('paypal');
     Route::get('/paypal/success/{clienteId}',[PaypalController::class,'success'])->name('paypal_success');
     Route::get('/paypal/cancel',[PaypalController::class,'cancel'])->name('paypal_cancel');
+
+
 });
 
 Route::middleware([

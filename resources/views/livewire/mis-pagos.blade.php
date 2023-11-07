@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    integrity="sha384-o3q2U7w5JC9eRa6A5h+ypSd1/u3HP7ZGqX5zCCglXp6WtsH+EG5KG5fNje86axtx" crossorigin="anonymous">
 <div class="flex flex-col space-y-4 p-4">
 
 
@@ -14,6 +12,7 @@
     @while ($index)
         @php
             $pago = Auth::user()->cliente->pagos[--$index];
+            $pago2 = Auth::user();
         @endphp
         @if ($this->compararFecha($pago->fecha_limite))
             <div class="flex items-center">
@@ -30,8 +29,8 @@
                         <p class="ml-7">Total: <span class="text-gray-100 ml-1 text-base">
                                 ${{ $this->calcularTotal($pago) }}</p>
                         <div class="ml-auto p-1 mr-5">
-                            <button class="bg-blue-500 text-white rounded-[5px] p-2 mr-2">Facturar</button>
-                            <button class="bg-blue-500 text-white rounded-[5px] p-2">Comprobante</button>
+                            <button wire:click="generarFactura({{$pago}},{{$pago2}})" class="bg-blue-500 text-white rounded-[5px] p-2 mr-2">Facturar</button>
+                            <button  wire:click="generarComprobantePago({{$pago}},{{$pago2}})" class="bg-blue-500 text-white rounded-[5px] p-2">Comprobante</button>
                         </div>
                     @else
                         <p>Fecha de corte: <span class="text-gray-300 ml-1 text-sm">{{ $pago->fecha_limite }}</span></p>
@@ -79,8 +78,9 @@
                             ${{ $this->calcularTotal($pago) }}</p>
                     @isset($pago->fecha_pagado)
                         <div class="ml-auto p-1 mr-5">
-                            <button class="bg-blue-500 text-white rounded-[5px] p-2 mr-2">Facturar</button>
-                            <button class="bg-blue-500 text-white rounded-[5px] p-2">Comprobante</button>
+                            
+                            <button wire:click="generarFactura({{$pago}},{{$pago2}})" class="bg-blue-500 text-white rounded-[5px] p-2 mr-2">Facturar</button>
+                            <button wire:click="generarComprobantePago({{$pago}},{{$pago2}})" class="bg-blue-500 text-white rounded-[5px] p-2">Comprobante</button>
                         </div>
                     @else
                     @endisset
