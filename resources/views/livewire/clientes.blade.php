@@ -13,7 +13,6 @@
                 <div>
                     <label for="zona" class="block font-semibold">Zona:</label>
         
-
                     <select  wire:model="zona_id" class="w-1/2 p-2 border rounded" required>
                         <option value="">Seleccione una zona</option>
                         @foreach($zonas as $zona)
@@ -23,14 +22,15 @@
                 </div>
                 <div>
                     <label for="estatus" class="block font-semibold">Estatus:</label>
+
                     <select wire:model="estatus" class="w-full p-2 border rounded">
-                        <option value="">Seleccione un estatus</option>
-                        <option value="activo">Activo</option>
-                        <option value="inactivo">Inactivo</option>
+                        <option value=''>Seleccione un estatus</option>
+                        <option value="1">Activo</option>
+                        <option value="0">Inactivo</option>
                     </select>
                     
                 </div>
-                <button wire:click="applyFilter">Filtrar</button>
+                <button wire:click="applyFilter" class="bg-blue-500 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded">Filtrar</button>
             </div>
         </div>
 
@@ -44,6 +44,7 @@
                         <th class="px-6 py-3 border-b border-gray-600">Teléfono</th>
                         <th class="px-6 py-3 border-b border-gray-600">Zona</th>
                         <th class="px-6 py-3 border-b border-gray-600">Dirección</th>
+                        
                         <th class="px-6 py-3 border-b border-gray-600">Acciones</th>
                     </tr>
                 </thead>
@@ -115,94 +116,12 @@
                         </div>
                     </form>
 
-                    <button wire:click="closeEditModal" class="bg-gray-400 hover:bg-gray-600 text-white font-bold w-20 h-8 rounded ml-2">Cancelar</button>
+                    <button wire:click="closeEditModal" class="bg-gray-400 hover:bg-gray-600 text-white font-bold w-20 h-8 rounded mt-2">Cancelar</button>
                 </div>
             </div>
         </div>
     </div>
 @endif
 
-{{-----
-<div class="contenedor flex">
-
-    <div class="izquierda w-[20%]  items-center ">
-        @foreach ($clientes as $c)
-
-<h1>{{$c->user->name}}</h1>
-@foreach ($c->pagos as $p)
-@php
-$obj=json_decode($p,true);
-
-
-@endphp
-<h1>
-{{$obj['fecha_pagado']}}
-
-</h1>
-@endforeach
-    <h1>------------------------------------------</h1>
-@endforeach
-    </div>
-
-    <div class="medio">
-
-
-        @foreach ($clientes as $c)
-
-    @foreach ($c->pagos as $p)
-    @php
-    $obj=json_decode($p,true);
-    @endphp
-    @if ($this->compare()&&$this->compareMes($obj['fecha_limite']))
-        
-    @if ($this->compareMes($obj['fecha_pagado'])&&($obj['fecha_pagado']!=NULL))
-      <h1>{{$c->user->name}}</h1>
-      <h1>tiene</h1>  
-    @else
-        @if ($p->recargo_id===NULL)
-        @php($this->crearRecargo($p->id))
-            
-        @endif
-    <h1>{{$c->user->name}}</h1>
-    <h1>no tiene</h1>
-      @endif
-
-
-@endif
-
-
-@endforeach
-<h1>------------------------------------------</h1>
-@endforeach
-    </div>
-
-    <div class="derecha">
-@foreach ($clientes as $c)
-
-    
-<h1>{{$c->user->name}}</h1>
-@foreach ($c->pagos as $p)
-
-@isset($p->recargo_id)
-<h1>{{$p->recargo_id}}</h1>
-    
-@endisset
-    
-@endforeach
-    
-
-@endforeach
-    </div>
-
-
 
 </div>
---}}
-
-
-
-
-
-    
-    
-</div>{{-----final-del-template----}}

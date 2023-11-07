@@ -3,6 +3,7 @@
 namespace App\Livewire;
 use App\Models\User;
 use App\Models\Cliente;
+use App\Models\Contrato;
 use App\Models\Pago;
 use App\Models\Recargo;
 use DateTime;
@@ -15,6 +16,7 @@ use Livewire\Component;
 class Clientes extends Component
 {
     public $zona_id;
+    public $estatus;
 
     public $editingCliente;
     public $idC;
@@ -53,12 +55,11 @@ class Clientes extends Component
      public function mount()
 {
     $this->zona_id = ''; // o algún valor predeterminado si es necesario
+    $this->estatus = '';
 }
 
      public function render()
 {
-
-    
     $clientesQuery = Cliente::query();
 
     if ($this->zona_id) {
@@ -67,14 +68,36 @@ class Clientes extends Component
         });
     }
     
+    
+    
+    if ($this->estatus!='') {
+        
+        $clientesQuery->whereHas('contrato', function ($query) {
+            $query->where('activo', $this->estatus);
+        });
+    
+    }
+  
     $clientes = $clientesQuery->get();
+
+ 
+ 
+
+    
+
+
+
+
     $pagos = Pago::all();
     $zonas = Zona::all();
+    $contrato= Contrato::all();
 
     return view('livewire.clientes', [
         'clientes' => $clientes, 
         'pagos' => $pagos,
-        'zonas' => $zonas
+        'zonas' => $zonas,
+        'contrato'=>$contrato,
+
     ]);
 }
 
@@ -86,8 +109,7 @@ class Clientes extends Component
     }
     public function applyFilter()
     {
-        // Esto se puede dejar vacío ya que la actualización de la propiedad zona_id
-        // ya está causando una actualización de la vista.
+    
     }
     
     public function openEditModal($clienteId)
