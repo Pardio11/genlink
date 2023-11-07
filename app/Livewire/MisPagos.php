@@ -19,7 +19,10 @@ class MisPagos extends Component
 {
 
     // Convertir a flotante si son cadenas
-    $cobro = (int)$plan['tipo_servicio']['costo'] + (int)$plan['recargo']['monto'];
+    if($plan['recargo']!=null)
+        $cobro = (int)$plan['tipo_servicio']['costo'] + (int)$plan['recargo']['monto'];
+    else
+        $cobro = (int)$plan['tipo_servicio']['costo'];
     $facturapi = new Facturapi(env('FACTURAPI_KEY'));
     $invoice = $facturapi->Invoices->create([
         "customer" => [
@@ -60,7 +63,10 @@ class MisPagos extends Component
 }
 
 function generarComprobantePago($plan,$cliente) {
-    $cobro = (int)$plan['tipo_servicio']['costo'] + (int)$plan['recargo']['monto'];
+    if($plan['recargo']!=null)
+        $cobro = (int)$plan['tipo_servicio']['costo'] + (int)$plan['recargo']['monto'];
+    else
+        $cobro = (int)$plan['tipo_servicio']['costo'];
 
     $pdf = new TCPDF();
 
