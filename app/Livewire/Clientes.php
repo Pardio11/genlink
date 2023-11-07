@@ -57,14 +57,16 @@ class Clientes extends Component
 
      public function render()
 {
+
+    
     $clientesQuery = Cliente::query();
 
     if ($this->zona_id) {
-        $clientesQuery->whereHas('zonas', function ($query) {
-            $query->where('zona_id', $this->zona_id);
+        $clientesQuery->whereHas('zona', function ($query) {
+            $query->where('id', $this->zona_id);
         });
     }
-
+    
     $clientes = $clientesQuery->get();
     $pagos = Pago::all();
     $zonas = Zona::all();
@@ -82,7 +84,12 @@ class Clientes extends Component
         $this->idC=$this->editingCliente->id;
         $this->isEditing = true;
     }
-
+    public function applyFilter()
+    {
+        // Esto se puede dejar vacío ya que la actualización de la propiedad zona_id
+        // ya está causando una actualización de la vista.
+    }
+    
     public function openEditModal($clienteId)
     {
         $this->editingCliente = Cliente::find($clienteId);
@@ -112,10 +119,19 @@ class Clientes extends Component
         $clienteIdd=$this->idC;
         $cliente=Cliente::find($clienteIdd);
         $user=User::where('cliente_id', $clienteIdd)->first();
-        $user->name=$this->userName;
-        $user->email=$this->userMail;
-        $cliente->telefono=$this->userTel;
-        $cliente->direccion=$this->userDirec;
+        if(isset($this->userName))
+        {
+            $user->name=$this->userName;
+        }
+        if(isset($this->userMail))
+        {
+            $user->email=$this->userMail;
+        
+        }
+        if(isset($this->userTel)){$cliente->telefono=$this->userTel;}
+        if(isset($this->userDirec)){$cliente->direccion=$this->userDirec;}
+
+        
         $cliente->save();
         $user->save();
         

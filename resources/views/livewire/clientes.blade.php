@@ -14,7 +14,7 @@
                     <label for="zona" class="block font-semibold">Zona:</label>
         
 
-                    <select wire:model="zona_id" class="w-1/2 p-2 border rounded" required>
+                    <select  wire:model="zona_id" class="w-1/2 p-2 border rounded" required>
                         <option value="">Seleccione una zona</option>
                         @foreach($zonas as $zona)
                             <option value="{{ $zona->id }}">{{ $zona->nombre }}</option>
@@ -30,6 +30,7 @@
                     </select>
                     
                 </div>
+                <button wire:click="applyFilter">Filtrar</button>
             </div>
         </div>
 
