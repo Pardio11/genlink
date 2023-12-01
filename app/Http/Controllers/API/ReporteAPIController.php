@@ -15,10 +15,6 @@ class ReporteAPIController extends Controller
             return response()->json([
                 'reportes' => Auth::user()->cliente->reportes
             ], 200);
-        }else{
-            return response()->json([
-                'reportes' => null
-            ], 200);
         }
     }
     public function agregarReporte(Request $request)

@@ -16,7 +16,7 @@ class RecargoAPIController extends Controller
             ], 200);
         }else{
             return response()->json([
-                'message' => 'Recargo Inexsistente'
+                'message' => 'Recargo Inexistente'
             ], 400);
         }
     }

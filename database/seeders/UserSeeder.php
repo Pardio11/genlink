@@ -129,22 +129,52 @@ class UserSeeder extends Seeder
             'n_id' => 5556,
             'direccion' => "Calle Tepozan 350, Amp. Eduardo Ruiz",
             'telefono' => "4431205706",
-            'instalacion_id' => Instalacion::create([
-                'fecha_limite' => "2022-07-16",
-                'nota' => "Es en un segundo piso, hay un arbol grande se ocuparon 3 metros de tubo",
-                'realizado' => true
-            ])->id,
-            'contrato_id' => Contrato::create([
-                'dia_corte' => 5,
-                'velocidad' => 40,
-                'precio' => 230,
-                'activo' => true
-            ])->id
         ]);
 
         User::create([
             'name' => 'Amaro Flores',
             'email' => 'amaro@gmail.com',
+            'password' => Hash::make('12345678'),
+            'cliente_id' => $cliente->id,
+
+        ])->assignRole('Cliente');
+
+        $cliente = Cliente::create([
+            'n_id' => 5566,
+            'direccion' => "Calle Nardo 370, Las Flores",
+            'telefono' => "4431205486",
+            'contrato_id' => Contrato::create([
+                'dia_corte' => 5,
+                'velocidad' => 40,
+                'precio' => 230,
+                'activo' => true
+            ])->id,
+            'antena_id' => Antena::create([
+                'ip' => '192.0.0.1',
+                'mac' => '18:85:46:FD:3A:E7',
+                'user' => 'Pardio',
+                'password' => '12345678',
+                'modelo_antena_id' => 1
+            ])->id,
+            'router_id' => Router::create([
+                'ip' => '192.0.0.1',
+                'mac' => '18:85:46:FD:3A:E7',
+                'user' => 'Pardio',
+                'password' => '12345678',
+                'modelo_router_id' => 1
+            ])->id,
+            'zona_id' => Zona::create([
+                'nombre' => "Primo Tapia",
+                'direccion' => "Tepozan 350",
+                'alcance' => "100km",
+                'antena_id' => 2,
+                'router_id' => 2,
+            ])->id
+        ]);
+
+        User::create([
+            'name' => 'Estaban Quito',
+            'email' => 'esteban@gmail.com',
             'password' => Hash::make('12345678'),
             'cliente_id' => $cliente->id,
 

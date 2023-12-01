@@ -15,7 +15,7 @@ class PagoAPIController extends Controller
         }else{
             return response()->json([
                 'pagos' => null
-            ], 500);
+            ], 200);
         }
     }
 }
