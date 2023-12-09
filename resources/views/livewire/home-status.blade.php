@@ -7,7 +7,7 @@
 
             <div class="w-[100%]  h-[45%]"
                 style="border-top-right-radius: 15px; border-top-left-radius: 15px;  
-                   background-image: {{ asset('antena.webp') }};
+                   background-image: url('{{ asset('antena.webp') }}');
                    background-size: cover;antena.webp
                    background-position: center
                    ">
@@ -34,7 +34,7 @@
 
                 <div class="w-[100%]  h-[45%]"
                     style="border-top-right-radius: 15px; border-top-left-radius: 15px;  
-                       background-image: {{ asset('antena.webp') }};
+                       background-image: url('{{ asset('antena.webp') }}');
                        background-size: cover;
                        background-position: center
                        ">
@@ -58,7 +58,7 @@
 
                         <div class="w-[100%]  h-[45%]"
                             style="border-top-right-radius: 15px; border-top-left-radius: 15px;  
-                               background-image: {{ asset('1.jpeg') }};
+                               background-image: url('{{ asset('1.jpeg') }}');
                                background-size: cover;
                                background-position: center
                                ">
