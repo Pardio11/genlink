@@ -7,6 +7,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get install apache2 -y
 
+
 #Installing PHP v 8.2
 RUN apt-get -y install software-properties-common && \
     add-apt-repository ppa:ondrej/php && \
@@ -37,6 +38,10 @@ RUN service mysql start && \
 # Install Node.js and npm
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
     apt-get install -y nodejs
+
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
+RUN service apache2 restart    
 
 EXPOSE 80 3306
 
