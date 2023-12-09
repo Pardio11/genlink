@@ -34,7 +34,7 @@
             @endif
 
             <div class=" w-[100%] h-[100vh] flex items-center justify-center">
-            <img src="../genlinkLogo.png" alt="" class="">
+            <img src="{{ asset('genlinkLogo.png') }}" alt="" class="">
 
             </div>
 

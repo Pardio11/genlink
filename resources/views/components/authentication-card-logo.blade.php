@@ -1,3 +1,3 @@
 <a href="/">
-    <img src="../genlinkLogo.png" alt="" class="w-[100%]">
+    <img src="{{ asset('genlinkLogo.png') }}" alt="" class="w-[100%]">
 </a>
