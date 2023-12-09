@@ -1,0 +1,10 @@
+sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+a2enmod rewrite
+service apache2 restart
+service apache2 start
+
+service mysql start
+
+cd /var/www/html
+php artisan migrate --seed
+npm i
