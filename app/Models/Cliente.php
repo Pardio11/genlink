@@ -14,7 +14,7 @@ class Cliente extends Model
     protected $fillable = [
         'n_id','direccion','telefono','instalacion_id','contrato_id','antena_id','router_id','zona_id'
     ];
-
+  
     protected static function boot()
     {
         parent::boot();
