@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('router_id')->constrained('routers')->cascadeOnDelete();
             $table->foreignId('antena_id')->constrained('antenas')->cascadeOnDelete();
             $table->timestamps();
-
         });
     }
 
