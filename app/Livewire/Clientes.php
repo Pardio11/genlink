@@ -55,6 +55,7 @@ class Clientes extends Component
      */
     public $showModal = false;
     public $zona;
+    public $informacion;
     public function openModal($zonaId)
     {
         $this->zona = Zona::find($zonaId);
@@ -65,8 +66,11 @@ class Clientes extends Component
     {
         // Lógica para cerrar el modal
         $this->showModal = false;
+    }public function openProfile($idCliente)
+    {
+        return redirect()->route('livewire.perfil-cliente', ['clienteId' => $idCliente]);
     }
-
+    
     public function mount()
     {
         $this->zona_id = ''; // o algún valor predeterminado si es necesario

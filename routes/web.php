@@ -15,6 +15,7 @@ use App\Livewire\EstadoCuenta;
 use App\Livewire\MisPagos;
 use App\Livewire\PagosAtrasados;
 use App\Livewire\Pendientes;
+use App\Livewire\PerfilCliente;
 use App\Livewire\PreguntasFrecuentes;
 use App\Livewire\Provedores;
 use App\Livewire\RealizarPago;
@@ -57,6 +58,9 @@ Route::middleware([
 ])->group(function () {
     Route::get('/clientes',Clientes::class)->middleware('can:admin')->name('clientes');
     Route::get('/provedores', Provedores::class)->middleware('can:admin')->name('provedores');
+    Route::get('/perfil-cliente/{clienteId}', PerfilCliente::class)->middleware('can:admin')->name('livewire.perfil-cliente');
+
+
     Route::get('/estado-cuenta',EstadoCuenta::class)->middleware('can:admin')->name('estado-cuenta');
     Route::get('/pagos-pendientes',PagosAtrasados::class)->middleware('can:admin')->name('pagos-pendientes');
     Route::get('/cancelados',Cancelados::class)->middleware('can:admin')->name('cancelados');

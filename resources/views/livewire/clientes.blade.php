@@ -83,7 +83,7 @@
                             </div>
                         </td>
                         <th scope="row" class="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                            <img class="w-10 h-10 rounded-full" src="/imagenes/pictureUser/user-1.jpg" alt="Jese image">
+                            <img   wire:click="openProfile({{$c->user->id}})"class="w-10 h-10 rounded-full" src="/imagenes/pictureUser/user-1.jpg" alt="Jese image">
                             <div class="ps-3">
                                 <div class="text-base font-semibold">{{$c->user->name}}</div>
                                 <div class="font-normal text-gray-500">{{$c->user->email}}</div>
